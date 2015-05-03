@@ -39,6 +39,8 @@ Bundle 'einars/js-beautify'
 Bundle 'wting/rust.vim'
 " Bundle 'sjl/badwolf'
 Bundle 'altercation/vim-colors-solarized'
+" Bundle 'mattn/emmet-vim'
+Plugin 'mattn/emmet-vim'
 
 filetype plugin indent on
 
@@ -92,11 +94,12 @@ map ,t <Esc>:tabnew<CR>
 map ,b <Esc>:Gblame<CR>
 map ,n :NERDTreeToggle<CR>
 map ,w <Esc>:%s/\s\+$//e<CR>:%s/\t/    /ge<CR>:%s/\r\+$//ge<CR>
+map ,W <Esc>:w!!<CR>
 map ,s <Esc>:w<CR>
 map ,q <Esc>:q<CR>
+map ,Q <Esc>:q!<CR>
 map ,c <Esc>:setlocal spell!<CR>
-map <Enter> o<Esc>
-" nmap <Leader>t :TagbarToggle<CR>
+"nmap <Leader>t :TagbarToggle<CR>
 
 autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
 " for html
@@ -108,8 +111,10 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 cmap w!! w !sudo tee % >/dev/null
 
 let NERDTreeIgnore = ['\.pyc$']
-
+" Let NERDTree show hidden files
 let NERDTreeShowHidden = 1
+" Let me expand emmet abbr with <TAB>
+let g:user_emmet_expandabbr_key = ',<Tab>'
 
 set tw=0
 set wm=0
