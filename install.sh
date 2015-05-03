@@ -6,6 +6,7 @@ VUNDLE_REPO=git://github.com/gmarik/Vundle.vim
 if [ -d $DOTFILES_PATH ]; then
   rm -r $DOTFILES_PATH
 fi
+mkdir -p $DOTFILES_PATH
 git clone $DOTFILES_REPO $DOTFILES_PATH
 find ~/dotfiles/dots -name '.*' | xargs -I % ln -sfv % ~
 
