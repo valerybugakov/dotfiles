@@ -3,15 +3,10 @@ DOTFILES_REPO=https://github.com/valerybugakov/dotfiles.git
 VUNDLE_PATH=$HOME/.vim/bundle/vundle
 VUNDLE_REPO=git://github.com/gmarik/Vundle.vim
 
-mkdir -p $DOTFILES_PATH
-if [ ! -d $DOTFILES_PATH ]
-then
-  git clone $DOTFILES_REPO $DOTFILES_PATH
-else
-  cd $DOTFILES_PATH
-  git reset --hard origin/master
-  git pull origin master
+if [ -d $DOTFILES_PATH ]; then
+  rm -r $DOTFILES_PATH
 fi
+git clone $DOTFILES_REPO $DOTFILES_PATH
 find ~/dotfiles/dots -name '.*' | xargs -I % ln -sfv % ~
 
 cat $DOTFILES_PATH/ohmyzsh.sh | sh
