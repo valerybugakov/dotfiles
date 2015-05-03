@@ -1,0 +1,32 @@
+[user]
+  name = Valery Bugakov
+  email = skymk1@gmail.com
+[github "user"]
+
+[merge]
+  tool = vimdiff
+
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = cyan bold
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+[core]
+  editor = vim
+  autocrlf = input
+  excludesfile = ~/.gitignore
