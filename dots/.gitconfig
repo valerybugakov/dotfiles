@@ -1,6 +1,6 @@
 [user]
   name = Valery Bugakov
-  email = skymk1@gmail.com
+	email = bugakov@mercurydevelopment.com
 [github "user"]
 
 [merge]
@@ -30,3 +30,9 @@
   editor = vim
   autocrlf = input
   excludesfile = ~/.gitignore
+[url "https://"]
+	insteadOf = git://
+[push]
+	default = simple
+[credential]
+	helper = osxkeychain

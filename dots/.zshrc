@@ -8,17 +8,25 @@ source $ZSH/oh-my-zsh.sh
 
 #----------------------------------- Theme config-----------------------------------#
 
-local user_host='%{$terminfo[bold]$fg[green]%}%n@%m%{$reset_color%}'
-local current_dir='%{$terminfo[bold]$fg[cyan]%}%~%{$reset_color%}'
-local git_branch='$(git_prompt_info)%{$reset_color%}'
-local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
+# local user_host='%{$terminfo[bold]$fg[green]%}%n@%m%{$reset_color%}'
+# local current_dir='%{$terminfo[bold]$fg[cyan]%}%~%{$reset_color%}'
+# local git_branch='$(git_prompt_info)%{$reset_color%}'
+# local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
-PROMPT="%{$FG[129]%}┌─${user_host} ${current_dir} ${git_branch}
-%{$FG[129]%}└─%B࿘%b "
-RPS1="${return_code}"
+# PROMPT="%{$FG[129]%}┌─${user_host} ${current_dir} ${git_branch}
+# %{$FG[129]%}└─%B࿘%b "
+# RPS1="${return_code}"
 
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}(%{$fg[red]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$fg_bold[blue]%})"
+# ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}(%{$fg[red]%}"
+# ZSH_THEME_GIT_PROMPT_SUFFIX="%{$fg_bold[blue]%})"
+
+# export PGHOST=localhost
+unsetopt correct
+unsetopt correct_all
+
+PROMPT='%{$fg_bold[cyan]%}%~%{$fg_bold[green]%}$(git_prompt_info) ࿘  %{$reset_color%}'
+ZSH_THEME_GIT_PROMPT_PREFIX=" $FG[075]"
+ZSH_THEME_GIT_PROMPT_SUFFIX="$FG[129]"
 
 #----------------------------------- Aliases -----------------------------------#
 
@@ -35,6 +43,12 @@ alias zrdm='zeus rake db:migrate'
 alias zshconf='vim ~/.zshrc'
 alias ohmyzsh='vim ~/.oh-my-zsh'
 alias vimconf='vim ~/.vimrc'
+alias l='ls -lah'
+alias ll='ls -lAh'
+alias la='ls -lh'
+alias ls='ls -G'
+alias lsa='ls -lah'
+alias grs='git reset --soft HEAD~1'
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -117,3 +131,6 @@ export PATH="/opt/local/share:/opt/local/bin:/opt/local/sbin:$PATH"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
+
+export NVM_DIR="/Users/bugakov/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
