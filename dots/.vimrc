@@ -230,7 +230,7 @@ set smarttab
 set autoindent
 set smartindent
 set mouse=a
-set cursorcolumn
+" set cursorcolumn
 set cursorline
 set timeoutlen=200
 
@@ -327,10 +327,10 @@ Plugin 'kien/ctrlp.vim.git'
     " NERDTree
         noremap <silent> <C-e> :NERDTreeToggle<CR>:silent NERDTreeMirror<CR>
         " let NERDTreeShowBookmarks=1
-        let NERDTreeChDirMode=2
-        let NERDTreeQuitOnOpen=1
-        let NERDTreeShowHidden=1
-        let NERDTreeKeepTreeInNewTab=0
+        " let NERDTreeChDirMode=2
+        " let NERDTreeQuitOnOpen=1
+        " let NERDTreeShowHidden=1
+        " let NERDTreeKeepTreeInNewTab=0
         " Disable display of the 'Bookmarks' label and 'Press ? for help' text
         let NERDTreeMinimalUI=1
         " Use arrows instead of + ~ chars when displaying directories
