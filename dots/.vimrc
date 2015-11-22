@@ -1,4 +1,4 @@
-set nocompatible              " be iMproved, required
+set nocompatible              " Vim settings, rather then Vi settings
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -17,6 +17,7 @@ Bundle 'gmarik/vundle'
 """"""" General plugins
 Bundle 'tpope/vim-fugitive'
 Bundle 'majutsushi/tagbar'
+Plugin 'jistr/vim-nerdtree-tabs'
 Bundle 'scrooloose/nerdtree'
   let NERDTreeIgnore = ['\.pyc$']
   let NERDTreeShowHidden = 1
@@ -26,51 +27,56 @@ Bundle 'scrooloose/nerdtree'
   " let NERDTreeChDirMode=2
   " let NERDTreeQuitOnOpen=1
   " let NERDTreeKeepTreeInNewTab=0
-  " Disable display of the 'Bookmarks' label and 'Press ? for help' text
   " let NERDTreeMinimalUI=1
-  " Use arrows instead of + ~ chars when displaying directories
-
 Plugin 'tpope/vim-repeat'
-Plugin 'tomtom/tcomment_vim'                     " gcc
-Plugin 'tpope/vim-surround'                      " ds, cs}), yss<p>
-Plugin 'tpope/vim-unimpaired'                    " [space, ]space etc
-Plugin 'vim-scripts/YankRing.vim'
-  " Go through paste-stack with OPTION-[pP]
+Plugin 'troydm/easybuffer.vim'
+Plugin 'vim-scripts/camelcasemotion'
+Plugin 'chrisbra/NrrwRgn'                             " :NR on visual-selected region to open it in narrowed window
+Plugin 'nelstrom/vim-visual-star-search'              " Star(*) search for the whole selection in visual mode
+Plugin 'tomtom/tcomment_vim'                          " gcc
+Plugin 'tpope/vim-surround'                           " ds, cs}), yss<p>
+Plugin 'briandoll/change-inside-surroundings.vim'     " cit to change inside tag, ci[ to change inside []
+Plugin 'godlygeek/tabular'                            " :Tab [pattern]
+Plugin 'tpope/vim-unimpaired'                         " [space, ]space etc
+Plugin 'valerymercury/auto-pairs'                     " Automatic closing of quotes, parenthesis, brackets, etc.
+Plugin 'AndrewRadev/splitjoin.vim'                    " gS to split single-line statement, gJ for the opposite
+Plugin 'vim-scripts/YankRing.vim'                     " Go through paste-stack with OPTION-[pP]
   let g:yankring_replace_n_pkey='π'
   let g:yankring_replace_n_nkey='∏'
-
-" Yay ^_^
-Plugin 'terryma/vim-multiple-cursors'
+Plugin 'terryma/vim-multiple-cursors'                 " Yay ^_^
   let g:multi_cursor_use_default_mapping=0
   let g:multi_cursor_next_key='<C-n>'
   let g:multi_cursor_prev_key='<C-b>'
   let g:multi_cursor_skip_key='<C-x>'
   let g:multi_cursor_quit_key='<Esc>'
 
+""""""" Navigation
+Plugin 'Lokaltog/vim-easymotion'
 Plugin 'kien/ctrlp.vim.git'
   let g:ctrlp_reuse_window  = 'startify'
-  let g:ctrlp_by_filename = 0                     " Search by filename
-  let g:ctrlp_match_window_bottom = 1             " Show at bottom of window
-  let g:ctrlp_working_path_mode = 'ra'            " Our working path is our VCS project or the current directory
-  let g:ctrlp_mru_files = 1                       " Enable Most Recently Used files feature
-  let g:ctrlp_jump_to_buffer = 2                  " Jump to tab AND buffer if already open
-  let g:ctrlp_open_new_file = 'r'                 " open selections in a vertical split
-  let g:ctrlp_open_multiple_files = 'vr'          " opens multiple selections in vertical splits to the right
+  let g:ctrlp_by_filename = 0                         " Search by filename
+  let g:ctrlp_match_window_bottom = 1                 " show at bottom of window
+  let g:ctrlp_working_path_mode = 'ra'                " our working path is our vcs project or the current directory
+  let g:ctrlp_mru_files = 1                           " enable most recently used files feature
+  let g:ctrlp_jump_to_buffer = 2                      " jump to tab and buffer if already open
+  let g:ctrlp_open_new_file = 'r'                     " open selections in a vertical split
+  let g:ctrlp_open_multiple_files = 'vr'              " opens multiple selections in vertical splits to the right
   let g:ctrlp_arg_map = 0
-  let g:ctrlp_dotfiles = 0                        " do not show (.) dotfiles in match list
-  let g:ctrlp_showhidden = 0                      " do not show hidden files in match list
+  let g:ctrlp_dotfiles = 0                            " do not show (.) dotfiles in match list
+  let g:ctrlp_showhidden = 0                          " do not show hidden files in match list
   let g:ctrlp_split_window = 0
-  let g:ctrlp_max_height = 40                     " restrict match list to a maxheight of 40
-  let g:ctrlp_use_caching = 0                     " don't cache, we want new list immediately each time
-  let g:ctrlp_max_files = 0                       " no restriction on results/file list
+  let g:ctrlp_max_height = 40                         " restrict match list to a maxheight of 40
+  let g:ctrlp_use_caching = 0                         " don't cache, we want new list immediately each time
+  let g:ctrlp_max_files = 0                           " no restriction on results/file list
   let g:ctrlp_working_path_mode = ''
-  let g:ctrlp_dont_split = 'NERD_tree_2'          " don't split these buffers
+  let g:ctrlp_dont_split = 'NERD_tree_2'              " don't split these buffers
   let g:ctrlp_custom_ignore = {
     \ 'dir':  '\v[\/]\.(git|hg|svn|gitkeep)$',
     \ 'file': '\v\.(exe|so|dll|log|gif|jpg|jpeg|png|psd|DS_Store|ctags|gitattributes)$'
     \ }
   " let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-  " let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co'] " if you want to use git for this rather than ag
+  " if you want to use git for this rather than ag
+  " let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
   " let g:ctrlp_prompt_mappings = {
   "   \ 'AcceptSelection("e")': ['<c-e>', '<c-space>'],
@@ -102,9 +108,6 @@ Plugin 'dkprice/vim-easygrep'
      set grepformat=%f:%l:%c%m
   endif
 
-" Automatic closing of quotes, parenthesis, brackets, etc.
-Plugin 'valerymercury/auto-pairs'
-
 """""" JavaScript
 Plugin 'elzr/vim-json'
 Plugin 'jelera/vim-javascript-syntax'
@@ -126,16 +129,20 @@ Plugin 'groenewege/vim-less'
 """""" UI
 Bundle 'scrooloose/syntastic'
   let g:syntastic_javascript_checkers = ['eslint']
+  let g:syntastic_check_on_open=0
+  let g:syntastic_enable_signs=1
 Bundle 'airblade/vim-gitgutter'
 Bundle 'kien/rainbow_parentheses.vim'
-Bundle 'tomasr/molokai'
 Bundle 'wting/rust.vim'
+Plugin 'chrisbra/color_highlight'
+Plugin 'jonathanfilip/vim-lucius'
+Plugin 'benjaminwhite/Benokai'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'       " UI statusbar niceties
   set laststatus=2               " enable airline even if no splits
   let g:airline#enable#branch=1
   let g:airline_powerline_fonts = 1
-  let g:airline_theme='powerlineish'
+  let g:airline_theme='light'
   let g:airline#left#sep = ''
   let g:airline#right#sep = ''
   let g:airline#linecolumn#prefix = '␊ '
@@ -147,6 +154,7 @@ Plugin 'bling/vim-airline'       " UI statusbar niceties
   let g:airline#paste#symbol = '∥'
   let g:airline#extensions#tabline#enabled = 0
   let g:airline#extensions#syntastic#enabled=1
+  let g:airline#extensions#nrrwrgn#enabled = 1
   " set guifont=Source\ Code\ Pro\ for\ Powerline
 
 """"""" Templates
@@ -169,7 +177,7 @@ call vundle#end()
 syntax on
 set t_Co=256
 set background=dark
-colorscheme monokai
+colorscheme Benokai
 " colorscheme molokai
 " colorscheme solarized
 " let g:solarized_termcolors=16
@@ -196,11 +204,10 @@ let g:rbpt_colorpairs = [
 " ==========================================================
 " Shortcuts
 " ==========================================================
-
-" Disable mouse
+" Warning: nightmare mode!
+  " Disable mouse
   set mouse=
-" Disable <Arrow keys>
-  " Warning: nightmare mode!
+  " Disable <Arrow keys>
   inoremap <Up> <NOP>
   inoremap <Down> <NOP>
   inoremap <Left> <NOP>
@@ -209,25 +216,30 @@ let g:rbpt_colorpairs = [
   noremap <Down> <NOP>
   noremap <Left> <NOP>
   noremap <Right> <NOP>
-  " Navigate with <Ctrl>-hjkl in Insert mode
-  imap <C-h> <C-o>h
-  imap <C-j> <C-o>j
-  imap <C-k> <C-o>k
-  imap <C-l> <C-o>l
+  inoremap # #
+
+" Navigate with <Ctrl>-hjkl in Insert mode
+imap <C-h> <C-o>h
+imap <C-j> <C-o>j
+imap <C-k> <C-o>k
+imap <C-l> <C-o>l
 " Navigate through wrapped lines
-  noremap j gj
-  noremap k gk
-" <Esc><Esc>
-  " Clear the search highlight in Normal mode
-  nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>
-" Allow pasting blocks of code without indenting
-  set pastetoggle=<F2>
-" Seriously, guys. It's not like :W is bound to anything anyway.
-
-command! W :w
-
+noremap j gj
+noremap k gk
+" Clear the search highlight in Normal mode
+nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>
 " Allow pasting blocks of code without indenting
 set pastetoggle=<F2>
+" Seriously, guys. It's not like :W is bound to anything anyway.
+command! W :w
+" Go through CamelCased words
+map W <Plug>CamelCaseMotion_w
+map B <Plug>CamelCaseMotion_b
+map E <Plug>CamelCaseMotion_e
+sunmap W
+sunmap B
+sunmap E
+
 vmap <C-z-z> <esc>:wq
 
 " Fix Shift+Tab
@@ -247,7 +259,7 @@ let g:mapleader = ","
   map ,q <Esc>:q<CR>
   map ,Q <Esc>:q!<CR>
   map ,c <Esc>:setlocal spell!<CR>
-  nmap ,l :ls<CR>
+  nmap ,l :EasyBufferHorizontalBelow<CR>
   nmap ,r :NERDTreeFind<CR>
   map <leader>ba :1,1000 bd!<cr>
   nnoremap <leader>f :Ack -
@@ -287,25 +299,32 @@ endfunction
 cmap w!! w !sudo tee % >/dev/null
 :set path=$PWD/**
 
-set tw=0
-set wm=0
-set wrap
-set linebreak
+" For fugitive.git, dp means :diffput. Define dg to mean :diffget
+nnoremap <silent> ,dg :diffget<CR>
+nnoremap <silent> ,dp :diffput<CR>
+" Automatically jump to a file at the correct line number
+nnoremap <silent> ,gf :vertical botright wincmd F<CR>
+" Open all changed git files
+nnoremap ,ocf :OpenChangedFiles<CR>
+" use ,F to jump to tag in a vertical split
+nnoremap <silent> ,F :let word=expand("<cword>")<CR>:vsp<CR>:wincmd w<cr>:exec("tag ". word)<cr>
 
 " ==========================================================
 " Basic Settings
 " ==========================================================
 syntax enable
-filetype on                   " try to detect filetypes
-filetype plugin indent on     " enable loading indent file for filetype
-set guioptions-=T             " Removes top toolbar "
-set guioptions-=r             " Removes right hand scroll bar"
-set go-=L                     " Removes left hand scroll bar "
-set number                    " Display line numbers
-set numberwidth=1             " using only 1 column (and 1 space) while possible
-set title                     " show title in console title bar
-set wildmenu                  " Menu completion in command mode on <Tab>
-set wildmode=full             " <Tab> cycles between all matching choices.
+filetype on                             " try to detect filetypes
+filetype plugin indent on               " enable loading indent file for filetype
+set guioptions-=T                       " Removes top toolbar "
+set guioptions-=r                       " Removes right hand scroll bar"
+set go-=L                               " Removes left hand scroll bar "
+set number                              " Display line numbers
+set numberwidth=1                       " using only 1 column (and 1 space) while possible
+set title                               " show title in console title bar
+set autoread                            " Reload files changed outside of vim
+set scrolloff=8                         " Start scrolling when we're 8 lines away from margins
+set sidescrolloff=15
+set sidescroll=1"
 set fileformats=unix
 set showcmd
 set cpoptions+=$
@@ -314,6 +333,24 @@ set clipboard=unnamed
 set gfn=Monaco:h16
 set colorcolumn=120
 " e ++ff=unix
+set tw=0
+set wm=0
+set wrap
+set linebreak
+
+""""""" Completion menu
+set wildmenu                            " Menu completion in command mode on <Tab>
+set wildmode=list:longest,full          " <Tab> cycles between all matching choices.
+set wildignore=*.o,*.obj,*~             " Stuff to ignore when tab completing
+set wildignore+=*vim/backups*
+set wildignore+=*sass-cache*
+set wildignore+=*DS_Store*
+set wildignore+=vendor/rails/**
+set wildignore+=vendor/cache/**
+set wildignore+=*.gem
+set wildignore+=log/**
+set wildignore+=tmp/**
+set wildignore+=*.png,*.jpg,*.gif
 
 if has("gui_running")
   syntax on
@@ -323,9 +360,6 @@ if has("gui_running")
   set ai
   set ruler
 endif
-
-" don't outdent hashes
-inoremap # #
 
 set tabstop=2
 set shiftwidth=2
@@ -381,8 +415,6 @@ autocmd BufRead,BufNewFile *.hamlc setf haml
 "autocmd VimEnter * imap <expr> <S-Tab> pumvisible() ? "<C-P>" : "<S-Tab>"
 autocmd FileType html,xhtml,xml,css setlocal expandtab shiftwidth=2 tabstop=2
 autocmd filetype javascript set sw=2 ts=2 expandtab
-" let g:syntastic_check_on_open=1
-" let g:syntastic_enable_signs=1
 
 " Exec js script in vim CTRL-w-n
 map <C-w>n :call ExecNode() <cr>
@@ -401,3 +433,23 @@ endfunc
 au BufWrite * silent call DeleteTrailingWS()
 
 """"" End Normalization ================
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" OpenChangedFiles COMMAND
+" Open a split for each dirty file in git
+"
+" Shamelessly stolen from Gary Bernhardt: https://github.com/garybernhardt/dotfiles
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! OpenChangedFiles()
+  only " Close all windows, unless they're modified
+  let status = system('git status -s | grep "^ \?\(M\|A\)" | cut -d " " -f 3')
+  let filenames = split(status, "\n")
+  if len(filenames) > 0
+    exec "edit " . filenames[0]
+    for filename in filenames[1:]
+      exec "sp " . filename
+    endfor
+  end
+endfunction
+command! OpenChangedFiles :call OpenChangedFiles()
+
