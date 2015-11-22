@@ -17,7 +17,7 @@ Bundle 'gmarik/vundle'
 """"""" General plugins
 Bundle 'tpope/vim-fugitive'
 Bundle 'majutsushi/tagbar'
-Bundle 'dmitriiabramov/nerdtree'
+Bundle 'scrooloose/nerdtree'
   let NERDTreeIgnore = ['\.pyc$']
   let NERDTreeShowHidden = 1
   let NERDTreeDirArrows=1
