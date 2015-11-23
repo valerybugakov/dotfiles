@@ -49,6 +49,7 @@ alias la='ls -lh'
 alias ls='ls -G'
 alias lsa='ls -lah'
 alias grs='git reset --soft HEAD~1'
+alias ctags="`brew --prefix`/bin/ctags"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
