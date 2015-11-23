@@ -252,7 +252,7 @@ let g:mapleader = ","
 
   map ,t <Esc>:tabnew<CR>
   map ,b <Esc>:Gblame<CR>
-  map ,n :NERDTreeToggle<CR>
+  map ,n :call WorkaroundNERDTreeToggle()<CR>
   map ,w <Esc>:%s/\s\+$//e<CR>:%s/\t/    /ge<CR>:%s/\r\+$//ge<CR>
   map ,W <Esc>:w!!<CR>
   map ,s <Esc>:w<CR>
@@ -420,6 +420,11 @@ autocmd filetype javascript set sw=2 ts=2 expandtab
 map <C-w>n :call ExecNode() <cr>
 function ExecNode()
   exec "! node %"
+endfunction
+
+" Toggle NERDTree after all buffers delete
+function! WorkaroundNERDTreeToggle()
+  try | NERDTreeToggle | catch | silent! NERDTree | endtry
 endfunction
 
 """"" Normalization ====================
