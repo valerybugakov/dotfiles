@@ -267,7 +267,7 @@ let g:mapleader = ","
   nmap ,l :EasyBufferHorizontalBelow<CR>
   nmap ,r :NERDTreeFind<CR>
   map <leader>ba :1,1000 bd!<cr>
-  nnoremap <leader>f :Ack -
+  nnoremap <leader>f :Ack! ""<Left>
   " nmap <Leader>t :TagbarToggle<CR>
 
 " Add new line below the cursor
