@@ -5,6 +5,7 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/vundle/
 let path = '~/.vim_bundle'
 call vundle#begin(path)
+" call vundle#rc()
 
 " let Vundle manage Vundle
 " required!
@@ -31,6 +32,8 @@ Bundle 'scrooloose/nerdtree'
 Plugin 'tpope/vim-repeat'
 Plugin 'troydm/easybuffer.vim'
 Plugin 'vim-scripts/camelcasemotion'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'ternjs/tern_for_vim'
 Plugin 'chrisbra/NrrwRgn'                             " :NR on visual-selected region to open it in narrowed window
 Plugin 'nelstrom/vim-visual-star-search'              " Star(*) search for the whole selection in visual mode
 Plugin 'tomtom/tcomment_vim'                          " gcc
@@ -91,6 +94,8 @@ Plugin 'kien/ctrlp.vim.git'
   "   \}
 
 Plugin 'mileszs/ack.vim'
+  cabbrev Ack Ack!
+  cabbrev Ag Ag!
   let g:ackprg = 'ag --vimgrep'
   let g:ackhighlight = 1
 Plugin 'skwp/greplace.vim'
@@ -253,9 +258,9 @@ let g:mapleader = ","
   map ,t <Esc>:tabnew<CR>
   map ,b <Esc>:Gblame<CR>
   map ,n :call WorkaroundNERDTreeToggle()<CR>
-  map ,w <Esc>:%s/\s\+$//e<CR>:%s/\t/    /ge<CR>:%s/\r\+$//ge<CR>
-  map ,W <Esc>:w!!<CR>
-  map ,s <Esc>:w<CR>
+  noremap ,w <Esc>:w<CR>
+  noremap ,W <Esc>:w!!<CR>
+  noremap <nowait> ,s <Esc>:w<CR>
   map ,q <Esc>:q<CR>
   map ,Q <Esc>:q!<CR>
   map ,c <Esc>:setlocal spell!<CR>
