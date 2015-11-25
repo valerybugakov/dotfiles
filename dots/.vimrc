@@ -18,6 +18,16 @@ Bundle 'gmarik/vundle'
 """"""" General plugins
 Bundle 'tpope/vim-fugitive'
 Bundle 'majutsushi/tagbar'
+  let g:tagbar_type_coffee = {
+    \ 'ctagstype' : 'coffee',
+    \ 'kinds'     : [
+        \ 'c:classes',
+        \ 'm:methods',
+        \ 'f:functions',
+        \ 'v:variables',
+        \ 'f:fields',
+      \ ]
+    \ }
 Plugin 'jistr/vim-nerdtree-tabs'
 Bundle 'scrooloose/nerdtree'
   let NERDTreeIgnore = ['\.pyc$']
@@ -268,7 +278,7 @@ let g:mapleader = ","
   nmap ,r :NERDTreeFind<CR>
   map <leader>ba :1,1000 bd!<cr>
   nnoremap <leader>f :Ack! ""<Left>
-  " nmap <Leader>t :TagbarToggle<CR>
+  nmap <Leader>. :TagbarToggle<CR>
 
 " Add new line below the cursor
 " nmap " <S-o><Esc>
