@@ -154,6 +154,7 @@ Plugin 'chrisbra/color_highlight'
 Plugin 'jonathanfilip/vim-lucius'
 Plugin 'benjaminwhite/Benokai'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'mkitt/tabline.vim'
 Plugin 'bling/vim-airline'       " UI statusbar niceties
   set laststatus=2               " enable airline even if no splits
   let g:airline#enable#branch=1
@@ -168,10 +169,19 @@ Plugin 'bling/vim-airline'       " UI statusbar niceties
   let g:airline#paste#symbol = 'ρ'
   let g:airline#paste#symbol = 'Þ'
   let g:airline#paste#symbol = '∥'
-  let g:airline#extensions#tabline#enabled = 0
   let g:airline#extensions#syntastic#enabled=1
   let g:airline#extensions#nrrwrgn#enabled = 1
-  " set guifont=Source\ Code\ Pro\ for\ Powerline
+
+  " Tabline settings
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#fnamemod = ':t'
+  let g:airline#extensions#tabline#show_buffers = 0
+  let g:airline#extensions#tabline#show_tabs = 1
+  let g:airline#extensions#tabline#tab_nr_type = 0
+  let g:airline#extensions#tabline#show_tab_nr = 0
+  let g:airline#extensions#tabline#show_tab_type = 0
+  let g:airline#extensions#tabline#tab_min_count = 1
+  let g:airline#extensions#tabline#show_close_button = 0
 
 """"""" Templates
 Plugin 'othree/html5.vim'
