@@ -4,7 +4,7 @@ VUNDLE_PATH=$HOME/.vim/bundle/vundle
 VUNDLE_REPO=git://github.com/gmarik/Vundle.vim
 
 if [ -d $DOTFILES_PATH ]; then
-  rm -r $DOTFILES_PATH
+  sudo rm -r $DOTFILES_PATH
 fi
 mkdir -p $DOTFILES_PATH
 git clone $DOTFILES_REPO $DOTFILES_PATH

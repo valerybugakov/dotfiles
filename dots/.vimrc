@@ -377,6 +377,7 @@ if has("gui_running")
   set hlsearch
   colorscheme Benokai
   set guifont=Ubuntu\ Mono\ derivative\ Powerline:h22
+  set transparency=10
   set bs=2
   set ai
   set ruler
