@@ -195,7 +195,7 @@ set background=dark
 colorscheme Benokai
 " colorscheme molokai
 " colorscheme solarized
-" let g:solarized_termcolors=16
+" let g:solarized_termcolors=256
 " let g:solarized_termtrans=1
 
 let g:rbpt_colorpairs = [
@@ -374,7 +374,8 @@ set wildignore+=*.png,*.jpg,*.gif
 if has("gui_running")
   syntax on
   set hlsearch
-  colorscheme macvim
+  colorscheme Benokai
+  set guifont=Ubuntu\ Mono\ derivative\ Powerline:h22
   set bs=2
   set ai
   set ruler
