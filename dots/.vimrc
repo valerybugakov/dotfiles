@@ -370,6 +370,7 @@ set wildignore+=*.gem
 set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
+set completeopt-=preview
 
 if has("gui_running")
   syntax on
@@ -383,8 +384,6 @@ endif
 
 set tabstop=2
 set shiftwidth=2
-au FileType javascript setl sw=2 sts=2 et
-au FileType coffeescript setl sw=2 sts=2 et
 set expandtab
 set smarttab
 set autoindent
@@ -423,7 +422,8 @@ set incsearch               " Incrementally search while typing a /regex
 " FileType specific changes
 " ============================================================
 
-autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+autocmd FileType javascript noremap <buffer> <c-f> :call JsBeautify()<cr>
+autocmd FileType javascript setlocal omnifunc=tern#Complete
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 autocmd BufRead,BufNewFile *.scss set filetype=scss.css
 autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
@@ -435,6 +435,7 @@ autocmd BufRead,BufNewFile *.hamlc setf haml
 "autocmd VimEnter * imap <expr> <S-Tab> pumvisible() ? "<C-P>" : "<S-Tab>"
 autocmd FileType html,xhtml,xml,css setlocal expandtab shiftwidth=2 tabstop=2
 autocmd filetype javascript set sw=2 ts=2 expandtab
+au FileType coffeescript setl sw=2 sts=2 et
 
 " Exec js script in vim CTRL-w-n
 map <C-w>n :call ExecNode() <cr>
