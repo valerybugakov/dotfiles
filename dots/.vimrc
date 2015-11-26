@@ -65,6 +65,7 @@ Plugin 'terryma/vim-multiple-cursors'                 " Yay ^_^
 
 """"""" Navigation
 Plugin 'Lokaltog/vim-easymotion'
+  let g:EasyMotion_smartcase = 1
 Plugin 'kien/ctrlp.vim.git'
   let g:ctrlp_reuse_window  = 'startify'
   let g:ctrlp_by_filename = 0                         " Search by filename
@@ -305,6 +306,25 @@ map ≥ :tabn<CR>
 " Switch buffers with OPTION-[hl]
 map ¬ :bnext<CR>
 map ˙ :bprev<CR>
+
+" Easymotion plugin mappings
+  map  ? <Plug>(easymotion-sn)
+  omap ? <Plug>(easymotion-tn)
+
+  " These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
+  " Without these mappings, `n` & `N` works fine. (These mappings just provide
+  " different highlight method and have some other features )
+  map  n <Plug>(easymotion-next)
+  map  N <Plug>(easymotion-prev)
+
+  " Easy jump to line
+  map <Leader>j <Plug>(easymotion-j)
+  map <Leader>k <Plug>(easymotion-k)
+
+  " Search by two characters
+  " After search you can type . to repeat action performed after previous search
+  nmap t <Plug>(easymotion-s)
+  nmap s <Plug>(easymotion-s)
 
 " Maximize current split window CTRL-0
 " To return to equal sizes CTRL-=
