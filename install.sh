@@ -21,12 +21,5 @@ chsh -s /bin/zsh
 # cd $HOME/vim74 && make
 # ln -sf $HOME/vim74/src/vim $HOME/bin/
 
-if [ ! -d $VUNDLE_PATH ]
-then
-  git clone $VUNDLE_REPO $VUNDLE_PATH
-else
-  cd $VUNDLE_PATH
-  git reset --hard origin/master
-  git pull origin master
-fi
+git clone $VUNDLE_REPO $VUNDLE_PATH
 vim +PluginInstall +qall
