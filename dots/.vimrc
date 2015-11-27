@@ -200,7 +200,7 @@ call vundle#end()
 " ==========================================================
 " UI Settings
 " ==========================================================
-syntax on
+
 set t_Co=256
 set background=dark
 colorscheme Benokai
@@ -361,12 +361,10 @@ nnoremap <silent> ,F :let word=expand("<cword>")<CR>:vsp<CR>:wincmd w<cr>:exec("
 " ==========================================================
 " Basic Settings
 " ==========================================================
+
 syntax enable
 filetype on                             " try to detect filetypes
 filetype plugin indent on               " enable loading indent file for filetype
-set guioptions-=T                       " Removes top toolbar "
-set guioptions-=r                       " Removes right hand scroll bar"
-set go-=L                               " Removes left hand scroll bar "
 set number                              " Display line numbers
 set numberwidth=1                       " using only 1 column (and 1 space) while possible
 set title                               " show title in console title bar
@@ -421,6 +419,7 @@ set autoindent
 set smartindent
 set mouse=a
 " set cursorcolumn
+set re=1 " Use old regex engine for better performance
 set cursorline
 set timeoutlen=200
 
