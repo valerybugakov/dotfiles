@@ -294,6 +294,9 @@ let g:mapleader = ","
   nnoremap <leader>f :Ack! ""<Left>
   nmap <Leader>. :TagbarToggle<CR>
 
+" Let me delete non-empty folders through netrw
+let g:netrw_localrmdir='rm -r'
+
 " Add new line below the cursor
 " nmap " <S-o><Esc>
 " nmap <CR> o<Esc>
