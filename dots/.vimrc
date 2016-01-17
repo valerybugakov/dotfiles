@@ -46,7 +46,6 @@ Plugin 'tpope/vim-repeat'
 Plugin 'troydm/easybuffer.vim'
 Plugin 'vim-scripts/camelcasemotion'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'ternjs/tern_for_vim'
 Plugin 'chrisbra/NrrwRgn'                             " :NR on visual-selected region to open it in narrowed window
 Plugin 'nelstrom/vim-visual-star-search'              " Star(*) search for the whole selection in visual mode
 Plugin 'tomtom/tcomment_vim'                          " gcc
@@ -79,8 +78,7 @@ Plugin 'kien/ctrlp.vim.git'
   let g:ctrlp_open_new_file = 'r'                     " open selections in a vertical split
   let g:ctrlp_open_multiple_files = 'vr'              " opens multiple selections in vertical splits to the right
   let g:ctrlp_arg_map = 0
-  let g:ctrlp_dotfiles = 0                            " do not show (.) dotfiles in match list
-  let g:ctrlp_showhidden = 0                          " do not show hidden files in match list
+  let g:ctrlp_showhidden = 1                          " do not show hidden files in match list
   let g:ctrlp_split_window = 0
   let g:ctrlp_max_height = 40                         " restrict match list to a maxheight of 40
   let g:ctrlp_use_caching = 0                         " don't cache, we want new list immediately each time
@@ -106,6 +104,8 @@ Plugin 'kien/ctrlp.vim.git'
   "   \ 'PrtHistory(1)':        ['<c-p>'],
   "   \ 'ToggleFocus()':        ['<c-tab>'],
   "   \}
+Plugin 'JazzCore/ctrlp-cmatcher'
+  let g:ctrlp_match_func = {'match': 'matcher#cmatch'}
 
 Plugin 'mileszs/ack.vim'
   cabbrev Ack Ack!
@@ -128,15 +128,33 @@ Plugin 'dkprice/vim-easygrep'
   endif
 
 """""" JavaScript
-Plugin 'elzr/vim-json'
 Plugin 'jelera/vim-javascript-syntax'
 Bundle 'pangloss/vim-javascript'
+Plugin 'othree/yajs.vim'
+Plugin 'othree/javascript-libraries-syntax.vim'
+  let g:used_javascript_libs = 'jquery,underscore,backbone,react,flux,angularjs'
+Plugin 'othree/es.next.syntax.vim'
+
+Plugin 'ternjs/tern_for_vim'
 Plugin 'crusoexia/vim-javascript-lib'
 Bundle 'mxw/vim-jsx'
+" Plugin 'jsx/jsx.vim'
+Plugin 'moll/vim-node'
+Plugin 'ahayman/vim-nodejs-complete'
+
+Plugin 'elzr/vim-json'
 Bundle 'maksimr/vim-jsbeautify'
 Bundle 'einars/js-beautify'
 Plugin 'isRuslan/vim-es6'
 Plugin 'kchmck/vim-coffee-script'
+
+Plugin 'jaxbot/semantic-highlight.vim'
+  let g:semanticEnableFileTypes = {
+  \ 'javascript': 'js',
+  \ 'jsx': 'jsx',
+  \ 'coffee': 'coffee',
+  \ 'python': 'py'
+  \ }
 
 """""" CSS
 " Plugin 'aaronjensen/vim-sass-status'
@@ -146,10 +164,10 @@ Plugin 'lukaszb/vim-web-indent'
 Plugin 'groenewege/vim-less'
 
 """""" UI
-Bundle 'scrooloose/syntastic'
-  let g:syntastic_javascript_checkers = ['eslint']
-  let g:syntastic_check_on_open=0
-  let g:syntastic_enable_signs=1
+" Bundle 'scrooloose/syntastic'
+"   let g:syntastic_javascript_checkers = []
+"   let g:syntastic_check_on_open=0
+  " let g:syntastic_enable_signs=1
 Bundle 'airblade/vim-gitgutter'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'wting/rust.vim'
@@ -186,15 +204,15 @@ Plugin 'bling/vim-airline'       " UI statusbar niceties
   let g:airline#extensions#tabline#tab_min_count = 1
   let g:airline#extensions#tabline#show_close_button = 0
 
-""""""" Templates
+" """"""" Templates
 Plugin 'othree/html5.vim'
-Plugin 'digitaltoad/vim-jade'
+" Plugin 'digitaltoad/vim-jade'
 Plugin 'mattn/emmet-vim'
   " Let me expand emmet abbr with <TAB>
   let g:user_emmet_expandabbr_key = ',<Tab>'
 
 Plugin 'dag/vim2hs'
-Plugin 'tpope/vim-rails'
+" Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-endwise'
 " Plugin 'tpope/vim-haml'
 
@@ -290,7 +308,7 @@ let g:mapleader = ","
   map ,c <Esc>:setlocal spell!<CR>
   nmap ,l :EasyBufferHorizontalBelow<CR>
   nmap ,r :NERDTreeFind<CR>
-  map <leader>ba :1,1000 bd!<cr>
+  map <leader>ba :1,100bd!<cr>
   nnoremap <leader>f :Ack! ""<Left>
   nmap <Leader>. :TagbarToggle<CR>
 
@@ -483,13 +501,14 @@ endfunction
 
 """"" Normalization ====================
 
+map <Leader><Leader>T :call DeleteTrailingWS() <CR>
 " Delete trailing white space on save
 func! DeleteTrailingWS()
   exe "normal mz"
   %s/\s\+$//ge
   exe "normal `z"
 endfunc
-au BufWrite * silent call DeleteTrailingWS()
+" au BufWrite * silent call DeleteTrailingWS()
 
 """"" End Normalization ================
 
@@ -511,4 +530,5 @@ function! OpenChangedFiles()
   end
 endfunction
 command! OpenChangedFiles :call OpenChangedFiles()
+
 
