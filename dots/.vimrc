@@ -28,6 +28,14 @@ Bundle 'majutsushi/tagbar'
         \ 'f:fields',
       \ ]
     \ }
+Plugin 'honza/vim-snippets'
+Plugin 'SirVer/ultisnips'
+  let g:UltiSnipsEditSplit='vertical'
+  let g:UltiSnipsExpandTrigger = '<C-j>'
+  let g:UltiSnipsJumpForwardTrigger = '<tab>'
+  let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+Bundle 'ervandew/supertab'
+  let g:SuperTabDefaultCompletionType = '<C-n>'
 Plugin 'jistr/vim-nerdtree-tabs'
   let g:nerdtree_tabs_open_on_gui_startup = 0
   let g:nerdtree_tabs_smart_startup_focus = 2
@@ -43,9 +51,11 @@ Bundle 'scrooloose/nerdtree'
   " let NERDTreeKeepTreeInNewTab=0
   " let NERDTreeMinimalUI=1
 Plugin 'tpope/vim-repeat'
+Plugin 'Valloric/YouCompleteMe'
+  let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+  let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 Plugin 'troydm/easybuffer.vim'
 Plugin 'vim-scripts/camelcasemotion'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'chrisbra/NrrwRgn'                             " :NR on visual-selected region to open it in narrowed window
 Plugin 'nelstrom/vim-visual-star-search'              " Star(*) search for the whole selection in visual mode
 Plugin 'tomtom/tcomment_vim'                          " gcc
@@ -139,8 +149,8 @@ Plugin 'ternjs/tern_for_vim'
 Plugin 'crusoexia/vim-javascript-lib'
 Bundle 'mxw/vim-jsx'
 " Plugin 'jsx/jsx.vim'
-Plugin 'moll/vim-node'
-Plugin 'ahayman/vim-nodejs-complete'
+" Plugin 'moll/vim-node'
+" Plugin 'ahayman/vim-nodejs-complete'
 
 Plugin 'elzr/vim-json'
 Bundle 'maksimr/vim-jsbeautify'
@@ -311,6 +321,7 @@ let g:mapleader = ","
   map <leader>ba :1,100bd!<cr>
   nnoremap <leader>f :Ack! ""<Left>
   nmap <Leader>. :TagbarToggle<CR>
+  nmap <Leader>h :SemanticHighlightToggle<CR>
 
 " Let me delete non-empty folders through netrw
 let g:netrw_localrmdir='rm -r'
