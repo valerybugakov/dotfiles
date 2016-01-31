@@ -287,6 +287,7 @@ noremap k gk
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>
 " Allow pasting blocks of code without indenting
 set pastetoggle=<F2>
+set visualbell t_vb=
 " Seriously, guys. It's not like :W is bound to anything anyway.
 command! W :w
 " Go through CamelCased words
