@@ -31,7 +31,7 @@ Bundle 'majutsushi/tagbar'
 Plugin 'honza/vim-snippets'
 Plugin 'SirVer/ultisnips'
   let g:UltiSnipsEditSplit='vertical'
-  let g:UltiSnipsExpandTrigger = '<C-j>'
+  let g:UltiSnipsExpandTrigger = '<C-e>'
   let g:UltiSnipsJumpForwardTrigger = '<tab>'
   let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 Bundle 'ervandew/supertab'
@@ -44,7 +44,6 @@ Bundle 'scrooloose/nerdtree'
   let NERDTreeIgnore = ['\.pyc$']
   let NERDTreeShowHidden = 1
   let NERDTreeDirArrows=1
-  noremap <silent> <C-e> :NERDTreeToggle<CR>:silent NERDTreeMirror<CR>
   " let NERDTreeShowBookmarks=1
   " let NERDTreeChDirMode=2
   " let NERDTreeQuitOnOpen=1
@@ -299,6 +298,7 @@ sunmap B
 sunmap E
 
 vmap <C-z-z> <esc>:wq
+nmap ge :TComment<CR>
 
 " Fix Shift+Tab
 nmap <S-Tab> <<
@@ -360,8 +360,8 @@ map ˙ :bprev<CR>
   " These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
   " Without these mappings, `n` & `N` works fine. (These mappings just provide
   " different highlight method and have some other features )
-  map  n <Plug>(easymotion-next)
-  map  N <Plug>(easymotion-prev)
+  " map  n <Plug>(easymotion-next)
+  " map  N <Plug>(easymotion-prev)
 
   " Easy jump to line
   map <Leader>j <Plug>(easymotion-j)
