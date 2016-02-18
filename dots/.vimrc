@@ -1,5 +1,6 @@
 set nocompatible              " Vim settings, rather then Vi settings
 filetype off                  " required
+set visualbell t_vb=
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/vundle/
@@ -173,10 +174,14 @@ Plugin 'lukaszb/vim-web-indent'
 Plugin 'groenewege/vim-less'
 
 """""" UI
-" Bundle 'scrooloose/syntastic'
-"   let g:syntastic_javascript_checkers = []
-"   let g:syntastic_check_on_open=0
-  " let g:syntastic_enable_signs=1
+Bundle 'scrooloose/syntastic'
+  let g:syntastic_javascript_checkers = ['eslint']
+  let g:syntastic_javascript_eslint_exec = 'eslint_d' " sudo npm i -g eslint_d
+  let g:syntastic_check_on_open=1
+  let g:syntastic_enable_signs=1
+  let g:syntastic_mode_map = {
+  \ 'passive_filetypes': ['html', 'haml', 'jade']
+  \ }
 Bundle 'airblade/vim-gitgutter'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'wting/rust.vim'
@@ -357,12 +362,6 @@ map ˙ :bprev<CR>
   map  ? <Plug>(easymotion-sn)
   omap ? <Plug>(easymotion-tn)
 
-  " These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
-  " Without these mappings, `n` & `N` works fine. (These mappings just provide
-  " different highlight method and have some other features )
-  " map  n <Plug>(easymotion-next)
-  " map  N <Plug>(easymotion-prev)
-
   " Easy jump to line
   map <Leader>j <Plug>(easymotion-j)
   map <Leader>k <Plug>(easymotion-k)
@@ -495,7 +494,7 @@ autocmd BufRead,BufNewFile *.scss set filetype=scss.css
 autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 autocmd BufRead,BufNewFile *.hamlc setf haml
 
-" au BufRead *.js set makeprg=eslint\ %
+au BufRead *.js set makeprg=eslint\ %
 " Use tab to scroll through autocomplete menus
 "autocmd VimEnter * imap <expr> <Tab> pumvisible() ? "<C-N>" : "<Tab>"
 "autocmd VimEnter * imap <expr> <S-Tab> pumvisible() ? "<C-P>" : "<S-Tab>"
