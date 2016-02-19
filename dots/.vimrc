@@ -304,6 +304,7 @@ sunmap E
 
 vmap <C-z-z> <esc>:wq
 nmap ge :TComment<CR>
+nnoremap <space> li<space><Esc>
 
 " Fix Shift+Tab
 nmap <S-Tab> <<
