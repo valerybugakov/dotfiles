@@ -158,14 +158,6 @@ Bundle 'einars/js-beautify'
 Plugin 'isRuslan/vim-es6'
 Plugin 'kchmck/vim-coffee-script'
 
-Plugin 'jaxbot/semantic-highlight.vim'
-  let g:semanticEnableFileTypes = {
-  \ 'javascript': 'js',
-  \ 'jsx': 'jsx',
-  \ 'coffee': 'coffee',
-  \ 'python': 'py'
-  \ }
-
 """""" CSS
 " Plugin 'aaronjensen/vim-sass-status'
 Plugin 'cakebaker/scss-syntax.vim'
@@ -188,13 +180,16 @@ Bundle 'wting/rust.vim'
 Plugin 'chrisbra/color_highlight'
 Plugin 'jonathanfilip/vim-lucius'
 Plugin 'benjaminwhite/Benokai'
+Plugin 'jaxbot/semantic-highlight.vim'
+Plugin 'w0ng/vim-hybrid'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'mkitt/tabline.vim'
 Plugin 'bling/vim-airline'       " UI statusbar niceties
   set laststatus=2               " enable airline even if no splits
   let g:airline#enable#branch=1
   let g:airline_powerline_fonts = 1
-  let g:airline_theme='light'
+  " let g:airline_theme='light'
+  let g:airline_theme='hybrid'
   let g:airline#left#sep = ''
   let g:airline#right#sep = ''
   let g:airline#linecolumn#prefix = '␊ '
@@ -239,6 +234,9 @@ call vundle#end()
 set t_Co=256
 set background=dark
 colorscheme Benokai
+" colorscheme hybrid
+let g:hybrid_custom_term_colors = 1
+let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
 " colorscheme molokai
 " colorscheme solarized
 " let g:solarized_termcolors=256
@@ -409,6 +407,7 @@ set scrolloff=8                         " Start scrolling when we're 8 lines awa
 set sidescrolloff=15
 set sidescroll=1"
 set fileformats=unix
+set nrformats=
 set showcmd
 set cpoptions+=$
 set virtualedit=all
@@ -437,9 +436,17 @@ set wildignore+=*.png,*.jpg,*.gif
 set completeopt-=preview
 
 if has("gui_running")
+  colorscheme hybrid
+  let g:semanticEnableFileTypes = ['javascript', 'javascript.jsx', 'coffee', 'py', 'rb']
+  " let g:semanticenablefiletypes = {
+  " \ 'javascript': 'js',
+  " \ 'jsx': 'jsx',
+  " \ 'coffee': 'coffee',
+  " \ 'python': 'py'
+  " \ }
+
   syntax on
   set hlsearch
-  colorscheme Benokai
   set guifont=Ubuntu\ Mono\ derivative\ Powerline:h22
   set transparency=10
   set bs=2
@@ -489,6 +496,7 @@ set incsearch               " Incrementally search while typing a /regex
 " ============================================================
 
 autocmd FileType javascript noremap <buffer> <c-f> :call JsBeautify()<cr>
+" autocmd FileType javascript :SemanticHighlight()<CR>
 autocmd FileType javascript setlocal omnifunc=tern#Complete
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 autocmd BufRead,BufNewFile *.scss set filetype=scss.css
@@ -523,7 +531,7 @@ func! DeleteTrailingWS()
   %s/\s\+$//ge
   exe "normal `z"
 endfunc
-" au BufWrite * silent call DeleteTrailingWS()
+au BufWrite * silent call DeleteTrailingWS()
 
 """"" End Normalization ================
 
