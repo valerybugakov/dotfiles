@@ -233,10 +233,10 @@ call vundle#end()
 
 set t_Co=256
 set background=dark
-colorscheme Benokai
-" colorscheme hybrid
-let g:hybrid_custom_term_colors = 1
-let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
+colorscheme hybrid
+" override default theme search highlighter
+autocmd ColorScheme * hi Search guibg=NONE ctermbg=NONE gui=underline cterm=underline term=underline guifg=#80cbc4 ctermfg=darkcyan
+" colorscheme Benokai
 " colorscheme molokai
 " colorscheme solarized
 " let g:solarized_termcolors=256
@@ -286,7 +286,7 @@ imap <C-l> <C-o>l
 noremap j gj
 noremap k gk
 " Clear the search highlight in Normal mode
-nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>
+nnoremap <silent> <Esc> :nohlsearch<CR><Esc>
 " Allow pasting blocks of code without indenting
 set pastetoggle=<F2>
 set visualbell t_vb=
@@ -437,6 +437,8 @@ set completeopt-=preview
 
 if has("gui_running")
   colorscheme hybrid
+  let g:hybrid_custom_term_colors = 1
+  let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
   let g:semanticEnableFileTypes = ['javascript', 'javascript.jsx', 'coffee', 'py', 'rb']
   " let g:semanticenablefiletypes = {
   " \ 'javascript': 'js',
