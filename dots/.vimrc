@@ -78,7 +78,7 @@ Plugin 'terryma/vim-multiple-cursors'                 " Yay ^_^
 """"""" Navigation
 Plugin 'Lokaltog/vim-easymotion'
   let g:EasyMotion_smartcase = 1
-Plugin 'kien/ctrlp.vim.git'
+Plugin 'ctrlpvim/ctrlp.vim'
   let g:ctrlp_reuse_window  = 'startify'
   let g:ctrlp_by_filename = 0                         " Search by filename
   let g:ctrlp_match_window_bottom = 1                 " show at bottom of window
@@ -88,7 +88,6 @@ Plugin 'kien/ctrlp.vim.git'
   let g:ctrlp_open_new_file = 'r'                     " open selections in a vertical split
   let g:ctrlp_open_multiple_files = 'vr'              " opens multiple selections in vertical splits to the right
   let g:ctrlp_arg_map = 0
-  let g:ctrlp_showhidden = 1                          " do not show hidden files in match list
   let g:ctrlp_split_window = 0
   let g:ctrlp_max_height = 40                         " restrict match list to a maxheight of 40
   let g:ctrlp_use_caching = 0                         " don't cache, we want new list immediately each time
@@ -102,7 +101,7 @@ Plugin 'kien/ctrlp.vim.git'
   " let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
   " if you want to use git for this rather than ag
   " let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
   " let g:ctrlp_prompt_mappings = {
   "   \ 'AcceptSelection("e")': ['<c-e>', '<c-space>'],
   "   \ 'AcceptSelection("h")': ['<c-x>', '<c-cr>', '<c-s>'],
