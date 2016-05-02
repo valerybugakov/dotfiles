@@ -181,6 +181,7 @@ Plugin 'jonathanfilip/vim-lucius'
 Plugin 'benjaminwhite/Benokai'
 Plugin 'jaxbot/semantic-highlight.vim'
 Plugin 'w0ng/vim-hybrid'
+Plugin 'mhartington/oceanic-next'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'mkitt/tabline.vim'
 Plugin 'bling/vim-airline'       " UI statusbar niceties
@@ -188,7 +189,8 @@ Plugin 'bling/vim-airline'       " UI statusbar niceties
   let g:airline#enable#branch=1
   let g:airline_powerline_fonts = 1
   " let g:airline_theme='light'
-  let g:airline_theme='hybrid'
+  " let g:airline_theme='hybrid'
+  let g:airline_theme='oceanicnext'
   let g:airline#left#sep = ''
   let g:airline#right#sep = ''
   let g:airline#linecolumn#prefix = '␊ '
@@ -233,6 +235,7 @@ call vundle#end()
 set t_Co=256
 set background=dark
 colorscheme hybrid
+" colorscheme OceanicNext
 " override default theme search highlighter
 autocmd ColorScheme * hi Search guibg=NONE ctermbg=NONE gui=underline cterm=underline term=underline guifg=#80cbc4 ctermfg=darkcyan
 " colorscheme Benokai
@@ -435,7 +438,8 @@ set wildignore+=*.png,*.jpg,*.gif
 set completeopt-=preview
 
 if has("gui_running")
-  colorscheme hybrid
+  " colorscheme hybrid
+  colorscheme OceanicNext
   let g:hybrid_custom_term_colors = 1
   let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
   let g:semanticEnableFileTypes = ['javascript', 'javascript.jsx', 'coffee', 'py', 'rb']
