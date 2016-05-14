@@ -36,10 +36,6 @@ Plugin 'SirVer/ultisnips'
   let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 Bundle 'ervandew/supertab'
   let g:SuperTabDefaultCompletionType = '<C-n>'
-Plugin 'jistr/vim-nerdtree-tabs'
-  let g:nerdtree_tabs_open_on_gui_startup = 0
-  let g:nerdtree_tabs_smart_startup_focus = 2
-  let g:nerdtree_tabs_open_on_new_tab = 0
 Bundle 'scrooloose/nerdtree'
   let NERDTreeIgnore = ['\.pyc$']
   let NERDTreeShowHidden = 1
@@ -451,7 +447,7 @@ if has("gui_running")
 
   syntax on
   set hlsearch
-  set guifont=Ubuntu\ Mono\ derivative\ Powerline:h22
+  set guifont=Ubuntu\ Mono\ derivative\ Powerline:h20
   set transparency=10
   set bs=2
   set ai
