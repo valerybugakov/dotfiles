@@ -6,7 +6,6 @@ set visualbell t_vb=
 set rtp+=~/.vim/bundle/vundle/
 let path = '~/.vim_bundle'
 call vundle#begin(path)
-" call vundle#rc()
 
 " let Vundle manage Vundle
 " required!
@@ -466,7 +465,6 @@ set smarttab
 set autoindent
 set smartindent
 set mouse=a
-" set cursorcolumn
 set re=1 " Use old regex engine for better performance
 set cursorline
 set timeoutlen=200
@@ -558,5 +556,3 @@ function! OpenChangedFiles()
   end
 endfunction
 command! OpenChangedFiles :call OpenChangedFiles()
-
-
