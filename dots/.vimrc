@@ -328,10 +328,6 @@ let g:mapleader = ","
 " Let me delete non-empty folders through netrw
 let g:netrw_localrmdir='rm -r'
 
-" Add new line below the cursor
-" nmap " <S-o><Esc>
-" nmap <CR> o<Esc>
-
 " Ctags: open tag in vertical|horizontal split OPTION-[]
 map ‘ :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 map “ :sp <CR>:exec("tag ".expand("<cword>"))<CR>
