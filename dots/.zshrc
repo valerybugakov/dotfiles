@@ -135,5 +135,6 @@ export PATH="/opt/local/share:/opt/local/bin:/opt/local/sbin:$PATH"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-export NVM_DIR="/Users/bugakov/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# export NVM_DIR="/Users/bugakov/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+. ~/.nvm/nvm.sh

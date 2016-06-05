@@ -163,6 +163,7 @@ Plugin 'groenewege/vim-less'
 Bundle 'scrooloose/syntastic'
   let g:syntastic_javascript_checkers = ['eslint']
   let g:syntastic_javascript_eslint_exec = 'eslint_d' " sudo npm i -g eslint_d
+  let g:syntastic_javascript_eslint_args = '--parser=babel-eslint'
   let g:syntastic_check_on_open=1
   let g:syntastic_enable_signs=1
   let g:syntastic_mode_map = {
