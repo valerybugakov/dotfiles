@@ -17,6 +17,7 @@ Bundle 'gmarik/vundle'
 "
 """"""" General plugins
 Bundle 'tpope/vim-fugitive'
+Plugin 'idanarye/vim-merginal'
 Bundle 'majutsushi/tagbar'
   let g:tagbar_type_coffee = {
     \ 'ctagstype' : 'coffee',
@@ -37,14 +38,15 @@ Plugin 'SirVer/ultisnips'
 Bundle 'ervandew/supertab'
   let g:SuperTabDefaultCompletionType = '<C-n>'
 Bundle 'scrooloose/nerdtree'
-  let NERDTreeIgnore = ['\.pyc$']
   let NERDTreeShowHidden = 1
   let NERDTreeDirArrows=1
+  let NERDTreeMinimalUI=1
+  " let NERDTreeQuitOnOpen=1
+  " let NERDTreeIgnore = ['\.pyc$']
   " let NERDTreeShowBookmarks=1
   " let NERDTreeChDirMode=2
-  " let NERDTreeQuitOnOpen=1
   " let NERDTreeKeepTreeInNewTab=0
-  " let NERDTreeMinimalUI=1
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'tpope/vim-repeat'
 Plugin 'Valloric/YouCompleteMe'
   let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -58,7 +60,8 @@ Plugin 'tpope/vim-surround'                           " ds, cs}), yss<p>
 Plugin 'briandoll/change-inside-surroundings.vim'     " cit to change inside tag, ci[ to change inside []
 Plugin 'godlygeek/tabular'                            " :Tab [pattern]
 Plugin 'tpope/vim-unimpaired'                         " [space, ]space etc
-Plugin 'valerymercury/auto-pairs'                     " Automatic closing of quotes, parenthesis, brackets, etc.
+" Plugin 'valerymercury/auto-pairs'                     " Automatic closing of quotes, parenthesis, brackets, etc.
+Plugin 'jiangmiao/auto-pairs'
 Plugin 'AndrewRadev/splitjoin.vim'                    " gS to split single-line statement, gJ for the opposite
 Plugin 'vim-scripts/YankRing.vim'                     " Go through paste-stack with OPTION-[pP]
   let g:yankring_replace_n_pkey='π'
@@ -69,6 +72,7 @@ Plugin 'terryma/vim-multiple-cursors'                 " Yay ^_^
   let g:multi_cursor_prev_key='<C-b>'
   let g:multi_cursor_skip_key='<C-x>'
   let g:multi_cursor_quit_key='<Esc>'
+Plugin 'duff/vim-bufonly'
 
 """"""" Navigation
 Plugin 'Lokaltog/vim-easymotion'
@@ -110,6 +114,8 @@ Plugin 'ctrlpvim/ctrlp.vim'
   "   \}
 Plugin 'JazzCore/ctrlp-cmatcher'
   let g:ctrlp_match_func = {'match': 'matcher#cmatch'}
+Plugin 'mhinz/vim-startify'
+Plugin 'paradigm/TextObjectify'
 
 Plugin 'mileszs/ack.vim'
   cabbrev Ack Ack!
@@ -133,6 +139,7 @@ Plugin 'dkprice/vim-easygrep'
 
 """""" JavaScript
 Plugin 'jelera/vim-javascript-syntax'
+Plugin 'vim-scripts/JavaScript-Indent'
 Bundle 'pangloss/vim-javascript'
 Plugin 'othree/yajs.vim'
 Plugin 'othree/javascript-libraries-syntax.vim'
@@ -144,7 +151,7 @@ Plugin 'crusoexia/vim-javascript-lib'
 Bundle 'mxw/vim-jsx'
 " Plugin 'jsx/jsx.vim'
 " Plugin 'moll/vim-node'
-" Plugin 'ahayman/vim-nodejs-complete'
+Plugin 'ahayman/vim-nodejs-complete'
 
 Plugin 'elzr/vim-json'
 Bundle 'maksimr/vim-jsbeautify'
@@ -209,6 +216,14 @@ Plugin 'bling/vim-airline'       " UI statusbar niceties
   let g:airline#extensions#tabline#show_tab_type = 0
   let g:airline#extensions#tabline#tab_min_count = 1
   let g:airline#extensions#tabline#show_close_button = 0
+Plugin 'ryanoasis/vim-devicons'
+  let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+  let g:webdevicons_enable_nerdtree = 1
+  let g:WebDevIconsUnicodeDecorateFolderNodes = 0
+  let g:WebDevIconsUnicodeGlyphDoubleWidth = 0
+  let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+  let g:WebDevIconsNerdTreeGitPluginForceVAlign = 0
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " """"""" Templates
 Plugin 'othree/html5.vim'
@@ -321,9 +336,11 @@ let g:mapleader = ","
   map ,c <Esc>:setlocal spell!<CR>
   nmap ,l :EasyBufferHorizontalBelow<CR>
   nmap ,r :NERDTreeFind<CR>
+  nmap ,m :MerginalToggle<CR>
   map <leader>ba :1,100bd!<cr>
   nnoremap <leader>f :Ack! ""<Left>
   nmap <Leader>. :TagbarToggle<CR>
+  nmap <Leader>/ :BufOnly<CR>
   nmap <Leader>h :SemanticHighlightToggle<CR>
 
 " Let me delete non-empty folders through netrw
@@ -350,6 +367,14 @@ map ≥ :tabn<CR>
 " Switch buffers with OPTION-[hl]
 map ¬ :bnext<CR>
 map ˙ :bprev<CR>
+
+" Move lines with OPTION-[;']
+nnoremap … :m .+1<CR>==
+nnoremap æ :m .-2<CR>==
+inoremap … <Esc>:m .+1<CR>==gi
+inoremap æ <Esc>:m .-2<CR>==gi
+vnoremap … :m '>+1<CR>gv=gv
+vnoremap æ :m '<-2<CR>gv=gv
 
 " Easymotion plugin mappings
   map  ? <Plug>(easymotion-sn)
@@ -428,6 +453,7 @@ set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 set completeopt-=preview
+set foldmethod=syntax
 
 if has("gui_running")
   " colorscheme hybrid
@@ -444,7 +470,7 @@ if has("gui_running")
 
   syntax on
   set hlsearch
-  set guifont=Ubuntu\ Mono\ derivative\ Powerline:h20
+  set guifont=UbuntuMonoDerivativePowerline\ Nerd\ Font:h20
   set transparency=10
   set bs=2
   set ai
@@ -486,6 +512,8 @@ set smartcase               " unless uppercase letters are used in the regex.
 set smarttab                " Handle tabs more intelligently
 set hlsearch                " Highlight searches by default.
 set incsearch               " Incrementally search while typing a /regex
+
+au FocusLost * silent! wa
 
 " ===========================================================
 " FileType specific changes
