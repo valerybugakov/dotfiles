@@ -78,7 +78,7 @@ prompt_pure_precmd() {
     # git info
     vcs_info
 
-    local prompt_pure_preprompt='\n%F{yellow}`prompt_pure_cmd_exec_time`%f%F{cyan}  %F{242}%~ $vcs_info_msg_0_ %F{yellow}`prompt_pure_git_dirty`%f $prompt_pure_username %f'
+    local prompt_pure_preprompt='\n%F{yellow}`prompt_pure_cmd_exec_time`%f%F{cyan}  %F{cyan}%~ $vcs_info_msg_0_ %F{yellow}`prompt_pure_git_dirty`%f $prompt_pure_username %f'
     print -P $prompt_pure_preprompt
 
     # check async if there is anything to pull
@@ -112,7 +112,7 @@ prompt_pure_setup() {
     add-zsh-hook preexec prompt_pure_preexec
 
     zstyle ':vcs_info:*' enable git
-    zstyle ':vcs_info:git*' formats "%F{green}%F{242} %b"
+    zstyle ':vcs_info:git*' formats "%F{green}%F{075} %b"
     zstyle ':vcs_info:git*' actionformats "%F{green}%F{242} %b %F{green} %F{242} %a"
 
     # show username@host if logged in through SSH
@@ -122,7 +122,7 @@ prompt_pure_setup() {
 
     prompt_okay="%F{green} "
     prompt_not_okay="%F{red} "
-    PROMPT='%(?.${prompt_okay}.${prompt_not_okay})%f %F{242} %f '
+    PROMPT='%(?.${prompt_okay}.${prompt_not_okay})%f %F{green} %f '
 
 }
 

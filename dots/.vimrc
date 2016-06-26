@@ -187,6 +187,7 @@ Plugin 'w0ng/vim-hybrid'
 Plugin 'mhartington/oceanic-next'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'mkitt/tabline.vim'
+
 Plugin 'bling/vim-airline'       " UI statusbar niceties
   set laststatus=2               " enable airline even if no splits
   let g:airline#enable#branch=1
@@ -208,7 +209,9 @@ Plugin 'bling/vim-airline'       " UI statusbar niceties
 
   " Tabline settings
   let g:airline#extensions#tabline#enabled = 1
-  let g:airline#extensions#tabline#fnamemod = ':t'
+  " Formatter defined in
+  " autoload/airline/extensions/tabline/formatters/jsformatter.vim
+  let g:airline#extensions#tabline#formatter = 'jsformatter'
   let g:airline#extensions#tabline#show_buffers = 0
   let g:airline#extensions#tabline#show_tabs = 1
   let g:airline#extensions#tabline#tab_nr_type = 0
@@ -216,7 +219,7 @@ Plugin 'bling/vim-airline'       " UI statusbar niceties
   let g:airline#extensions#tabline#show_tab_type = 0
   let g:airline#extensions#tabline#tab_min_count = 1
   let g:airline#extensions#tabline#show_close_button = 0
-Plugin 'ryanoasis/vim-devicons'
+" Plugin 'ryanoasis/vim-devicons'
   let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
   let g:webdevicons_enable_nerdtree = 1
   let g:WebDevIconsUnicodeDecorateFolderNodes = 0
