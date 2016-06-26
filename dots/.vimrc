@@ -386,7 +386,7 @@ vnoremap æ :m '<-2<CR>gv=gv
 
   " Search by two characters
   " After search you can type . to repeat action performed after previous search
-  nmap t <Plug>(easymotion-s)
+  nmap t <Plug>(easymotion-s2)
   nmap s <Plug>(easymotion-s)
 
 " Maximize current split window CTRL-0
