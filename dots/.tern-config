@@ -8,7 +8,8 @@
   ],
   "plugins": {
     "node": {},
-    "es_modules": {}
+    "es_modules": {},
+    "complete_strings": {}
   },
   "ecmaVersion": 6
 }

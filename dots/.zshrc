@@ -216,7 +216,7 @@ bindkey -s "^[Oo" "/"
 
 bindkey -e; bindkey '\e\e[C' forward-word; bindkey '\e\e[D' backward-word
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=/usr/local/bin:$PATH:$HOME/bin:
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="$PATH:/opt/local/bin" # Add MacPorts to PATH
 export PATH="/opt/local/share:/opt/local/bin:/opt/local/sbin:$PATH"

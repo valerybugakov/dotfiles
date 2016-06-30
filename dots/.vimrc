@@ -35,6 +35,7 @@ Plugin 'SirVer/ultisnips'
   let g:UltiSnipsExpandTrigger = '<C-e>'
   let g:UltiSnipsJumpForwardTrigger = '<tab>'
   let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+  let g:UltiSnipsSnippetsDir='~/dotfiles/.vim/.vim/ultisnipssnippets'
 Bundle 'ervandew/supertab'
   let g:SuperTabDefaultCompletionType = '<C-n>'
 Bundle 'scrooloose/nerdtree'
@@ -220,12 +221,11 @@ Plugin 'bling/vim-airline'       " UI statusbar niceties
   let g:airline#extensions#tabline#tab_min_count = 1
   let g:airline#extensions#tabline#show_close_button = 0
 " Plugin 'ryanoasis/vim-devicons'
-  let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+  " let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
   let g:webdevicons_enable_nerdtree = 1
-  let g:WebDevIconsUnicodeDecorateFolderNodes = 0
-  let g:WebDevIconsUnicodeGlyphDoubleWidth = 0
-  let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-  let g:WebDevIconsNerdTreeGitPluginForceVAlign = 0
+  " let g:WebDevIconsUnicodeGlyphDoubleWidth = 0
+  " let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+  " let g:WebDevIconsNerdTreeGitPluginForceVAlign = 0
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " """"""" Templates

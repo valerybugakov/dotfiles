@@ -1,30 +1,16 @@
 snippet cc "React component skeleton" b
-import { Component, PropTypes } from 'react'
-import styles from './some.css'
-
-const propTypes = {
-  some: PropTypes.object.isRequired,
-}
-
-const defaultProps = {
-  some: 'some'
-}
+import React, { Component } from 'react'
+import styles from './styles.css'
 
 class $1 extends Component {
-  constructor() {
-    super()
-  }
-
   render() {
 		return (
-			<div></div>
+			<div>
+				...
+			</div>
 		)
-
   }
 }
-
-$1.propTypes = propTypes
-$1.defaultProps = defaultProps
 
 export default $1
 endsnippet
