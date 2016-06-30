@@ -19,16 +19,6 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Plugin 'idanarye/vim-merginal'
 Bundle 'majutsushi/tagbar'
-  let g:tagbar_type_coffee = {
-    \ 'ctagstype' : 'coffee',
-    \ 'kinds'     : [
-        \ 'c:classes',
-        \ 'm:methods',
-        \ 'f:functions',
-        \ 'v:variables',
-        \ 'f:fields',
-      \ ]
-    \ }
 Plugin 'honza/vim-snippets'
 Plugin 'SirVer/ultisnips'
   let g:UltiSnipsEditSplit='vertical'
@@ -344,10 +334,9 @@ imap <C-l> <C-o>l
 noremap j gj
 noremap k gk
 " Clear the search highlight in Normal mode
-nnoremap <silent> <Esc> :nohlsearch<CR><Esc>
+nnoremap <silent> <Esc> :nohlsearch<CR>
 " Allow pasting blocks of code without indenting
 set pastetoggle=<F2>
-set visualbell t_vb=
 " Seriously, guys. It's not like :W is bound to anything anyway.
 command! W :w
 " Go through CamelCased words
