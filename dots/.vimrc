@@ -38,17 +38,15 @@ Plugin 'SirVer/ultisnips'
   let g:UltiSnipsSnippetsDir='~/dotfiles/.vim/.vim/ultisnipssnippets'
 Bundle 'ervandew/supertab'
   let g:SuperTabDefaultCompletionType = '<C-n>'
-Bundle 'scrooloose/nerdtree'
-  let NERDTreeShowHidden = 1
-  let NERDTreeDirArrows=1
-  let NERDTreeMinimalUI=1
-  " let NERDTreeQuitOnOpen=1
-  " let NERDTreeIgnore = ['\.pyc$']
-  " let NERDTreeShowBookmarks=1
-  " let NERDTreeChDirMode=2
-  " let NERDTreeKeepTreeInNewTab=0
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree-project-plugin'
+Plugin 'ivalkeen/nerdtree-execute'
+Plugin 'tyok/nerdtree-ack'
+Plugin 'low-ghost/nerdtree-fugitive'
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plugin 'tpope/vim-repeat'
+
 Plugin 'Valloric/YouCompleteMe'
   let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
   let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
@@ -61,8 +59,7 @@ Plugin 'tpope/vim-surround'                           " ds, cs}), yss<p>
 Plugin 'briandoll/change-inside-surroundings.vim'     " cit to change inside tag, ci[ to change inside []
 Plugin 'godlygeek/tabular'                            " :Tab [pattern]
 Plugin 'tpope/vim-unimpaired'                         " [space, ]space etc
-" Plugin 'valerymercury/auto-pairs'                     " Automatic closing of quotes, parenthesis, brackets, etc.
-Plugin 'jiangmiao/auto-pairs'
+Plugin 'jiangmiao/auto-pairs'                         " Automatic closing of quotes, parenthesis, brackets, etc.
 Plugin 'AndrewRadev/splitjoin.vim'                    " gS to split single-line statement, gJ for the opposite
 Plugin 'vim-scripts/YankRing.vim'                     " Go through paste-stack with OPTION-[pP]
   let g:yankring_replace_n_pkey='π'
@@ -113,8 +110,9 @@ Plugin 'ctrlpvim/ctrlp.vim'
   "   \ 'PrtHistory(1)':        ['<c-p>'],
   "   \ 'ToggleFocus()':        ['<c-tab>'],
   "   \}
-Plugin 'JazzCore/ctrlp-cmatcher'
-  let g:ctrlp_match_func = {'match': 'matcher#cmatch'}
+
+" Plugin 'JazzCore/ctrlp-cmatcher'
+"   let g:ctrlp_match_func = {'match': 'matcher#cmatch'}
 Plugin 'mhinz/vim-startify'
 Plugin 'paradigm/TextObjectify'
 
@@ -220,17 +218,10 @@ Plugin 'bling/vim-airline'       " UI statusbar niceties
   let g:airline#extensions#tabline#show_tab_type = 0
   let g:airline#extensions#tabline#tab_min_count = 1
   let g:airline#extensions#tabline#show_close_button = 0
-" Plugin 'ryanoasis/vim-devicons'
-  " let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
-  let g:webdevicons_enable_nerdtree = 1
-  " let g:WebDevIconsUnicodeGlyphDoubleWidth = 0
-  " let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-  " let g:WebDevIconsNerdTreeGitPluginForceVAlign = 0
-Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " """"""" Templates
 Plugin 'othree/html5.vim'
-" Plugin 'digitaltoad/vim-jade'
+Plugin 'digitaltoad/vim-jade'
 Plugin 'mattn/emmet-vim'
   " Let me expand emmet abbr with <TAB>
   let g:user_emmet_expandabbr_key = ',<Tab>'
@@ -239,6 +230,57 @@ Plugin 'dag/vim2hs'
 " Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-endwise'
 " Plugin 'tpope/vim-haml'
+
+" =========================================================
+
+Plugin 'ryanoasis/vim-devicons'
+" -----------------------------------------------------------------------------
+" SETTINGS - NERDTree
+" -----------------------------------------------------------------------------
+let g:NERDTreeAutoCenter          = 1
+let g:NERDTreeAutoCenterThreshold = 8
+let g:NERDTreeChDirMode           = 2
+let g:NERDTreeHighlightCursorline = 1
+let g:NERDTreeIgnore              = ['.DS_Store', '.git$[[dir]]', 'target$[[dir]]']
+let g:NERDTreeWinSize             = 40
+let g:NERDTreeShowHidden          = 1
+let g:NERDTreeShowLineNumbers     = 0
+let g:NERDTreeMinimalUI           = 1
+
+" -----------------------------------------------------------------------------
+" SETTINGS - devicons
+" -----------------------------------------------------------------------------
+let g:WebDevIconsOS                           = 'Darwin'
+let g:WebDevIconsUnicodeDecorateFolderNodes   = 1
+let g:webdevicons_conceal_nerdtree_brackets   = 1
+let g:WebDevIconsNerdTreeAfterGlyphPadding    = ' '
+let g:WebDevIconsUnicodeGlyphDoubleWidth      = 1
+let g:WebDevIconsNerdTreeGitPluginForceVAlign = 0
+
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExtensionHighlightColor = {
+  \ 'coffee': 'f7fdb3',
+  \ 'babelrc': 'ce93d8',
+  \ 'eslintrc': 'b6b3fe',
+  \ 'js':  'f0db4f',
+  \ 'css': '90e255',
+  \ 'jade': 'F16529'
+  \}
+
+" Fix half display issue
+let s:blank = ''
+let g:NERDTreeExactMatchHighlightColor = {
+  \ 'dropbox'                          : s:blank,
+  \ '.ds_store'                        : s:blank,
+  \ '.gitconfig'                       : s:blank,
+  \ '.gitignore'                       : s:blank,
+  \ '.bashrc'                          : s:blank,
+  \ '.bashprofile'                     : s:blank,
+  \ 'favicon.ico'                      : s:blank,
+  \ 'license'                          : s:blank,
+  \ 'node_modules'                     : s:blank,
+  \ 'procfile'                         : s:blank,
+  \}
 
 call vundle#end()
 
@@ -580,3 +622,11 @@ function! OpenChangedFiles()
   end
 endfunction
 command! OpenChangedFiles :call OpenChangedFiles()
+
+" -----------------------------------------------------------------------------
+" INIT
+" -----------------------------------------------------------------------------
+
+if exists("g:loaded_webdevicons")
+  call webdevicons#refresh()
+endif
