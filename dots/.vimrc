@@ -140,7 +140,7 @@ Plugin 'crusoexia/vim-javascript-lib'
 Bundle 'mxw/vim-jsx'
 " Plugin 'jsx/jsx.vim'
 " Plugin 'moll/vim-node'
-Plugin 'ahayman/vim-nodejs-complete'
+" Plugin 'ahayman/vim-nodejs-complete'
 
 Plugin 'elzr/vim-json'
 Bundle 'maksimr/vim-jsbeautify'
