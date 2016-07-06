@@ -2,6 +2,8 @@ DOTFILES_PATH=$HOME/dotfiles
 DOTFILES_REPO=https://github.com/valerybugakov/dotfiles.git
 VUNDLE_PATH=$HOME/.vim/bundle/vundle
 VUNDLE_REPO=git://github.com/gmarik/Vundle.vim
+JSFORMATTER=./.vim/.vim/jsformatter.vim
+FORMATTERS_PATH="${VUNDLE_PATH}/autoload/airline/extensions/tabline/formatters/"
 
 if [ -d $DOTFILES_PATH ]; then
   sudo rm -r $DOTFILES_PATH
@@ -22,4 +24,7 @@ cat $DOTFILES_PATH/ohmyzsh.sh | sh
 # ln -sf $HOME/vim74/src/vim $HOME/bin/
 
 git clone $VUNDLE_REPO $VUNDLE_PATH
+mkdir -p $FORMATTERS_PATH
+cp $JSFORMATTER $FORMATTERS_PATH
+
 vim +PluginInstall +qall
