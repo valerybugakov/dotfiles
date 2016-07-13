@@ -67,7 +67,6 @@ Plugin 'duff/vim-bufonly'
 Plugin 'Lokaltog/vim-easymotion'
   let g:EasyMotion_smartcase = 1
 Plugin 'ctrlpvim/ctrlp.vim'
-  let g:ctrlp_cmd = 'CtrlPMRU'
   let g:ctrlp_reuse_window  = 'startify'
   let g:ctrlp_by_filename = 0                         " Search by filename
   let g:ctrlp_match_window_bottom = 1                 " show at bottom of window
