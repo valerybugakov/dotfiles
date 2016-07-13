@@ -67,6 +67,7 @@ Plugin 'duff/vim-bufonly'
 Plugin 'Lokaltog/vim-easymotion'
   let g:EasyMotion_smartcase = 1
 Plugin 'ctrlpvim/ctrlp.vim'
+  let g:ctrlp_cmd = 'CtrlPMRU'
   let g:ctrlp_reuse_window  = 'startify'
   let g:ctrlp_by_filename = 0                         " Search by filename
   let g:ctrlp_match_window_bottom = 1                 " show at bottom of window
@@ -84,7 +85,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
   let g:ctrlp_dont_split = 'NERD_tree_2'              " don't split these buffers
   let g:ctrlp_custom_ignore = {
     \ 'dir':  '\v[\/]\.(git|hg|svn|gitkeep)$',
-    \ 'file': '\v\.(exe|so|dll|log|gif|jpg|jpeg|png|psd|DS_Store|ctags|gitattributes)$'
+    \ 'file': '\v\.(svg|exe|so|dll|log|gif|jpg|jpeg|png|psd|DS_Store|ctags|gitattributes)$'
     \ }
   " let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
   " if you want to use git for this rather than ag
@@ -378,6 +379,9 @@ let g:mapleader = ","
   nmap <Leader>. :TagbarToggle<CR>
   nmap <Leader>/ :BufOnly<CR>
   nmap <Leader>h :SemanticHighlightToggle<CR>
+
+  nmap <leader>p :CtrlPMRU<cr>
+  nmap <leader>o :CtrlPBuffer<cr>
 
 " Let me delete non-empty folders through netrw
 let g:netrw_localrmdir='rm -r'
