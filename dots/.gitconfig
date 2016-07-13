@@ -1,6 +1,7 @@
 [user]
   name = Valery Bugakov
-	email = skymk1@gmail.com
+  email = skymk1@gmail.com
+
 [github "user"]
 
 [merge]
@@ -26,13 +27,20 @@
   added = yellow
   changed = green
   untracked = cyan
+
 [core]
   editor = vim
   autocrlf = input
   excludesfile = ~/.gitignore
+
 [url "https://"]
-	insteadOf = git://
+  insteadOf = git://
+
 [push]
-	default = simple
+  default = simple
+
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
+
+[diff]
+  compactionHeuristic = true

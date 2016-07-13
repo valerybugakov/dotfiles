@@ -41,6 +41,7 @@ Plugin 'Valloric/YouCompleteMe'
   let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
   let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 Plugin 'troydm/easybuffer.vim'
+  let g:easybuffer_sort_mode = 's'
 Plugin 'vim-scripts/camelcasemotion'
 Plugin 'chrisbra/NrrwRgn'                             " :NR on visual-selected region to open it in narrowed window
 Plugin 'nelstrom/vim-visual-star-search'              " Star(*) search for the whole selection in visual mode
