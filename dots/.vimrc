@@ -19,6 +19,8 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Plugin 'idanarye/vim-merginal'
 Bundle 'majutsushi/tagbar'
+Plugin 'gorkunov/smartpairs.vim'
+Plugin 'gorkunov/smartgf.vim'
 Plugin 'honza/vim-snippets'
 Plugin 'SirVer/ultisnips'
   let g:UltiSnipsEditSplit='vertical'
@@ -30,10 +32,8 @@ Bundle 'ervandew/supertab'
   let g:SuperTabDefaultCompletionType = '<C-n>'
 
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdtree-project-plugin'
-Plugin 'ivalkeen/nerdtree-execute'
-Plugin 'tyok/nerdtree-ack'
 Plugin 'low-ghost/nerdtree-fugitive'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plugin 'tpope/vim-repeat'
 
@@ -116,10 +116,8 @@ Plugin 'skwp/greplace.vim'
 Plugin 'dkprice/vim-easygrep'
   let g:EasyGrepCommand=1
   let g:EasyGrepRecursive=1
-  let g:EasyGrepIgnoreCase=1
   let g:EasyGrepHidden=0
   let g:EasyGrepFilesToExclude='*.swp'
-  let g:EasyGrepPatternType='fixed'
 
   if executable('ag')
      " Note we extract the column as well as the file and line number
@@ -142,7 +140,7 @@ Bundle 'mxw/vim-jsx'
 " Plugin 'jsx/jsx.vim'
 " Plugin 'moll/vim-node'
 " Plugin 'ahayman/vim-nodejs-complete'
-Plugin 'facebook/vim-flow'
+" Plugin 'facebook/vim-flow'
 
 Plugin 'elzr/vim-json'
 Bundle 'maksimr/vim-jsbeautify'
