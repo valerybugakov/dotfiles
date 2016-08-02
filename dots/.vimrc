@@ -67,7 +67,6 @@ Plugin 'duff/vim-bufonly'
 Plugin 'Lokaltog/vim-easymotion'
   let g:EasyMotion_smartcase = 1
 Plugin 'ctrlpvim/ctrlp.vim'
-  let g:ctrlp_reuse_window  = 'startify'
   let g:ctrlp_by_filename = 0                         " Search by filename
   let g:ctrlp_match_window_bottom = 1                 " show at bottom of window
   let g:ctrlp_working_path_mode = 'ra'                " our working path is our vcs project or the current directory
@@ -104,7 +103,6 @@ Plugin 'ctrlpvim/ctrlp.vim'
 
 " Plugin 'JazzCore/ctrlp-cmatcher'
 "   let g:ctrlp_match_func = {'match': 'matcher#cmatch'}
-Plugin 'mhinz/vim-startify'
 Plugin 'paradigm/TextObjectify'
 
 Plugin 'mileszs/ack.vim'
@@ -127,7 +125,6 @@ Plugin 'dkprice/vim-easygrep'
 
 """""" JavaScript
 Plugin 'jelera/vim-javascript-syntax'
-Plugin 'vim-scripts/JavaScript-Indent'
 Bundle 'pangloss/vim-javascript'
 Plugin 'othree/yajs.vim'
 Plugin 'othree/javascript-libraries-syntax.vim'
@@ -334,7 +331,7 @@ imap <C-l> <C-o>l
 noremap j gj
 noremap k gk
 " Clear the search highlight in Normal mode
-nnoremap <silent> <Esc> :nohlsearch<CR>
+nnoremap <Esc> :nohlsearch<return><esc>
 " Allow pasting blocks of code without indenting
 set pastetoggle=<F2>
 " Seriously, guys. It's not like :W is bound to anything anyway.
