@@ -154,6 +154,7 @@ Plugin 'groenewege/vim-less'
 
 """""" UI
 Bundle 'scrooloose/syntastic'
+  let g:syntastic_css_checkers = ['stylelint']
   let g:syntastic_javascript_checkers = ['eslint']
   let g:syntastic_javascript_eslint_exec = 'eslint_d' " sudo npm i -g eslint_d
   let g:syntastic_javascript_eslint_args = '--parser=babel-eslint'
@@ -331,7 +332,7 @@ imap <C-l> <C-o>l
 noremap j gj
 noremap k gk
 " Clear the search highlight in Normal mode
-nnoremap <Esc> :nohlsearch<return><esc>
+nnoremap <Esc><Esc> :nohlsearch<return><esc>
 " Allow pasting blocks of code without indenting
 set pastetoggle=<F2>
 " Seriously, guys. It's not like :W is bound to anything anyway.
