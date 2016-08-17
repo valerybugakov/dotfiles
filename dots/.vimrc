@@ -488,7 +488,7 @@ set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 set completeopt-=preview
-set foldmethod=syntax
+" set foldmethod=syntax
 
 if has("gui_running")
   " colorscheme hybrid
