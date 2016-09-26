@@ -258,3 +258,5 @@ export PATH="/opt/local/share:/opt/local/bin:/opt/local/sbin:$PATH"
 # export NVM_DIR="/Users/bugakov/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 . ~/.nvm/nvm.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

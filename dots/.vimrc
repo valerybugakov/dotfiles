@@ -2,116 +2,83 @@ set nocompatible              " Vim settings, rather then Vi settings
 filetype off                  " required
 set visualbell t_vb=
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/vundle/
-let path = '~/.vim_bundle'
-call vundle#begin(path)
+call plug#begin('~/.vim_bundle')
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'
+Plug 'gmarik/vundle'
 
 " ==========================================================
-" My Bundles here:
+" My Plugs here:
 " ==========================================================
 "
 """"""" General plugins
-Bundle 'tpope/vim-fugitive'
-Plugin 'idanarye/vim-merginal'
-Bundle 'majutsushi/tagbar'
-Plugin 'gorkunov/smartpairs.vim'
-Plugin 'gorkunov/smartgf.vim'
-Plugin 'honza/vim-snippets'
-Plugin 'SirVer/ultisnips'
+Plug 'tpope/vim-fugitive'
+Plug 'idanarye/vim-merginal'
+Plug 'majutsushi/tagbar'
+Plug 'gorkunov/smartpairs.vim'
+Plug 'gorkunov/smartgf.vim'
+Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
   let g:UltiSnipsEditSplit='vertical'
   let g:UltiSnipsExpandTrigger = '<C-e>'
   let g:UltiSnipsJumpForwardTrigger = '<tab>'
   let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
   let g:UltiSnipsSnippetsDir='~/dotfiles/.vim/.vim/ultisnipssnippets'
-Bundle 'ervandew/supertab'
+Plug 'ervandew/supertab'
   let g:SuperTabDefaultCompletionType = '<C-n>'
 
-Plugin 'scrooloose/nerdtree'
-Plugin 'low-ghost/nerdtree-fugitive'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plugin 'tpope/vim-repeat'
+Plug 'scrooloose/nerdtree'
+Plug 'low-ghost/nerdtree-fugitive'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'tpope/vim-repeat'
 
-Plugin 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
   let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
   let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-Plugin 'troydm/easybuffer.vim'
+Plug 'troydm/easybuffer.vim'
   let g:easybuffer_sort_mode = 's'
-Plugin 'vim-scripts/camelcasemotion'
-Plugin 'chrisbra/NrrwRgn'                             " :NR on visual-selected region to open it in narrowed window
-Plugin 'nelstrom/vim-visual-star-search'              " Star(*) search for the whole selection in visual mode
-Plugin 'tomtom/tcomment_vim'                          " gcc
-Plugin 'tpope/vim-surround'                           " ds, cs}), yss<p>
-Plugin 'briandoll/change-inside-surroundings.vim'     " cit to change inside tag, ci[ to change inside []
-Plugin 'godlygeek/tabular'                            " :Tab [pattern]
-Plugin 'tpope/vim-unimpaired'                         " [space, ]space etc
-Plugin 'jiangmiao/auto-pairs'                         " Automatic closing of quotes, parenthesis, brackets, etc.
-Plugin 'AndrewRadev/splitjoin.vim'                    " gS to split single-line statement, gJ for the opposite
-Plugin 'vim-scripts/YankRing.vim'                     " Go through paste-stack with OPTION-[pP]
+Plug 'vim-scripts/camelcasemotion'
+Plug 'chrisbra/NrrwRgn'                             " :NR on visual-selected region to open it in narrowed window
+Plug 'nelstrom/vim-visual-star-search'              " Star(*) search for the whole selection in visual mode
+Plug 'tomtom/tcomment_vim'                          " gcc
+Plug 'tpope/vim-surround'                           " ds, cs}), yss<p>
+Plug 'briandoll/change-inside-surroundings.vim'     " cit to change inside tag, ci[ to change inside []
+Plug 'godlygeek/tabular'                            " :Tab [pattern]
+Plug 'tpope/vim-unimpaired'                         " [space, ]space etc
+Plug 'jiangmiao/auto-pairs'                         " Automatic closing of quotes, parenthesis, brackets, etc.
+Plug 'AndrewRadev/splitjoin.vim'                    " gS to split single-line statement, gJ for the opposite
+Plug 'vim-scripts/YankRing.vim'                     " Go through paste-stack with OPTION-[pP]
   let g:yankring_replace_n_pkey='π'
   let g:yankring_replace_n_nkey='∏'
-Plugin 'terryma/vim-multiple-cursors'                 " Yay ^_^
+Plug 'terryma/vim-multiple-cursors'                 " Yay ^_^
   let g:multi_cursor_use_default_mapping=0
   let g:multi_cursor_next_key='<C-n>'
   let g:multi_cursor_prev_key='<C-b>'
   let g:multi_cursor_skip_key='<C-x>'
   let g:multi_cursor_quit_key='<Esc>'
-Plugin 'duff/vim-bufonly'
+Plug 'duff/vim-bufonly'
 
 """"""" Navigation
-Plugin 'Lokaltog/vim-easymotion'
+Plug 'Lokaltog/vim-easymotion'
   let g:EasyMotion_smartcase = 1
-Plugin 'ctrlpvim/ctrlp.vim'
-  let g:ctrlp_by_filename = 0                         " Search by filename
-  let g:ctrlp_match_window_bottom = 1                 " show at bottom of window
-  let g:ctrlp_working_path_mode = 'ra'                " our working path is our vcs project or the current directory
-  let g:ctrlp_mru_files = 1                           " enable most recently used files feature
-  let g:ctrlp_jump_to_buffer = 2                      " jump to tab and buffer if already open
-  let g:ctrlp_open_new_file = 'r'                     " open selections in a vertical split
-  let g:ctrlp_open_multiple_files = 'vr'              " opens multiple selections in vertical splits to the right
-  let g:ctrlp_arg_map = 0
-  let g:ctrlp_split_window = 0
-  let g:ctrlp_max_height = 40                         " restrict match list to a maxheight of 40
-  let g:ctrlp_use_caching = 0                         " don't cache, we want new list immediately each time
-  let g:ctrlp_max_files = 0                           " no restriction on results/file list
-  let g:ctrlp_working_path_mode = ''
-  let g:ctrlp_dont_split = 'NERD_tree_2'              " don't split these buffers
-  let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v[\/]\.(git|hg|svn|gitkeep)$',
-    \ 'file': '\v\.(svg|exe|so|dll|log|gif|jpg|jpeg|png|psd|DS_Store|ctags|gitattributes)$'
-    \ }
-  " let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-  " if you want to use git for this rather than ag
-  " let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-  " let g:ctrlp_prompt_mappings = {
-  "   \ 'AcceptSelection("e")': ['<c-e>', '<c-space>'],
-  "   \ 'AcceptSelection("h")': ['<c-x>', '<c-cr>', '<c-s>'],
-  "   \ 'AcceptSelection("t")': ['<c-t>'],
-  "   \ 'AcceptSelection("v")': ['<cr>'],
-  "   \ 'PrtSelectMove("j")':   ['<c-j>', '<down>', '<s-tab>'],
-  "   \ 'PrtSelectMove("k")':   ['<c-k>', '<up>', '<tab>'],
-  "   \ 'PrtHistory(-1)':       ['<c-n>'],
-  "   \ 'PrtHistory(1)':        ['<c-p>'],
-  "   \ 'ToggleFocus()':        ['<c-tab>'],
-  "   \}
 
-" Plugin 'JazzCore/ctrlp-cmatcher'
-"   let g:ctrlp_match_func = {'match': 'matcher#cmatch'}
-Plugin 'paradigm/TextObjectify'
+Plug 'junegunn/fzf',        { 'do': './install --all'  }
+Plug 'junegunn/fzf.vim'
+  set rtp+=/usr/local/opt/fzf
+  nmap <c-p> :FZF<CR>
+  let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 
-Plugin 'mileszs/ack.vim'
+Plug 'paradigm/TextObjectify'
+
+Plug 'mileszs/ack.vim'
   cabbrev Ack Ack!
   cabbrev Ag Ag!
   let g:ackprg = 'ag --vimgrep'
   let g:ackhighlight = 1
-Plugin 'skwp/greplace.vim'
-Plugin 'dkprice/vim-easygrep'
+Plug 'skwp/greplace.vim'
+Plug 'dkprice/vim-easygrep'
   let g:EasyGrepCommand=1
   let g:EasyGrepRecursive=1
   let g:EasyGrepHidden=0
@@ -124,36 +91,40 @@ Plugin 'dkprice/vim-easygrep'
   endif
 
 """""" JavaScript
-Plugin 'jelera/vim-javascript-syntax'
-Bundle 'pangloss/vim-javascript'
-Plugin 'othree/yajs.vim'
-Plugin 'othree/javascript-libraries-syntax.vim'
-  let g:used_javascript_libs = 'jquery,underscore,backbone,react'
-Plugin 'othree/es.next.syntax.vim'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'pangloss/vim-javascript'
+Plug 'othree/yajs.vim'
+Plug 'othree/javascript-libraries-syntax.vim'
+  let g:used_javascript_libs = 'jquery,underscore,react,rambda'
+Plug 'othree/es.next.syntax.vim'
 
-Plugin 'ternjs/tern_for_vim'
-Plugin 'crusoexia/vim-javascript-lib'
-Bundle 'mxw/vim-jsx'
-" Plugin 'jsx/jsx.vim'
-" Plugin 'moll/vim-node'
-" Plugin 'ahayman/vim-nodejs-complete'
-" Plugin 'facebook/vim-flow'
+Plug 'ternjs/tern_for_vim'
+  let g:tern_map_keys=1
+  let g:tern_show_argument_hints='on_hold'
+Plug 'crusoexia/vim-javascript-lib'
+Plug 'mxw/vim-jsx'
+  let g:jsx_ext_required = 0
+" Plug 'jsx/jsx.vim'
+" Plug 'moll/vim-node'
+" Plug 'ahayman/vim-nodejs-complete'
+" Plug 'facebook/vim-flow'
 
-Plugin 'elzr/vim-json'
-Bundle 'maksimr/vim-jsbeautify'
-Bundle 'einars/js-beautify'
-Plugin 'isRuslan/vim-es6'
-Plugin 'kchmck/vim-coffee-script'
+Plug 'elzr/vim-json'
+Plug 'maksimr/vim-jsbeautify'
+Plug 'einars/js-beautify'
+Plug 'isRuslan/vim-es6'
+Plug 'kchmck/vim-coffee-script'
 
-"""""" CSS
-" Plugin 'aaronjensen/vim-sass-status'
-Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'lukaszb/vim-web-indent'
-Plugin 'groenewege/vim-less'
+"""""" Plugin ''CSS
+Plug 'JulesWang/css.vim'
+" Plug 'aaronjensen/vim-sass-status'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'lukaszb/vim-web-indent'
+Plug 'groenewege/vim-less'
 
 """""" UI
-Bundle 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
   let g:syntastic_css_checkers = ['stylelint']
   let g:syntastic_javascript_checkers = ['eslint']
   let g:syntastic_javascript_eslint_exec = 'eslint_d' " sudo npm i -g eslint_d
@@ -163,19 +134,19 @@ Bundle 'scrooloose/syntastic'
   let g:syntastic_mode_map = {
   \ 'passive_filetypes': ['html', 'haml', 'jade']
   \ }
-Bundle 'airblade/vim-gitgutter'
-Bundle 'kien/rainbow_parentheses.vim'
-Bundle 'wting/rust.vim'
-Plugin 'chrisbra/color_highlight'
-Plugin 'jonathanfilip/vim-lucius'
-Plugin 'benjaminwhite/Benokai'
-Plugin 'jaxbot/semantic-highlight.vim'
-Plugin 'w0ng/vim-hybrid'
-Plugin 'mhartington/oceanic-next'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'mkitt/tabline.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'wting/rust.vim'
+Plug 'chrisbra/color_highlight'
+Plug 'jonathanfilip/vim-lucius'
+Plug 'benjaminwhite/Benokai'
+Plug 'jaxbot/semantic-highlight.vim'
+Plug 'w0ng/vim-hybrid'
+Plug 'mhartington/oceanic-next'
+Plug 'altercation/vim-colors-solarized'
+Plug 'mkitt/tabline.vim'
 
-Plugin 'bling/vim-airline'       " UI statusbar niceties
+Plug 'bling/vim-airline'       " UI statusbar niceties
   set laststatus=2               " enable airline even if no splits
   let g:airline#enable#branch=1
   let g:airline_powerline_fonts = 1
@@ -208,20 +179,20 @@ Plugin 'bling/vim-airline'       " UI statusbar niceties
   let g:airline#extensions#tabline#show_close_button = 0
 
 " """"""" Templates
-Plugin 'othree/html5.vim'
-Plugin 'digitaltoad/vim-jade'
-Plugin 'mattn/emmet-vim'
+Plug 'othree/html5.vim'
+Plug 'digitaltoad/vim-jade'
+Plug 'mattn/emmet-vim'
   " Let me expand emmet abbr with <TAB>
   let g:user_emmet_expandabbr_key = ',<Tab>'
 
-Plugin 'dag/vim2hs'
-" Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-endwise'
-" Plugin 'tpope/vim-haml'
+Plug 'dag/vim2hs'
+" Plug 'tpope/vim-rails'
+Plug 'tpope/vim-endwise'
+" Plug 'tpope/vim-haml'
 
 " =========================================================
 
-Plugin 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons'
 " -----------------------------------------------------------------------------
 " SETTINGS - NERDTree
 " -----------------------------------------------------------------------------
@@ -243,7 +214,7 @@ let g:WebDevIconsUnicodeDecorateFolderNodes   = 1
 let g:webdevicons_conceal_nerdtree_brackets   = 1
 let g:WebDevIconsNerdTreeAfterGlyphPadding    = ' '
 let g:WebDevIconsUnicodeGlyphDoubleWidth      = 1
-let g:WebDevIconsNerdTreeGitPluginForceVAlign = 0
+let g:WebDevIconsNerdTreeGitPlugForceVAlign = 0
 
 let g:NERDTreeFileExtensionHighlightFullName = 1
 let g:NERDTreeExtensionHighlightColor = {
@@ -270,7 +241,7 @@ let g:NERDTreeExactMatchHighlightColor = {
   \ 'procfile'                         : s:blank,
   \}
 
-call vundle#end()
+call plug#end()
 
 " ==========================================================
 " UI Settings
