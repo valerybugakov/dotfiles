@@ -92,8 +92,8 @@ Plug 'ternjs/tern_for_vim'
   let g:tern_map_keys=1
   let g:tern_show_argument_hints='on_hold'
 Plug 'crusoexia/vim-javascript-lib'
-Plug 'mxw/vim-jsx'
-  let g:jsx_ext_required = 0
+" Plug 'mxw/vim-jsx'
+"   let g:jsx_ext_required = 0
 " Plug 'jsx/jsx.vim'
 " Plug 'moll/vim-node'
 " Plug 'ahayman/vim-nodejs-complete'
@@ -154,13 +154,14 @@ Plug 'bling/vim-airline'       " UI statusbar niceties
   let g:airline#paste#symbol = '∥'
   let g:airline#extensions#syntastic#enabled=1
   let g:airline#extensions#nrrwrgn#enabled = 1
+  let g:airline#extensions#hunks#enabled = 0
 
   " Tabline settings
   let g:airline#extensions#tabline#enabled = 1
   " Formatter defined in
   " autoload/airline/extensions/tabline/formatters/jsformatter.vim
   let g:airline#extensions#tabline#formatter = 'jsformatter'
-  let g:airline#extensions#tabline#show_buffers = 0
+  let g:airline#extensions#tabline#show_buffers = 2
   let g:airline#extensions#tabline#show_tabs = 1
   let g:airline#extensions#tabline#tab_nr_type = 0
   let g:airline#extensions#tabline#show_tab_nr = 0
