@@ -4,10 +4,6 @@ set visualbell t_vb=
 
 call plug#begin('~/.vim_bundle')
 
-" let Vundle manage Vundle
-" required!
-Plug 'gmarik/vundle'
-
 " ==========================================================
 " My Plugs here:
 " ==========================================================
@@ -63,12 +59,6 @@ Plug 'duff/vim-bufonly'
 """"""" Navigation
 Plug 'Lokaltog/vim-easymotion'
   let g:EasyMotion_smartcase = 1
-
-Plug 'junegunn/fzf',        { 'do': './install --all'  }
-Plug 'junegunn/fzf.vim'
-  set rtp+=/usr/local/opt/fzf
-  nmap <c-p> :FZF<CR>
-  let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 
 Plug 'paradigm/TextObjectify'
 
@@ -186,60 +176,95 @@ Plug 'mattn/emmet-vim'
   let g:user_emmet_expandabbr_key = ',<Tab>'
 
 Plug 'dag/vim2hs'
-" Plug 'tpope/vim-rails'
 Plug 'tpope/vim-endwise'
+" Plug 'tpope/vim-rails'
 " Plug 'tpope/vim-haml'
 
 " =========================================================
 
-Plug 'ryanoasis/vim-devicons'
-" -----------------------------------------------------------------------------
-" SETTINGS - NERDTree
-" -----------------------------------------------------------------------------
-let g:NERDTreeAutoCenter          = 1
-let g:NERDTreeAutoCenterThreshold = 8
-let g:NERDTreeChDirMode           = 2
-let g:NERDTreeHighlightCursorline = 1
-let g:NERDTreeIgnore              = ['.DS_Store', '.git$[[dir]]', 'target$[[dir]]']
-let g:NERDTreeWinSize             = 40
-let g:NERDTreeShowHidden          = 1
-let g:NERDTreeShowLineNumbers     = 0
-let g:NERDTreeMinimalUI           = 1
+if has("gui_running")
+  Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'FelikZ/ctrlp-py-matcher'
+    let g:ctrlp_by_filename = 0                         " Search by filename
+    let g:ctrlp_match_window_bottom = 1                 " show at bottom of window
+    let g:ctrlp_working_path_mode = 'ra'                " our working path is our vcs project or the current directory
+    let g:ctrlp_mru_files = 1                           " enable most recently used files feature
+    let g:ctrlp_jump_to_buffer = 2                      " jump to tab and buffer if already open
+    let g:ctrlp_open_new_file = 'r'                     " open selections in a vertical split
+    let g:ctrlp_open_multiple_files = 'vr'              " opens multiple selections in vertical splits to the right
+    let g:ctrlp_arg_map = 0
+    let g:ctrlp_split_window = 0
+    let g:ctrlp_max_height = 40                         " restrict match list to a maxheight of 40
+    let g:ctrlp_use_caching = 0                         " don't cache, we want new list immediately each time
+    let g:ctrlp_max_files = 0                           " no restriction on results/file list
+    let g:ctrlp_working_path_mode = ''
+    let g:ctrlp_dont_split = 'NERD_tree_2'              " don't split these buffers
+    let g:ctrlp_custom_ignore = {
+      \ 'dir':  '\v[\/]\.(git|hg|svn|gitkeep)$',
+      \ 'file': '\v\.(svg|exe|so|dll|log|gif|jpg|jpeg|png|psd|DS_Store|ctags|gitattributes)$'
+      \ }
+    let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+    let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
-" -----------------------------------------------------------------------------
-" SETTINGS - devicons
-" -----------------------------------------------------------------------------
-let g:WebDevIconsOS                           = 'Darwin'
-let g:WebDevIconsUnicodeDecorateFolderNodes   = 1
-let g:webdevicons_conceal_nerdtree_brackets   = 1
-let g:WebDevIconsNerdTreeAfterGlyphPadding    = ' '
-let g:WebDevIconsUnicodeGlyphDoubleWidth      = 1
-let g:WebDevIconsNerdTreeGitPlugForceVAlign = 0
+  let g:hybrid_custom_term_colors = 1
+  let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
+  let g:semanticEnableFileTypes = ['javascript', 'javascript.jsx', 'coffee', 'py', 'rb']
+else
+  Plug 'junegunn/fzf',        { 'do': './install --all'  }
+  Plug 'junegunn/fzf.vim'
+    set rtp+=/usr/local/opt/fzf
+    nmap <c-p> :FZF<CR>
+    let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 
-let g:NERDTreeFileExtensionHighlightFullName = 1
-let g:NERDTreeExtensionHighlightColor = {
-  \ 'coffee': 'f7fdb3',
-  \ 'babelrc': 'ce93d8',
-  \ 'eslintrc': 'b6b3fe',
-  \ 'js':  'f0db4f',
-  \ 'css': '90e255',
-  \ 'jade': 'F16529'
-  \}
+  Plug 'ryanoasis/vim-devicons'
+  " -----------------------------------------------------------------------------
+  " SETTINGS - NERDTree
+  " -----------------------------------------------------------------------------
+  let g:NERDTreeAutoCenter          = 1
+  let g:NERDTreeAutoCenterThreshold = 8
+  let g:NERDTreeChDirMode           = 2
+  let g:NERDTreeHighlightCursorline = 1
+  let g:NERDTreeIgnore              = ['.DS_Store', '.git$[[dir]]', 'target$[[dir]]']
+  let g:NERDTreeWinSize             = 40
+  let g:NERDTreeShowHidden          = 1
+  let g:NERDTreeShowLineNumbers     = 0
+  let g:NERDTreeMinimalUI           = 1
 
-" Fix half display issue
-let s:blank = ''
-let g:NERDTreeExactMatchHighlightColor = {
-  \ 'dropbox'                          : s:blank,
-  \ '.ds_store'                        : s:blank,
-  \ '.gitconfig'                       : s:blank,
-  \ '.gitignore'                       : s:blank,
-  \ '.bashrc'                          : s:blank,
-  \ '.bashprofile'                     : s:blank,
-  \ 'favicon.ico'                      : s:blank,
-  \ 'license'                          : s:blank,
-  \ 'node_modules'                     : s:blank,
-  \ 'procfile'                         : s:blank,
-  \}
+  " -----------------------------------------------------------------------------
+  " SETTINGS - devicons
+  " -----------------------------------------------------------------------------
+  let g:WebDevIconsOS                           = 'Darwin'
+  let g:WebDevIconsUnicodeDecorateFolderNodes   = 1
+  let g:webdevicons_conceal_nerdtree_brackets   = 1
+  let g:WebDevIconsNerdTreeAfterGlyphPadding    = ' '
+  let g:WebDevIconsUnicodeGlyphDoubleWidth      = 1
+  let g:WebDevIconsNerdTreeGitPlugForceVAlign = 0
+
+  let g:NERDTreeFileExtensionHighlightFullName = 1
+  let g:NERDTreeExtensionHighlightColor = {
+    \ 'coffee': 'f7fdb3',
+    \ 'babelrc': 'ce93d8',
+    \ 'eslintrc': 'b6b3fe',
+    \ 'js':  'f0db4f',
+    \ 'css': '90e255',
+    \ 'jade': 'F16529'
+    \}
+
+  " Fix half display issue
+  let s:blank = ''
+  let g:NERDTreeExactMatchHighlightColor = {
+    \ 'dropbox'                          : s:blank,
+    \ '.ds_store'                        : s:blank,
+    \ '.gitconfig'                       : s:blank,
+    \ '.gitignore'                       : s:blank,
+    \ '.bashrc'                          : s:blank,
+    \ '.bashprofile'                     : s:blank,
+    \ 'favicon.ico'                      : s:blank,
+    \ 'license'                          : s:blank,
+    \ 'node_modules'                     : s:blank,
+    \ 'procfile'                         : s:blank,
+    \}
+endif
 
 call plug#end()
 
@@ -459,11 +484,32 @@ set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 set completeopt-=preview
-" set foldmethod=syntax
 
 if has("gui_running")
-  " colorscheme hybrid
   colorscheme OceanicNext
+  Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'FelikZ/ctrlp-py-matcher'
+    let g:ctrlp_by_filename = 0                         " Search by filename
+    let g:ctrlp_match_window_bottom = 1                 " show at bottom of window
+    let g:ctrlp_working_path_mode = 'ra'                " our working path is our vcs project or the current directory
+    let g:ctrlp_mru_files = 1                           " enable most recently used files feature
+    let g:ctrlp_jump_to_buffer = 2                      " jump to tab and buffer if already open
+    let g:ctrlp_open_new_file = 'r'                     " open selections in a vertical split
+    let g:ctrlp_open_multiple_files = 'vr'              " opens multiple selections in vertical splits to the right
+    let g:ctrlp_arg_map = 0
+    let g:ctrlp_split_window = 0
+    let g:ctrlp_max_height = 40                         " restrict match list to a maxheight of 40
+    let g:ctrlp_use_caching = 0                         " don't cache, we want new list immediately each time
+    let g:ctrlp_max_files = 0                           " no restriction on results/file list
+    let g:ctrlp_working_path_mode = ''
+    let g:ctrlp_dont_split = 'NERD_tree_2'              " don't split these buffers
+    let g:ctrlp_custom_ignore = {
+      \ 'dir':  '\v[\/]\.(git|hg|svn|gitkeep)$',
+      \ 'file': '\v\.(svg|exe|so|dll|log|gif|jpg|jpeg|png|psd|DS_Store|ctags|gitattributes)$'
+      \ }
+    let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+    let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+
   let g:hybrid_custom_term_colors = 1
   let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
   let g:semanticEnableFileTypes = ['javascript', 'javascript.jsx', 'coffee', 'py', 'rb']
@@ -481,6 +527,12 @@ if has("gui_running")
   set bs=2
   set ai
   set ruler
+else
+  Plug 'junegunn/fzf',        { 'do': './install --all'  }
+  Plug 'junegunn/fzf.vim'
+    set rtp+=/usr/local/opt/fzf
+    nmap <c-p> :FZF<CR>
+    let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 endif
 
 set tabstop=2
