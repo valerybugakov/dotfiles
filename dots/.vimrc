@@ -89,8 +89,6 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'othree/es.next.syntax.vim'
 
 Plug 'ternjs/tern_for_vim'
-  let g:tern_map_keys=1
-  let g:tern_show_argument_hints='on_hold'
 Plug 'crusoexia/vim-javascript-lib'
 " Plug 'mxw/vim-jsx'
 "   let g:jsx_ext_required = 0
