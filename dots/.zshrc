@@ -260,3 +260,8 @@ export PATH="/opt/local/share:/opt/local/bin:/opt/local/sbin:$PATH"
 . ~/.nvm/nvm.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+#Neovim true color support
+export NVIM_TUI_ENABLE_TRUE_COLOR=1
+##Neovim cursor shape support
+export NVIM_TUI_ENABLE_CURSOR_SHAPE=1

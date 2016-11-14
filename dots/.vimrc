@@ -25,9 +25,9 @@ Plug 'ervandew/supertab'
   let g:SuperTabDefaultCompletionType = '<C-n>'
 
 Plug 'scrooloose/nerdtree'
-Plug 'low-ghost/nerdtree-fugitive'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Plug 'low-ghost/nerdtree-fugitive'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-repeat'
 
 Plug 'Valloric/YouCompleteMe'
@@ -113,7 +113,7 @@ Plug 'groenewege/vim-less'
 
 """""" UI
 Plug 'scrooloose/syntastic'
-  let g:syntastic_css_checkers = ['stylelint']
+  " let g:syntastic_css_checkers = ['stylelint']
   let g:syntastic_javascript_checkers = ['eslint']
   let g:syntastic_javascript_eslint_exec = 'eslint_d' " sudo npm i -g eslint_d
   let g:syntastic_javascript_eslint_args = '--parser=babel-eslint'
@@ -129,7 +129,10 @@ Plug 'chrisbra/color_highlight'
 Plug 'jonathanfilip/vim-lucius'
 Plug 'benjaminwhite/Benokai'
 Plug 'jaxbot/semantic-highlight.vim'
+  let g:semanticEnableFileTypes = ['javascript', 'javascript.jsx', 'coffee', 'py', 'rb']
 Plug 'w0ng/vim-hybrid'
+  let g:hybrid_custom_term_colors = 1
+  let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
 Plug 'mhartington/oceanic-next'
 Plug 'altercation/vim-colors-solarized'
 Plug 'mkitt/tabline.vim'
@@ -159,7 +162,8 @@ Plug 'bling/vim-airline'       " UI statusbar niceties
   " Formatter defined in
   " autoload/airline/extensions/tabline/formatters/jsformatter.vim
   let g:airline#extensions#tabline#formatter = 'jsformatter'
-  let g:airline#extensions#tabline#show_buffers = 2
+  let g:airline#extensions#tabline#show_buffers = 0
+  let g:airline#extensions#tabline#show_splits = 0
   let g:airline#extensions#tabline#show_tabs = 1
   let g:airline#extensions#tabline#tab_nr_type = 0
   let g:airline#extensions#tabline#show_tab_nr = 0
@@ -204,65 +208,62 @@ if has("gui_running")
       \ }
     let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
     let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-
-  let g:hybrid_custom_term_colors = 1
-  let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
-  let g:semanticEnableFileTypes = ['javascript', 'javascript.jsx', 'coffee', 'py', 'rb']
 else
-  Plug 'junegunn/fzf',        { 'do': './install --all'  }
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
   Plug 'junegunn/fzf.vim'
     set rtp+=/usr/local/opt/fzf
-    nmap <c-p> :FZF<CR>
     let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 
-  Plug 'ryanoasis/vim-devicons'
-  " -----------------------------------------------------------------------------
-  " SETTINGS - NERDTree
-  " -----------------------------------------------------------------------------
-  let g:NERDTreeAutoCenter          = 1
-  let g:NERDTreeAutoCenterThreshold = 8
-  let g:NERDTreeChDirMode           = 2
-  let g:NERDTreeHighlightCursorline = 1
-  let g:NERDTreeIgnore              = ['.DS_Store', '.git$[[dir]]', 'target$[[dir]]']
-  let g:NERDTreeWinSize             = 40
-  let g:NERDTreeShowHidden          = 1
-  let g:NERDTreeShowLineNumbers     = 0
-  let g:NERDTreeMinimalUI           = 1
+  nmap <c-p> :FZF<CR>
 
-  " -----------------------------------------------------------------------------
-  " SETTINGS - devicons
-  " -----------------------------------------------------------------------------
-  let g:WebDevIconsOS                           = 'Darwin'
-  let g:WebDevIconsUnicodeDecorateFolderNodes   = 1
-  let g:webdevicons_conceal_nerdtree_brackets   = 1
-  let g:WebDevIconsNerdTreeAfterGlyphPadding    = ' '
-  let g:WebDevIconsUnicodeGlyphDoubleWidth      = 1
-  let g:WebDevIconsNerdTreeGitPlugForceVAlign = 0
-
-  let g:NERDTreeFileExtensionHighlightFullName = 1
-  let g:NERDTreeExtensionHighlightColor = {
-    \ 'coffee': 'f7fdb3',
-    \ 'babelrc': 'ce93d8',
-    \ 'eslintrc': 'b6b3fe',
-    \ 'js':  'f0db4f',
-    \ 'css': '90e255',
-    \ 'jade': 'F16529'
-    \}
-
-  " Fix half display issue
-  let s:blank = ''
-  let g:NERDTreeExactMatchHighlightColor = {
-    \ 'dropbox'                          : s:blank,
-    \ '.ds_store'                        : s:blank,
-    \ '.gitconfig'                       : s:blank,
-    \ '.gitignore'                       : s:blank,
-    \ '.bashrc'                          : s:blank,
-    \ '.bashprofile'                     : s:blank,
-    \ 'favicon.ico'                      : s:blank,
-    \ 'license'                          : s:blank,
-    \ 'node_modules'                     : s:blank,
-    \ 'procfile'                         : s:blank,
-    \}
+  " Plug 'ryanoasis/vim-devicons'
+  " " -----------------------------------------------------------------------------
+  " " SETTINGS - NERDTree
+  " " -----------------------------------------------------------------------------
+  " let g:NERDTreeAutoCenter          = 1
+  " let g:NERDTreeAutoCenterThreshold = 8
+  " let g:NERDTreeChDirMode           = 2
+  " let g:NERDTreeHighlightCursorline = 1
+  " let g:NERDTreeIgnore              = ['.DS_Store', '.git$[[dir]]', 'target$[[dir]]']
+  " let g:NERDTreeWinSize             = 50
+  " let g:NERDTreeShowHidden          = 1
+  " let g:NERDTreeShowLineNumbers     = 0
+  " let g:NERDTreeMinimalUI           = 1
+  "
+  " " -----------------------------------------------------------------------------
+  " " SETTINGS - devicons
+  " " -----------------------------------------------------------------------------
+  " let g:WebDevIconsOS                           = 'Darwin'
+  " let g:WebDevIconsUnicodeDecorateFolderNodes   = 1
+  " let g:webdevicons_conceal_nerdtree_brackets   = 1
+  " let g:WebDevIconsNerdTreeAfterGlyphPadding    = ' '
+  " let g:WebDevIconsUnicodeGlyphDoubleWidth      = 1
+  " let g:WebDevIconsNerdTreeGitPlugForceVAlign = 0
+  "
+  " let g:NERDTreeFileExtensionHighlightFullName = 1
+  " let g:NERDTreeExtensionHighlightColor = {
+  "   \ 'coffee': 'f7fdb3',
+  "   \ 'babelrc': 'ce93d8',
+  "   \ 'eslintrc': 'b6b3fe',
+  "   \ 'js':  'f0db4f',
+  "   \ 'css': '90e255',
+  "   \ 'jade': 'F16529'
+  "   \}
+  "
+  " " Fix half display issue
+  " let s:blank = ''
+  " let g:NERDTreeExactMatchHighlightColor = {
+  "   \ 'dropbox'                          : s:blank,
+  "   \ '.ds_store'                        : s:blank,
+  "   \ '.gitconfig'                       : s:blank,
+  "   \ '.gitignore'                       : s:blank,
+  "   \ '.bashrc'                          : s:blank,
+  "   \ '.bashprofile'                     : s:blank,
+  "   \ 'favicon.ico'                      : s:blank,
+  "   \ 'license'                          : s:blank,
+  "   \ 'node_modules'                     : s:blank,
+  "   \ 'procfile'                         : s:blank,
+  "   \}
 endif
 
 call plug#end()
@@ -273,7 +274,9 @@ call plug#end()
 
 set t_Co=256
 set background=dark
-colorscheme hybrid
+set termguicolors
+" colorscheme hybrid
+colorscheme OceanicNext
 " colorscheme OceanicNext
 " override default theme search highlighter
 autocmd ColorScheme * hi Search guibg=NONE ctermbg=NONE gui=underline cterm=underline term=underline guifg=#80cbc4 ctermfg=darkcyan
@@ -361,7 +364,7 @@ let g:mapleader = ","
   map ,q <Esc>:q<CR>
   map ,Q <Esc>:q!<CR>
   map ,c <Esc>:setlocal spell!<CR>
-  nmap ,l :EasyBufferHorizontalBelow<CR>
+  " nmap ,l :EasyBufferHorizontalBelow<CR>
   nmap ,r :NERDTreeFind<CR>
   nmap ,m :MerginalToggle<CR>
   map <leader>ba :1,100bd!<cr>
@@ -370,8 +373,14 @@ let g:mapleader = ","
   nmap <Leader>/ :BufOnly<CR>
   nmap <Leader>h :SemanticHighlightToggle<CR>
 
-  nmap <leader>p :CtrlPMRU<cr>
-  nmap <leader>o :CtrlPBuffer<cr>
+  if has("gui_running")
+    nmap <leader>p :CtrlPMRU<cr>
+    nmap <leader>o :CtrlPBuffer<cr>
+  else
+    nmap <leader>p :Buffers<CR>
+    nmap <leader>o :Ag<cr>
+    nmap <leader>l :Lines<cr>
+  endif
 
 " Let me delete non-empty folders through netrw
 let g:netrw_localrmdir='rm -r'
@@ -423,6 +432,7 @@ vnoremap æ :m '<-2<CR>gv=gv
 " To return to equal sizes CTRL-=
 map <C-w>0 :call FullScreenSplit()<CR>
 function FullScreenSplit()
+  :NERDTreeClose
   :res
   :vertical res
 endfunction
@@ -484,56 +494,6 @@ set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 set completeopt-=preview
 
-if has("gui_running")
-  colorscheme OceanicNext
-  Plug 'ctrlpvim/ctrlp.vim'
-  Plug 'FelikZ/ctrlp-py-matcher'
-    let g:ctrlp_by_filename = 0                         " Search by filename
-    let g:ctrlp_match_window_bottom = 1                 " show at bottom of window
-    let g:ctrlp_working_path_mode = 'ra'                " our working path is our vcs project or the current directory
-    let g:ctrlp_mru_files = 1                           " enable most recently used files feature
-    let g:ctrlp_jump_to_buffer = 2                      " jump to tab and buffer if already open
-    let g:ctrlp_open_new_file = 'r'                     " open selections in a vertical split
-    let g:ctrlp_open_multiple_files = 'vr'              " opens multiple selections in vertical splits to the right
-    let g:ctrlp_arg_map = 0
-    let g:ctrlp_split_window = 0
-    let g:ctrlp_max_height = 40                         " restrict match list to a maxheight of 40
-    let g:ctrlp_use_caching = 0                         " don't cache, we want new list immediately each time
-    let g:ctrlp_max_files = 0                           " no restriction on results/file list
-    let g:ctrlp_working_path_mode = ''
-    let g:ctrlp_dont_split = 'NERD_tree_2'              " don't split these buffers
-    let g:ctrlp_custom_ignore = {
-      \ 'dir':  '\v[\/]\.(git|hg|svn|gitkeep)$',
-      \ 'file': '\v\.(svg|exe|so|dll|log|gif|jpg|jpeg|png|psd|DS_Store|ctags|gitattributes)$'
-      \ }
-    let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-    let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-
-  let g:hybrid_custom_term_colors = 1
-  let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
-  let g:semanticEnableFileTypes = ['javascript', 'javascript.jsx', 'coffee', 'py', 'rb']
-  " let g:semanticenablefiletypes = {
-  " \ 'javascript': 'js',
-  " \ 'jsx': 'jsx',
-  " \ 'coffee': 'coffee',
-  " \ 'python': 'py'
-  " \ }
-
-  syntax on
-  set hlsearch
-  set guifont=UbuntuMonoDerivativePowerline\ Nerd\ Font:h20
-  set transparency=10
-  set bs=2
-  set ai
-  set ruler
-else
-  Plug 'junegunn/fzf',        { 'do': './install --all'  }
-  Plug 'junegunn/fzf.vim'
-    set rtp+=/usr/local/opt/fzf
-    nmap <c-p> :FZF<CR>
-    let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
-endif
-
 set tabstop=2
 set shiftwidth=2
 set expandtab
@@ -588,9 +548,9 @@ au BufRead *.js set makeprg=eslint\ %
 " Use tab to scroll through autocomplete menus
 "autocmd VimEnter * imap <expr> <Tab> pumvisible() ? "<C-N>" : "<Tab>"
 "autocmd VimEnter * imap <expr> <S-Tab> pumvisible() ? "<C-P>" : "<S-Tab>"
-autocmd FileType html,xhtml,xml,css setlocal expandtab shiftwidth=2 tabstop=2
-autocmd filetype javascript set sw=2 ts=2 expandtab
-au FileType coffeescript setl sw=2 sts=2 et
+" autocmd FileType html,xhtml,xml,css setlocal expandtab shiftwidth=2 tabstop=2
+" autocmd filetype javascript set sw=2 ts=2 expandtab
+" au FileType coffeescript setl sw=2 sts=2 et
 
 " Exec js script in vim CTRL-w-n
 map <C-w>n :call ExecNode() <cr>
@@ -639,6 +599,11 @@ command! OpenChangedFiles :call OpenChangedFiles()
 " INIT
 " -----------------------------------------------------------------------------
 
-if exists("g:loaded_webdevicons")
-  call webdevicons#refresh()
-endif
+" if exists("g:loaded_webdevicons")
+"   call webdevicons#refresh()
+" endif
+
+" Sad truth :(
+" set tabstop=4
+" set shiftwidth=4
+" set softtabstop=4
