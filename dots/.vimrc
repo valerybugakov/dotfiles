@@ -276,7 +276,10 @@ set t_Co=256
 set background=dark
 set termguicolors
 " colorscheme hybrid
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 colorscheme OceanicNext
+  let g:oceanic_next_terminal_bold = 1
+  let g:oceanic_next_terminal_italic = 1
 " colorscheme OceanicNext
 " override default theme search highlighter
 autocmd ColorScheme * hi Search guibg=NONE ctermbg=NONE gui=underline cterm=underline term=underline guifg=#80cbc4 ctermfg=darkcyan
