@@ -373,7 +373,7 @@ let g:mapleader = ","
   map <leader>ba :1,100bd!<cr>
   nnoremap <leader>f :Ack! ""<Left>
   nmap <Leader>. :TagbarToggle<CR>
-  nmap <Leader>/ :BufOnly<CR>
+  nmap <Leader>/ :tabo<CR>:BufOnly<CR>
   nmap <Leader>h :SemanticHighlightToggle<CR>
 
   if has("gui_running")
