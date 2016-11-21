@@ -83,6 +83,9 @@ Plug 'dkprice/vim-easygrep'
 """""" JavaScript
 Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
+Plug 'maxmellon/vim-jsx-pretty'
+  let g:vim_jsx_pretty_colorful_config = 1
+  let g:vim_jsx_pretty_enable_jsx_highlight = 1
 Plug 'othree/yajs.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
   let g:used_javascript_libs = 'jquery,underscore,react,rambda'
@@ -91,7 +94,7 @@ Plug 'othree/es.next.syntax.vim'
 Plug 'ternjs/tern_for_vim'
 Plug 'crusoexia/vim-javascript-lib'
 " Plug 'mxw/vim-jsx'
-"   let g:jsx_ext_required = 0
+  " let g:jsx_ext_required = 0
 " Plug 'jsx/jsx.vim'
 " Plug 'moll/vim-node'
 " Plug 'ahayman/vim-nodejs-complete'
