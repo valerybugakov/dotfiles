@@ -25,6 +25,15 @@ Plug 'ervandew/supertab'
   let g:SuperTabDefaultCompletionType = '<C-n>'
 
 Plug 'scrooloose/nerdtree'
+  let g:NERDTreeAutoCenter          = 1
+  let g:NERDTreeAutoCenterThreshold = 8
+  let g:NERDTreeChDirMode           = 2
+  let g:NERDTreeHighlightCursorline = 1
+  let g:NERDTreeIgnore              = ['.DS_Store', '.git$[[dir]]', 'target$[[dir]]']
+  " let g:NERDTreeWinSize             = 50
+  let g:NERDTreeShowHidden          = 1
+  let g:NERDTreeShowLineNumbers     = 0
+  let g:NERDTreeMinimalUI           = 1
 " Plug 'low-ghost/nerdtree-fugitive'
 " Plug 'Xuyuanp/nerdtree-git-plugin'
 " Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -83,9 +92,9 @@ Plug 'dkprice/vim-easygrep'
 """""" JavaScript
 Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
-Plug 'maxmellon/vim-jsx-pretty'
-  let g:vim_jsx_pretty_colorful_config = 1
-  let g:vim_jsx_pretty_enable_jsx_highlight = 1
+" Plug 'maxmellon/vim-jsx-pretty'
+"   let g:vim_jsx_pretty_colorful_config = 1
+"   let g:vim_jsx_pretty_enable_jsx_highlight = 1
 Plug 'othree/yajs.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
   let g:used_javascript_libs = 'jquery,underscore,react,rambda'
@@ -93,8 +102,8 @@ Plug 'othree/es.next.syntax.vim'
 
 Plug 'ternjs/tern_for_vim'
 Plug 'crusoexia/vim-javascript-lib'
-" Plug 'mxw/vim-jsx'
-  " let g:jsx_ext_required = 0
+Plug 'mxw/vim-jsx'
+  let g:jsx_ext_required = 0
 " Plug 'jsx/jsx.vim'
 " Plug 'moll/vim-node'
 " Plug 'ahayman/vim-nodejs-complete'
@@ -223,16 +232,7 @@ else
   " " -----------------------------------------------------------------------------
   " " SETTINGS - NERDTree
   " " -----------------------------------------------------------------------------
-  " let g:NERDTreeAutoCenter          = 1
-  " let g:NERDTreeAutoCenterThreshold = 8
-  " let g:NERDTreeChDirMode           = 2
-  " let g:NERDTreeHighlightCursorline = 1
-  " let g:NERDTreeIgnore              = ['.DS_Store', '.git$[[dir]]', 'target$[[dir]]']
-  " let g:NERDTreeWinSize             = 50
-  " let g:NERDTreeShowHidden          = 1
-  " let g:NERDTreeShowLineNumbers     = 0
-  " let g:NERDTreeMinimalUI           = 1
-  "
+
   " " -----------------------------------------------------------------------------
   " " SETTINGS - devicons
   " " -----------------------------------------------------------------------------
@@ -375,9 +375,9 @@ let g:mapleader = ","
   nmap ,m :MerginalToggle<CR>
   map <leader>ba :1,100bd!<cr>
   nnoremap <leader>f :Ack! ""<Left>
-  nmap <Leader>. :TagbarToggle<CR>
   nmap <Leader>/ :tabo<CR>:BufOnly<CR>
   nmap <Leader>h :SemanticHighlightToggle<CR>
+  nmap <Leader>.  <Esc>f i<CR><Esc>l
 
   if has("gui_running")
     nmap <leader>p :CtrlPMRU<cr>
