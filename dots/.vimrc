@@ -107,7 +107,6 @@ Plug 'mxw/vim-jsx'
 " Plug 'jsx/jsx.vim'
 " Plug 'moll/vim-node'
 " Plug 'ahayman/vim-nodejs-complete'
-" Plug 'facebook/vim-flow'
 
 Plug 'elzr/vim-json'
 Plug 'maksimr/vim-jsbeautify'
@@ -124,16 +123,43 @@ Plug 'lukaszb/vim-web-indent'
 Plug 'groenewege/vim-less'
 
 """""" UI
-Plug 'scrooloose/syntastic'
-  " let g:syntastic_css_checkers = ['stylelint']
-  let g:syntastic_javascript_checkers = ['eslint']
-  let g:syntastic_javascript_eslint_exec = 'eslint_d' " sudo npm i -g eslint_d
-  let g:syntastic_javascript_eslint_args = '--parser=babel-eslint'
-  let g:syntastic_check_on_open=1
-  let g:syntastic_enable_signs=1
-  let g:syntastic_mode_map = {
-  \ 'passive_filetypes': ['html', 'haml', 'jade']
-  \ }
+Plug 'chrisbra/vim-autoread'
+Plug 'neomake/neomake'
+  " let g:neomake_verbose = 3
+  let g:neomake_javascript_eslint_maker = {
+        \ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,' .
+          \ '%W%f: line %l\, col %c\, Warning - %m',
+        \ 'exe': "eslint_d",
+        \ 'args': ['--parser=babel-eslint', '-f', 'compact', '--rule', '{"no-console":[1]}'],
+        \ }
+
+  " Advanced flow errors
+  " https://github.com/ryyppy/flow-vim-quickfix
+  function! StrTrim(txt)
+    return substitute(a:txt, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
+  endfunction
+
+  let g:neomake_javascript_enabled_makers = ['eslint']
+  let g:neomake_jsx_enabled_makers = ['eslint'] " temp hack to get flow working with Neomake
+
+  let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
+
+  if findfile('.flowconfig', '.;') !=# ''
+    let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
+    if g:flow_path != 'flow not found'
+      let g:neomake_javascript_flow_maker = {
+            \ 'exe': 'sh',
+            \ 'args': ['-c', g:flow_path.' --json 2> /dev/null | flow-vim-quickfix'],
+            \ 'errorformat': '%E%f:%l:%c\,%n: %m',
+            \ 'cwd': '%:p:h'
+            \ }
+      let g:neomake_javascript_enabled_makers = g:neomake_javascript_enabled_makers + [ 'flow']
+      let g:neomake_jsx_enabled_makers = g:neomake_jsx_enabled_makers + [ 'flow']
+    endif
+  endif
+
+  autocmd VimEnter,BufWritePost * Neomake
+
 Plug 'airblade/vim-gitgutter'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'wting/rust.vim'
@@ -165,7 +191,7 @@ Plug 'bling/vim-airline'       " UI statusbar niceties
   let g:airline#paste#symbol = 'ρ'
   let g:airline#paste#symbol = 'Þ'
   let g:airline#paste#symbol = '∥'
-  let g:airline#extensions#syntastic#enabled=1
+  let g:airline_extensions_add = ['neomake']
   let g:airline#extensions#nrrwrgn#enabled = 1
   let g:airline#extensions#hunks#enabled = 0
 
