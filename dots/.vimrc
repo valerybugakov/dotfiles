@@ -90,8 +90,8 @@ Plug 'dkprice/vim-easygrep'
   endif
 
 """""" JavaScript
-" Plug 'jelera/vim-javascript-syntax'
-" Plug 'pangloss/vim-javascript'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'pangloss/vim-javascript'
 " Plug 'maxmellon/vim-jsx-pretty'
 "   let g:vim_jsx_pretty_colorful_config = 1
 "   let g:vim_jsx_pretty_enable_jsx_highlight = 1
