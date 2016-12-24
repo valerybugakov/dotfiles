@@ -1,16 +1,43 @@
-snippet cc "React component skeleton" b
+snippet rcc "React component class" b
 import React, { Component } from 'react'
+import classNames from 'classnames/bind'
 import styles from './styles.css'
+
+const cn = classNames.bind(styles)
 
 class $1 extends Component {
   render() {
 		return (
-			<div>
-				...
+			<div className={cn('$2')}>
+				$3
 			</div>
 		)
   }
 }
 
 export default $1
+endsnippet
+
+snippet rc "React stateless component" b
+import React from 'react'
+import classNames from 'classnames/bind'
+import styles from './styles.css'
+
+const cn = classNames.bind(styles)
+
+const $1 = (${2:{ ${3:value} }}) => (
+	<div className={cn('$4')}>
+		$5
+	</div>
+}
+
+export default $1
+endsnippet
+
+snippet cl
+console.log(${1:'${2:value}'})
+endsnippet
+
+snippet flw
+/* @flow */
 endsnippet

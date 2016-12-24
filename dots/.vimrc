@@ -20,7 +20,7 @@ Plug 'SirVer/ultisnips'
   let g:UltiSnipsExpandTrigger = '<C-e>'
   let g:UltiSnipsJumpForwardTrigger = '<tab>'
   let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-  let g:UltiSnipsSnippetsDir='~/dotfiles/.vim/.vim/ultisnipssnippets'
+  let g:UltiSnipsSnippetDirectories=['UltiSnips', $HOME.'/dotfiles/dots/.vim/UltiSnips']
 Plug 'ervandew/supertab'
   let g:SuperTabDefaultCompletionType = '<C-n>'
 
@@ -104,6 +104,7 @@ Plug 'ternjs/tern_for_vim'
 Plug 'crusoexia/vim-javascript-lib'
 Plug 'mxw/vim-jsx'
   let g:jsx_ext_required = 0
+Plug '1995eaton/vim-better-javascript-completion'
 " Plug 'jsx/jsx.vim'
 " Plug 'moll/vim-node'
 " Plug 'ahayman/vim-nodejs-complete'
