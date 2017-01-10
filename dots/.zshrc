@@ -2,6 +2,107 @@ ZSH=$HOME/.oh-my-zsh
 # Themes folder ~/.oh-my-zsh/themes/
 # ZSH_THEME="bira"
 
+setopt INC_APPEND_HISTORY SHARE_HISTORY HIST_IGNORE_DUPS HIST_IGNORE_ALL_DUPS HIST_REDUCE_BLANKS HIST_IGNORE_SPACE HIST_NO_STORE HIST_VERIFY
+setopt EXTENDED_HISTORY HIST_SAVE_NO_DUPS HIST_EXPIRE_DUPS_FIRST HIST_FIND_NO_DUPS APPEND_HISTORY
+setopt CORRECT MENUCOMPLETE ALL_EXPORT
+setopt notify globdots correct pushdtohome cdablevars autolist
+setopt correctall autocd recexact longlistjobs
+setopt autoresume histignoredups pushdsilent
+setopt autopushd pushdminus extendedglob rcquotes mailwarning
+setopt complete_in_word
+setopt extended_glob
+setopt list_types
+setopt no_notify
+setopt printexitvalue
+setopt pushd_ignoredups
+setopt pushd_silent
+
+unsetopt bgnice autoparamslash
+
+# Modules
+# Set hsitory stuff.
+
+HISTFILE=$HOME/.zhistory
+HISTSIZE=10000
+SAVEHIST=10000
+
+# Key-bindings.
+
+autoload -U compinit
+compinit
+
+# HINT:
+#   '^[0d' - ctrl + left
+#   '^[0c' - ctrl + right
+#   '^[^[[D' - alt + left
+#   '^[^[[C' - alt + right
+#   '^[^[[3~' - alt + del
+
+bindkey '^I' complete-word # complete on tab, leave expansion to _expand
+bindkey '^[^[[D' backward-word
+bindkey '^[^[[C' forward-word
+bindkey '^[^[[3~' delete-world
+
+fc -R $HISTFILE
+
+# Auto-completion settings.
+
+zstyle ':completion::complete:*' use-cache on
+zstyle ':completion::complete:*' cache-path ~/.zsh/cache/$HOST
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-prompt '%SAt %p: Hit TAB for more, or the character to insert%s'
+zstyle ':completion:*' menu select=1 _complete _ignored _approximate
+zstyle -e ':completion:*:approximate:*' max-errors \
+    'reply=( $(( ($#PREFIX+$#SUFFIX)/2 )) numeric )'
+zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
+zstyle ':completion:*::::' completer _expand _complete _ignored _approximate
+zstyle -e ':completion:*:approximate:*' max-errors \
+    'reply=( $(( ($#PREFIX+$#SUFFIX)/2 )) numeric )'
+zstyle ':completion:*:expand:*' tag-order all-expansions
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*:descriptions' format '%B%d%b'
+zstyle ':completion:*:messages' format '%d'
+zstyle ':completion:*:warnings' format 'No matches for: %d'
+zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+zstyle ':completion:*:*:kill:*:processes' command 'ps --forest -A -o pid,user,cmd'
+zstyle ':completion:*:processes-names' command 'ps axho command'
+
+[[ -f /usr/bin/grc ]] && {
+  alias ping="grc --colour=auto ping"
+  alias traceroute="grc --colour=auto traceroute"
+  alias make="grc --colour=auto make"
+  alias diff="grc --colour=auto diff"
+  alias cvs="grc --colour=auto cvs"
+  alias netstat="grc --colour=auto netstat"
+}
+
+### Handy Extract Program
+
+extract () {
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2)   tar xvjf $1        ;;
+            *.tar.gz)    tar xvzf $1     ;;
+            *.bz2)       bunzip2 $1       ;;
+            *.rar)       unrar x $1     ;;
+            *.gz)        gunzip $1     ;;
+            *.tar)       tar xvf $1        ;;
+            *.tbz2)      tar xvjf $1      ;;
+            *.tgz)       tar xvzf $1       ;;
+            *.zip)       unzip $1     ;;
+            *.Z)         uncompress $1  ;;
+            *.7z)        7z x $1    ;;
+            *)           echo "'$1' cannot be extracted via >extract<" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
+}
+
 # Plugins folder ~/.oh-my-zsh/plugins/*
 plugins=(git rails ruby bundler)
 source $ZSH/oh-my-zsh.sh
@@ -257,7 +358,7 @@ export PATH="/opt/local/share:/opt/local/bin:/opt/local/sbin:$PATH"
 
 # export NVM_DIR="/Users/bugakov/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-. ~/.nvm/nvm.sh
+# . ~/.nvm/nvm.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -265,3 +366,13 @@ export PATH="/opt/local/share:/opt/local/bin:/opt/local/sbin:$PATH"
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
 ##Neovim cursor shape support
 export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f /Users/val/Downloads/google-cloud-sdk/path.zsh.inc ]; then
+  source '/Users/val/Downloads/google-cloud-sdk/path.zsh.inc'
+fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f /Users/val/Downloads/google-cloud-sdk/completion.zsh.inc ]; then
+  source '/Users/val/Downloads/google-cloud-sdk/completion.zsh.inc'
+fi

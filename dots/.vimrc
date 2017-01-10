@@ -90,7 +90,7 @@ Plug 'dkprice/vim-easygrep'
   endif
 
 """""" JavaScript
-" Plug 'jelera/vim-javascript-syntax'
+Plug 'jelera/vim-javascript-syntax'
 " Plug 'pangloss/vim-javascript'
 " Plug 'maxmellon/vim-jsx-pretty'
 "   let g:vim_jsx_pretty_colorful_config = 1
@@ -125,41 +125,58 @@ Plug 'groenewege/vim-less'
 
 """""" UI
 Plug 'chrisbra/vim-autoread'
-Plug 'neomake/neomake'
-  " let g:neomake_verbose = 3
-  let g:neomake_javascript_eslint_maker = {
-        \ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,' .
-          \ '%W%f: line %l\, col %c\, Warning - %m',
-        \ 'exe': "eslint_d",
-        \ 'args': ['--parser=babel-eslint', '-f', 'compact', '--rule', '{"no-console":[1]}'],
-        \ }
+Plug 'w0rp/ale'
+  let g:ale_echo_msg_error_str = 'E'
+  let g:ale_echo_msg_warning_str = 'W'
+  let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+  let g:ale_sign_error = ' '
+  let g:ale_sign_warning = ' '
+  let g:ale_javascript_eslint_executable = 'eslint_d'
+  let g:ale_linters = {'javascript': ['eslint', 'flow'], 'html': []}
 
-  " Advanced flow errors
-  " https://github.com/ryyppy/flow-vim-quickfix
-  function! StrTrim(txt)
-    return substitute(a:txt, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
-  endfunction
+  " if I become annoyed about ALE showing errors for half-typed text, perhaps
+  " I'll want to uncomment these:
+  ""let g:ale_lint_on_save = 1
+  ""let g:ale_lint_delay = 1000
+  ""let g:ale_lint_on_text_changed = 0
 
-  let g:neomake_javascript_enabled_makers = ['eslint']
-  let g:neomake_jsx_enabled_makers = ['eslint'] " temp hack to get flow working with Neomake
-
-  let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
-
-  if findfile('.flowconfig', '.;') !=# ''
-    let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
-    if g:flow_path != 'flow not found'
-      let g:neomake_javascript_flow_maker = {
-            \ 'exe': 'sh',
-            \ 'args': ['-c', g:flow_path.' --json 2> /dev/null | flow-vim-quickfix'],
-            \ 'errorformat': '%E%f:%l:%c\,%n: %m',
-            \ 'cwd': '%:p:h'
-            \ }
-      let g:neomake_javascript_enabled_makers = g:neomake_javascript_enabled_makers + [ 'flow']
-      let g:neomake_jsx_enabled_makers = g:neomake_jsx_enabled_makers + [ 'flow']
-    endif
-  endif
-
-  autocmd VimEnter,BufWritePost * Neomake
+" Plug 'neomake/neomake'
+"   " let g:neomake_verbose = 3
+"   " let g:neomake_open_list=2
+"   " let g:neomake_list_height=20
+"   let g:neomake_javascript_eslint_maker = {
+"         \ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,' .
+"           \ '%W%f: line %l\, col %c\, Warning - %m',
+"         \ 'exe': "eslint_d",
+"         \ 'args': ['--parser=babel-eslint', '-f', 'compact', '--rule', '{"no-console":[1]}'],
+"         \ }
+"
+"   " Advanced flow errors
+"   " https://github.com/ryyppy/flow-vim-quickfix
+"   function! StrTrim(txt)
+"     return substitute(a:txt, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
+"   endfunction
+"
+"   let g:neomake_javascript_enabled_makers = ['eslint']
+"   let g:neomake_jsx_enabled_makers = ['eslint'] " temp hack to get flow working with Neomake
+"
+"   let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
+"
+"   if findfile('.flowconfig', '.;') !=# ''
+"     let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
+"     if g:flow_path != 'flow not found'
+"       let g:neomake_javascript_flow_maker = {
+"             \ 'exe': 'sh',
+"             \ 'args': ['-c', g:flow_path.' --json 2> /dev/null | flow-vim-quickfix'],
+"             \ 'errorformat': '%E%f:%l:%c\,%n: %m',
+"             \ 'cwd': '%:p:h'
+"             \ }
+"       let g:neomake_javascript_enabled_makers = g:neomake_javascript_enabled_makers + [ 'flow']
+"       let g:neomake_jsx_enabled_makers = g:neomake_jsx_enabled_makers + [ 'flow']
+"     endif
+"   endif
+"
+"   autocmd VimEnter,BufWritePost * Neomake
 
 Plug 'airblade/vim-gitgutter'
 Plug 'kien/rainbow_parentheses.vim'
@@ -192,7 +209,10 @@ Plug 'bling/vim-airline'       " UI statusbar niceties
   let g:airline#paste#symbol = 'ρ'
   let g:airline#paste#symbol = 'Þ'
   let g:airline#paste#symbol = '∥'
-  let g:airline_extensions_add = ['neomake']
+ " ALE (linting) integration
+  let g:airline#extensions#ale#error_symbol = 'E:'
+  let g:airline#extensions#ale#warning_symbol = 'W:'
+  " let g:airline_extensions_add = ['neomake']
   let g:airline#extensions#nrrwrgn#enabled = 1
   let g:airline#extensions#hunks#enabled = 0
 
