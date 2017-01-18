@@ -1,1 +1,1 @@
-/Users/bugakov/.vimrc
+/Users/val/.vimrc

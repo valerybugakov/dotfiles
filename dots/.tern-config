@@ -4,7 +4,6 @@
     "browser",
     "underscore",
     "moment",
-    "jquery",
     "ecma5",
     "ecma6",
     "ecma7"

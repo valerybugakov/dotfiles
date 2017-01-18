@@ -18,12 +18,11 @@ Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
   let g:UltiSnipsEditSplit='vertical'
   let g:UltiSnipsExpandTrigger = '<C-e>'
-  let g:UltiSnipsJumpForwardTrigger = '<tab>'
-  let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+  let g:UltiSnipsJumpForwardTrigger = '<c-j>'
+  let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
   let g:UltiSnipsSnippetDirectories=['UltiSnips', $HOME.'/dotfiles/dots/.vim/UltiSnips']
 Plug 'ervandew/supertab'
   let g:SuperTabDefaultCompletionType = '<C-n>'
-
 Plug 'scrooloose/nerdtree'
   let g:NERDTreeAutoCenter          = 1
   let g:NERDTreeAutoCenterThreshold = 8
@@ -36,12 +35,17 @@ Plug 'scrooloose/nerdtree'
   let g:NERDTreeMinimalUI           = 1
 " Plug 'low-ghost/nerdtree-fugitive'
 " Plug 'Xuyuanp/nerdtree-git-plugin'
-" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'tpope/vim-repeat'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+  let g:NERDTreeLimitedSyntax = 1
+  let g:NERDTreeDisableExactMatchHighlight = 1
+  let g:NERDTreeDisablePatternMatchHighlight = 1
+  let g:NERDTreeFileExtensionHighlightFullName = 1
 
+Plug 'tpope/vim-repeat'
 Plug 'Valloric/YouCompleteMe'
   let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
   let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+  let g:ycm_min_num_of_chars_for_completion = 1
 Plug 'troydm/easybuffer.vim'
   let g:easybuffer_sort_mode = 's'
 Plug 'vim-scripts/camelcasemotion'
@@ -92,21 +96,25 @@ Plug 'dkprice/vim-easygrep'
 """""" JavaScript
 Plug 'jelera/vim-javascript-syntax'
 " Plug 'pangloss/vim-javascript'
+Plug 'chemzqm/vim-jsx-improve'
+  let g:jsx_ext_required = 0
 " Plug 'maxmellon/vim-jsx-pretty'
 "   let g:vim_jsx_pretty_colorful_config = 1
 "   let g:vim_jsx_pretty_enable_jsx_highlight = 1
 Plug 'othree/yajs.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
-  let g:used_javascript_libs = 'jquery,underscore,react,rambda'
+  let g:used_javascript_libs = 'underscore,react,rambda'
 Plug 'othree/es.next.syntax.vim'
 
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
+  let g:tern_request_timeout = 5
+  let g:tern_show_argument_hints='on_hold'
+  let g:tern_show_signature_in_pum = 1
 Plug 'crusoexia/vim-javascript-lib'
-Plug 'mxw/vim-jsx'
-  let g:jsx_ext_required = 0
+" Plug 'mxw/vim-jsx'
+"   let g:jsx_ext_required = 0
 Plug '1995eaton/vim-better-javascript-completion'
-" Plug 'jsx/jsx.vim'
-" Plug 'moll/vim-node'
+Plug 'moll/vim-node'
 " Plug 'ahayman/vim-nodejs-complete'
 
 Plug 'elzr/vim-json'
@@ -124,12 +132,12 @@ Plug 'lukaszb/vim-web-indent'
 Plug 'groenewege/vim-less'
 
 """""" UI
-Plug 'chrisbra/vim-autoread'
+" Plug 'chrisbra/vim-autoread'
 Plug 'w0rp/ale'
   let g:ale_echo_msg_error_str = 'E'
   let g:ale_echo_msg_warning_str = 'W'
   let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-  let g:ale_sign_error = ' '
+  " let g:ale_sign_error = '😱' " ' '
   let g:ale_sign_warning = ' '
   let g:ale_javascript_eslint_executable = 'eslint_d'
   let g:ale_linters = {'javascript': ['eslint', 'flow'], 'html': []}
@@ -184,8 +192,6 @@ Plug 'wting/rust.vim'
 Plug 'chrisbra/color_highlight'
 Plug 'jonathanfilip/vim-lucius'
 Plug 'benjaminwhite/Benokai'
-Plug 'jaxbot/semantic-highlight.vim'
-  let g:semanticEnableFileTypes = ['javascript', 'javascript.jsx', 'coffee', 'py', 'rb']
 Plug 'w0ng/vim-hybrid'
   let g:hybrid_custom_term_colors = 1
   let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
@@ -230,12 +236,23 @@ Plug 'bling/vim-airline'       " UI statusbar niceties
   let g:airline#extensions#tabline#tab_min_count = 1
   let g:airline#extensions#tabline#show_close_button = 0
 
+Plug 'jaxbot/semantic-highlight.vim'
+  let g:semanticEnableFileTypes = ['javascript', 'javascript.jsx', 'coffee', 'py', 'rb']
+
 " """"""" Templates
 Plug 'othree/html5.vim'
 Plug 'digitaltoad/vim-jade'
 Plug 'mattn/emmet-vim'
   " Let me expand emmet abbr with <TAB>
   let g:user_emmet_expandabbr_key = ',<Tab>'
+  let g:user_emmet_settings = {
+  \  'javascript' : {
+  \      'extends' : 'jsx',
+  \  },
+  \  'javascript.jsx' : {
+  \      'extends' : 'jsx',
+  \  },
+  \}
 
 Plug 'dag/vim2hs'
 Plug 'tpope/vim-endwise'
@@ -275,45 +292,31 @@ else
 
   nmap <c-p> :FZF<CR>
 
-  " Plug 'ryanoasis/vim-devicons'
-  " " -----------------------------------------------------------------------------
-  " " SETTINGS - NERDTree
-  " " -----------------------------------------------------------------------------
+  Plug 'ryanoasis/vim-devicons'
+  " -----------------------------------------------------------------------------
+  " SETTINGS - devicons
+  " -----------------------------------------------------------------------------
+  let g:WebDevIconsOS                           = 'Darwin'
+  let g:WebDevIconsUnicodeDecorateFolderNodes   = 1
+  let g:webdevicons_conceal_nerdtree_brackets   = 1
+  let g:WebDevIconsNerdTreeAfterGlyphPadding    = ' '
+  let g:WebDevIconsUnicodeGlyphDoubleWidth      = 1
+  let g:WebDevIconsNerdTreeGitPlugForceVAlign   = 0
 
-  " " -----------------------------------------------------------------------------
-  " " SETTINGS - devicons
-  " " -----------------------------------------------------------------------------
-  " let g:WebDevIconsOS                           = 'Darwin'
-  " let g:WebDevIconsUnicodeDecorateFolderNodes   = 1
-  " let g:webdevicons_conceal_nerdtree_brackets   = 1
-  " let g:WebDevIconsNerdTreeAfterGlyphPadding    = ' '
-  " let g:WebDevIconsUnicodeGlyphDoubleWidth      = 1
-  " let g:WebDevIconsNerdTreeGitPlugForceVAlign = 0
-  "
-  " let g:NERDTreeFileExtensionHighlightFullName = 1
-  " let g:NERDTreeExtensionHighlightColor = {
-  "   \ 'coffee': 'f7fdb3',
-  "   \ 'babelrc': 'ce93d8',
-  "   \ 'eslintrc': 'b6b3fe',
-  "   \ 'js':  'f0db4f',
-  "   \ 'css': '90e255',
-  "   \ 'jade': 'F16529'
-  "   \}
-  "
-  " " Fix half display issue
-  " let s:blank = ''
-  " let g:NERDTreeExactMatchHighlightColor = {
-  "   \ 'dropbox'                          : s:blank,
-  "   \ '.ds_store'                        : s:blank,
-  "   \ '.gitconfig'                       : s:blank,
-  "   \ '.gitignore'                       : s:blank,
-  "   \ '.bashrc'                          : s:blank,
-  "   \ '.bashprofile'                     : s:blank,
-  "   \ 'favicon.ico'                      : s:blank,
-  "   \ 'license'                          : s:blank,
-  "   \ 'node_modules'                     : s:blank,
-  "   \ 'procfile'                         : s:blank,
-  "   \}
+  " Fix half display issue
+  let s:blank = ''
+  let g:NERDTreeExactMatchHighlightColor = {
+    \ 'dropbox'                          : s:blank,
+    \ '.ds_store'                        : s:blank,
+    \ '.gitconfig'                       : s:blank,
+    \ '.gitignore'                       : s:blank,
+    \ '.bashrc'                          : s:blank,
+    \ '.bashprofile'                     : s:blank,
+    \ 'favicon.ico'                      : s:blank,
+    \ 'license'                          : s:blank,
+    \ 'node_modules'                     : s:blank,
+    \ 'procfile'                         : s:blank,
+    \}
 endif
 
 call plug#end()
@@ -546,6 +549,7 @@ set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 set completeopt-=preview
+" set completeopt=longest,menuone,preview
 
 set tabstop=2
 set shiftwidth=2
@@ -554,7 +558,7 @@ set smarttab
 set autoindent
 set smartindent
 set mouse=a
-set re=1 " Use old regex engine for better performance
+set regexpengine=1 " Use old regex engine for better performance
 set cursorline
 set timeoutlen=200
 
@@ -592,12 +596,16 @@ au FocusLost * silent! wa
 autocmd FileType javascript noremap <buffer> <c-f> :call JsBeautify()<cr>
 " autocmd FileType javascript :SemanticHighlight()<CR>
 autocmd FileType javascript setlocal omnifunc=tern#Complete
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
-autocmd BufRead,BufNewFile *.scss set filetype=scss.css
 autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
-autocmd BufRead,BufNewFile *.hamlc setf haml
 
-au BufRead *.js set makeprg=eslint\ %
+autocmd BufRead,BufNewFile *.hamlc setf haml
+autocmd BufRead,BufNewFile *.scss setf scss.css
+autocmd BufRead,BufNewFile, *rc setf javascript
+
+" au BufRead *.js set makeprg=eslint\ %
 " Use tab to scroll through autocomplete menus
 "autocmd VimEnter * imap <expr> <Tab> pumvisible() ? "<C-N>" : "<Tab>"
 "autocmd VimEnter * imap <expr> <S-Tab> pumvisible() ? "<C-P>" : "<S-Tab>"
@@ -652,11 +660,24 @@ command! OpenChangedFiles :call OpenChangedFiles()
 " INIT
 " -----------------------------------------------------------------------------
 
-" if exists("g:loaded_webdevicons")
-"   call webdevicons#refresh()
-" endif
+if exists("g:loaded_webdevicons")
+  call webdevicons#refresh()
+endif
 
 " Sad truth :(
-" set tabstop=4
-" set shiftwidth=4
-" set softtabstop=4
+function! SetSadTabWidth()
+  set tabstop=4
+  set shiftwidth=4
+  set softtabstop=4
+endfunction
+command! SadTabWidth :call SetSadTabWidth()
+
+" Automatically create any non-existent directories before writing the buffer
+function! s:Mkdir()
+  let dir = expand('%:p:h')
+  if !isdirectory(dir)
+    call mkdir(dir, 'p')
+    echo 'Created non-existing directory: '.dir
+  endif
+endfunction
+autocmd BufWritePre * call s:Mkdir()
