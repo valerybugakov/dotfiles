@@ -29,17 +29,17 @@ Plug 'scrooloose/nerdtree'
   let g:NERDTreeChDirMode           = 2
   let g:NERDTreeHighlightCursorline = 1
   let g:NERDTreeIgnore              = ['.DS_Store', '.git$[[dir]]', 'target$[[dir]]']
-  " let g:NERDTreeWinSize             = 50
+  let g:NERDTreeWinSize             = 50
   let g:NERDTreeShowHidden          = 1
   let g:NERDTreeShowLineNumbers     = 0
   let g:NERDTreeMinimalUI           = 1
 " Plug 'low-ghost/nerdtree-fugitive'
 " Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-  let g:NERDTreeLimitedSyntax = 1
-  let g:NERDTreeDisableExactMatchHighlight = 1
-  let g:NERDTreeDisablePatternMatchHighlight = 1
-  let g:NERDTreeFileExtensionHighlightFullName = 1
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+"   let g:NERDTreeLimitedSyntax = 1
+"   let g:NERDTreeDisableExactMatchHighlight = 1
+"   let g:NERDTreeDisablePatternMatchHighlight = 1
+"   let g:NERDTreeFileExtensionHighlightFullName = 1
 
 Plug 'tpope/vim-repeat'
 Plug 'Valloric/YouCompleteMe'
