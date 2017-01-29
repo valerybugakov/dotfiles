@@ -95,7 +95,7 @@ Plug 'dkprice/vim-easygrep'
 
 """""" JavaScript
 Plug 'jelera/vim-javascript-syntax'
-" Plug 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript'
 Plug 'chemzqm/vim-jsx-improve'
   let g:jsx_ext_required = 0
 " Plug 'maxmellon/vim-jsx-pretty'
@@ -427,7 +427,8 @@ let g:mapleader = ","
   nnoremap <leader>f :Ack! ""<Left>
   nmap <Leader>/ :tabo<CR>:BufOnly<CR>
   nmap <Leader>h :SemanticHighlightToggle<CR>
-  nmap <Leader>.  <Esc>f i<CR><Esc>l
+  " nmap <Leader>.  <Esc>f i<CR><Esc>l
+  nmap <Leader>.  <Esc>/\%<c-r>=line('.')<cr>l\( \\|>\\|<\)<CR>i<CR><Esc>l
 
   if has("gui_running")
     nmap <leader>p :CtrlPMRU<cr>

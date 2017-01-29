@@ -151,6 +151,7 @@ prompt_pure_setup "$@"
 #----------------------------------- Aliases -----------------------------------#
 
 alias vi='vim'
+alias n='nvim'
 alias supy='sudo python'
 alias py='python'
 alias rc='rails console'
