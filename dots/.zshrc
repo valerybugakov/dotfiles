@@ -150,6 +150,12 @@ prompt_pure_setup "$@"
 
 #----------------------------------- Aliases -----------------------------------#
 
+gitCommitTicket() {
+  ticket=$1;
+  message=$2;
+  git commit -m "[${ticket}] ${message}";
+}
+alias ggc='gitCommitTicket'
 alias vi='vim'
 alias n='nvim'
 alias supy='sudo python'

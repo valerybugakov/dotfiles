@@ -528,6 +528,7 @@ set showcmd
 set cpoptions+=$
 set virtualedit=all
 set clipboard=unnamed
+set clipboard+=unnamedplus
 set gfn=Monaco:h16
 " set colorcolumn=120
 " e ++ff=unix
