@@ -156,10 +156,8 @@ gitCommitTicket() {
   git commit -m "[${ticket}] ${message}";
 }
 alias ggc='gitCommitTicket'
-alias vi='vim'
-alias n='nvim'
-alias supy='sudo python'
-alias py='python'
+
+# Rails
 alias rc='rails console'
 alias zc='zeus c'
 alias zs='zeus s'
@@ -167,18 +165,32 @@ alias zr='zeus rake'
 alias rdm='rake db:migrate'
 alias rdr='rake db:rollback'
 alias zrdm='zeus rake db:migrate'
+
+# Configs
 alias zshconf='vim ~/.zshrc'
 alias ohmyzsh='vim ~/.oh-my-zsh'
 alias vimconf='vim ~/.vimrc'
 alias hostsconf='sudo vim /etc/hosts'
 alias sshconf='vim ~/.ssh/config'
+
+# Docker
+alias dlast='docker ps -l -q'
+alias dclean='docker rm $(docker ps -a -q)'
+
+# Folders
 alias l='ls -lah'
 alias ll='ls -lAh'
 alias la='ls -lh'
 alias ls='ls -G'
 alias lsa='ls -lah'
+
+# Random
+alias vi='vim'
+alias n='nvim'
 alias grs='git reset --soft HEAD~1'
 alias ctags="`brew --prefix`/bin/ctags"
+alias supy='sudo python'
+alias py='python'
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
