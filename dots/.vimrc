@@ -130,9 +130,9 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'lukaszb/vim-web-indent'
 Plug 'groenewege/vim-less'
+" Plug 'fleischie/vim-styled-components'
 
 """""" UI
-" Plug 'chrisbra/vim-autoread'
 Plug 'w0rp/ale'
   let g:ale_echo_msg_error_str = 'E'
   let g:ale_echo_msg_warning_str = 'W'
@@ -260,6 +260,12 @@ Plug 'tpope/vim-endwise'
 " Plug 'tpope/vim-haml'
 
 " =========================================================
+
+if has("nvim")
+
+else
+  Plug 'chrisbra/vim-autoread'
+endif
 
 if has("gui_running")
   Plug 'ctrlpvim/ctrlp.vim'
@@ -598,7 +604,7 @@ au FocusLost * silent! wa
 autocmd FileType javascript noremap <buffer> <c-f> :call JsBeautify()<cr>
 " autocmd FileType javascript :SemanticHighlight()<CR>
 autocmd FileType javascript setlocal omnifunc=tern#Complete
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType css,js setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
