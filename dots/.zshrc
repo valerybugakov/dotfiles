@@ -296,3 +296,10 @@ if [ -f /Users/val/Downloads/google-cloud-sdk/completion.zsh.inc ]; then
 fi
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+export PATH="/usr/local/opt/opencv3/bin:$PATH"
+export PATH="/usr/local/opt/qt5/bin:$PATH"
+export PATH="/usr/local/Cellar/pyqt5/5.7.1_1:$PATH"
+export PATH="/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/bin:$PATH"
+# export PATH="~/Downloads/PyQt5_gpl-5.8:$PATH"
+export PYTHONPATH="~/Downloads/PyQt5_gpl-5.8:$PYTHONPATH"
+export JAVA_HOME="$(/usr/libexec/java_home)"

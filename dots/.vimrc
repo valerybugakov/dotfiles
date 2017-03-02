@@ -105,6 +105,7 @@ Plug 'othree/yajs.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
   let g:used_javascript_libs = 'underscore,react,rambda'
 Plug 'othree/es.next.syntax.vim'
+Plug 'jparise/vim-graphql'
 
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
   let g:tern_request_timeout = 5
