@@ -106,6 +106,7 @@ Plug 'othree/javascript-libraries-syntax.vim'
   let g:used_javascript_libs = 'underscore,react,rambda'
 Plug 'othree/es.next.syntax.vim'
 Plug 'jparise/vim-graphql'
+Plug 'leafgarland/typescript-vim'
 
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
   let g:tern_request_timeout = 5
@@ -514,6 +515,11 @@ nnoremap <silent> ,gf :vertical botright wincmd F<CR>
 nnoremap ,ocf :OpenChangedFiles<CR>
 " use ,F to jump to tag in a vertical split
 nnoremap <silent> ,F :let word=expand("<cword>")<CR>:vsp<CR>:wincmd w<cr>:exec("tag ". word)<cr>
+
+function! YRRunAfterMaps()
+  nnoremap Y   :<C-U>YRYankCount 'y$'<CR>
+endfunction
+nnoremap Y y$
 
 " ==========================================================
 " Basic Settings
