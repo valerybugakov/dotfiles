@@ -120,10 +120,12 @@ Plug 'moll/vim-node'
 " Plug 'ahayman/vim-nodejs-complete'
 
 Plug 'elzr/vim-json'
-Plug 'maksimr/vim-jsbeautify'
-Plug 'einars/js-beautify'
 Plug 'isRuslan/vim-es6'
-Plug 'kchmck/vim-coffee-script'
+Plug 'einars/js-beautify'
+Plug 'maksimr/vim-jsbeautify'
+" Plug 'kchmck/vim-coffee-script'
+Plug 'ruanyl/vim-fixmyjs'
+  let g:fixmyjs_executable = '/usr/local/bin/eslint_d'
 
 """""" Plugin ''CSS
 Plug 'JulesWang/css.vim'
@@ -608,16 +610,19 @@ au FocusLost * silent! wa
 " FileType specific changes
 " ============================================================
 
-autocmd FileType javascript noremap <buffer> <c-f> :call JsBeautify()<cr>
+" autocmd FileType javascript noremap <buffer> <c-f> :call JsBeautify()<cr>
 " autocmd FileType javascript :SemanticHighlight()<CR>
 autocmd FileType javascript setlocal omnifunc=tern#Complete
+autocmd FileType javascript set formatprg=prettier\ --single-quote\ --trailing-comma\ --stdin
+autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
+autocmd BufWritePre *.js :Fixmyjs
 autocmd FileType css,js setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 
-autocmd BufRead,BufNewFile *.hamlc setf haml
-autocmd BufRead,BufNewFile *.scss setf scss.css
+" autocmd BufRead,BufNewFile *.hamlc setf haml
+" autocmd BufRead,BufNewFile *.scss setf scss.css
 autocmd BufRead,BufNewFile, *rc setf javascript
 
 " au BufRead *.js set makeprg=eslint\ %
