@@ -124,7 +124,7 @@ Plug 'isRuslan/vim-es6'
 Plug 'einars/js-beautify'
 Plug 'maksimr/vim-jsbeautify'
 " Plug 'kchmck/vim-coffee-script'
-Plug 'ruanyl/vim-fixmyjs'
+" Plug 'ruanyl/vim-fixmyjs'
   " let g:fixmyjs_executable = '/usr/local/bin/eslint_d'
 
 """""" Plugin ''CSS
@@ -615,7 +615,7 @@ au FocusLost * silent! wa
 autocmd FileType javascript setlocal omnifunc=tern#Complete
 " autocmd FileType javascript set formatprg=prettier\ --single-quote\ --trailing-comma\ --stdin
 " autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
-autocmd BufWritePre *.js :Fixmyjs
+" autocmd BufWritePre *.js :Fixmyjs
 autocmd FileType css,js setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
