@@ -74,6 +74,7 @@ Plug 'Lokaltog/vim-easymotion'
   let g:EasyMotion_smartcase = 1
 
 Plug 'paradigm/TextObjectify'
+Plug 'justinj/vim-textobj-reactprop'
 
 Plug 'mileszs/ack.vim'
   cabbrev Ack Ack!
