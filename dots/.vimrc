@@ -9,6 +9,8 @@ call plug#begin('~/.vim_bundle')
 " ==========================================================
 "
 """"""" General plugins
+Plug 'kana/vim-textobj-user'
+" Plug 'justinj/vim-textobj-reactprop'
 Plug 'tpope/vim-fugitive'
 Plug 'idanarye/vim-merginal'
 Plug 'majutsushi/tagbar'
@@ -74,7 +76,6 @@ Plug 'Lokaltog/vim-easymotion'
   let g:EasyMotion_smartcase = 1
 
 Plug 'paradigm/TextObjectify'
-Plug 'justinj/vim-textobj-reactprop'
 
 Plug 'mileszs/ack.vim'
   cabbrev Ack Ack!
@@ -105,7 +106,8 @@ Plug 'chemzqm/vim-jsx-improve'
 Plug 'othree/yajs.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
   let g:used_javascript_libs = 'underscore,react,rambda'
-Plug 'othree/es.next.syntax.vim'
+" Plug 'othree/es.next.syntax.vim'
+" Plug 'kern/vim-es7'
 Plug 'jparise/vim-graphql'
 Plug 'leafgarland/typescript-vim'
 
@@ -126,7 +128,7 @@ Plug 'einars/js-beautify'
 Plug 'maksimr/vim-jsbeautify'
 " Plug 'kchmck/vim-coffee-script'
 " Plug 'ruanyl/vim-fixmyjs'
-  " let g:fixmyjs_executable = '/usr/local/bin/eslint_d'
+"   let g:fixmyjs_executable = '/usr/local/bin/eslint_d'
 
 """""" Plugin ''CSS
 Plug 'JulesWang/css.vim'
