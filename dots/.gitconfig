@@ -2,10 +2,14 @@
   name = Valery Bugakov
   email = skymk1@gmail.com
 
+[apply]
+  whitespace = nowarn
+
 [github "user"]
 
 [merge]
   tool = vimdiff
+  summary = true
 
 [color]
   branch = auto
@@ -32,21 +36,17 @@
   editor = vim
   autocrlf = input
   excludesfile = ~/.gitignore
+  whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+  quotepath = false
 
 [url "https://"]
   insteadOf = git://
 
 [push]
-  default = simple
+  default = matching
 
 [credential]
   helper = osxkeychain
 
 [diff]
   compactionHeuristic = true
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
