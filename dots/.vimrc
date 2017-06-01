@@ -613,6 +613,7 @@ au FocusLost * silent! wa
 " FileType specific changes
 " ============================================================
 
+autocmd BufNewFile,BufRead *.pcss set filetype=css
 " autocmd FileType javascript noremap <buffer> <c-f> :call JsBeautify()<cr>
 " autocmd FileType javascript :SemanticHighlight()<CR>
 autocmd FileType javascript setlocal omnifunc=tern#Complete

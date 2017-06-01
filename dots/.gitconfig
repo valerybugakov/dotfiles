@@ -50,3 +50,5 @@
 
 [diff]
   compactionHeuristic = true
+[http "https://gopkg.in"]
+	followRedirects = true

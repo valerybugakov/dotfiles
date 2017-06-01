@@ -372,3 +372,5 @@ fi
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export JAVA_HOME="$(/usr/libexec/java_home)"
 eval "$(rbenv init -)"
+export DEIS_PROFILE=ebaymag
+export PATH="$HOME/go/bin:$PATH"

@@ -4,7 +4,7 @@ function! airline#extensions#tabline#formatters#jsformatter#format(bufnr, buffer
 
   if filename == 'index.js' || filename == 'index.jsx' || filename == 'index.ts' || filename == 'component.js'
     return fnamemodify(buf, ':p:h:t') . '/i'
-  elseif filename == 'styles.css' || filename == 'styles.js'
+  elseif filename == 'styles.css' || filename == 'styles.js' || filename == 'styles.pcss'
     return fnamemodify(buf, ':p:h:t') . '/s'
   else
     return filename
