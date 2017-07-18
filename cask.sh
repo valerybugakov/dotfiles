@@ -36,6 +36,7 @@ apps=(
   iterm2
   hyper
 
+  cerebro
   anybar
   postman
   rescuetime
