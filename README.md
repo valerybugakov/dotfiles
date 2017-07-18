@@ -1,3 +1,5 @@
 ## Installation
 
-`curl https://raw.githubusercontent.com/valerybugakov/dotfiles/master/install.sh | sh`
+```
+curl https://raw.githubusercontent.com/valerybugakov/dotfiles/master/remote.sh | sh
+```

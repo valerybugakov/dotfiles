@@ -80,19 +80,27 @@ Plug 'paradigm/TextObjectify'
 Plug 'mileszs/ack.vim'
   cabbrev Ack Ack!
   cabbrev Ag Ag!
-  let g:ackprg = 'ag --vimgrep'
+  " let g:ackprg = 'ag --vimgrep'
+  " let g:ackprg = 'rg --vimgrep --no-heading'
+  let g:ackprg = 'rg --vimgrep'
   let g:ackhighlight = 1
 Plug 'skwp/greplace.vim'
 Plug 'dkprice/vim-easygrep'
-  let g:EasyGrepCommand=1
-  let g:EasyGrepRecursive=1
-  let g:EasyGrepHidden=0
-  let g:EasyGrepFilesToExclude='*.swp'
+  let g:EasyGrepCommand = 1
+  let g:EasyGrepRecursive = 1
+  let g:EasyGrepHidden = 0
+  let g:EasyGrepFilesToExclude = '*.swp'
 
-  if executable('ag')
-     " Note we extract the column as well as the file and line number
-     set grepprg=ag\ --vimgrep
-     set grepformat=%f:%l:%c%m
+  " if executable('ag')
+  "   " Note we extract the column as well as the file and line number
+  "   set grepprg = 'ag --vimgrep'
+  "   set grepformat = %f:%l:%c%m
+  " endif
+
+  if executable('rg')
+    " Note we extract the column as well as the file and line number
+    set grepprg = 'rg --vimgrep --no-heading --color=never'
+    set grepformat = %f:%l:%c%m
   endif
 
 """""" JavaScript
@@ -113,7 +121,7 @@ Plug 'leafgarland/typescript-vim'
 
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
   let g:tern_request_timeout = 5
-  let g:tern_show_argument_hints='on_hold'
+  let g:tern_show_argument_hints = 'on_hold'
   let g:tern_show_signature_in_pum = 1
 Plug 'crusoexia/vim-javascript-lib'
 " Plug 'mxw/vim-jsx'
@@ -275,36 +283,44 @@ else
   Plug 'chrisbra/vim-autoread'
 endif
 
-if has("gui_running")
-  Plug 'ctrlpvim/ctrlp.vim'
-  Plug 'FelikZ/ctrlp-py-matcher', { 'do': './install.sh'  }
-    let g:ctrlp_by_filename = 0                         " Search by filename
-    let g:ctrlp_match_window_bottom = 1                 " show at bottom of window
-    let g:ctrlp_working_path_mode = 'ra'                " our working path is our vcs project or the current directory
-    let g:ctrlp_mru_files = 1                           " enable most recently used files feature
-    let g:ctrlp_jump_to_buffer = 2                      " jump to tab and buffer if already open
-    let g:ctrlp_open_new_file = 'r'                     " open selections in a vertical split
-    let g:ctrlp_open_multiple_files = 'vr'              " opens multiple selections in vertical splits to the right
-    let g:ctrlp_arg_map = 0
-    let g:ctrlp_split_window = 0
-    let g:ctrlp_max_height = 40                         " restrict match list to a maxheight of 40
-    let g:ctrlp_use_caching = 0                         " don't cache, we want new list immediately each time
-    let g:ctrlp_max_files = 0                           " no restriction on results/file list
-    let g:ctrlp_working_path_mode = ''
-    let g:ctrlp_dont_split = 'NERD_tree_2'              " don't split these buffers
-    let g:ctrlp_custom_ignore = {
-      \ 'dir':  '\v[\/]\.(git|hg|svn|gitkeep)$',
-      \ 'file': '\v\.(svg|exe|so|dll|log|gif|jpg|jpeg|png|psd|DS_Store|ctags|gitattributes)$'
-      \ }
-    let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-    let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-else
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
-  Plug 'junegunn/fzf.vim'
-    set rtp+=/usr/local/opt/fzf
-    let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'FelikZ/ctrlp-py-matcher', { 'do': './install.sh'  }
+  let g:ctrlp_by_filename = 0                         " Search by filename
+  let g:ctrlp_match_window_bottom = 1                 " show at bottom of window
+  let g:ctrlp_working_path_mode = 'ra'                " our working path is our vcs project or the current directory
+  let g:ctrlp_mru_files = 1                           " enable most recently used files feature
+  let g:ctrlp_jump_to_buffer = 2                      " jump to tab and buffer if already open
+  let g:ctrlp_open_new_file = 'r'                     " open selections in a vertical split
+  let g:ctrlp_open_multiple_files = 'vr'              " opens multiple selections in vertical splits to the right
+  let g:ctrlp_arg_map = 0
+  let g:ctrlp_split_window = 0
+  let g:ctrlp_max_height = 40                         " restrict match list to a maxheight of 40
+  let g:ctrlp_use_caching = 0                         " don't cache, we want new list immediately each time
+  let g:ctrlp_max_files = 0                           " no restriction on results/file list
+  let g:ctrlp_working_path_mode = ''
+  let g:ctrlp_dont_split = 'NERD_tree_2'              " don't split these buffers
+  let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]\.(git|hg|svn|gitkeep)$',
+    \ 'file': '\v\.(svg|exe|so|dll|log|gif|jpg|jpeg|png|psd|DS_Store|ctags|gitattributes)$'
+    \ }
+  let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+  " let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
-  nmap <c-p> :FZF<CR>
+  if executable('rg')
+    let g:ctrlp_user_command = 'rg %s --hidden --files --color=never --glob ""'
+    let g:ctrlp_switch_buffer = 'et'
+  endif
+
+if has("gui_running")
+
+else
+  " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
+  " Plug 'junegunn/fzf.vim'
+  "   set rtp+=/usr/local/opt/fzf
+  "   let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
+  "   " let $FZF_DEFAULT_COMMAND = 'rg %s --hidden --ignore .git --color=never --glob ""'
+  "
+  " nmap <c-p> :FZF<CR>
 
   Plug 'ryanoasis/vim-devicons'
   " -----------------------------------------------------------------------------
@@ -444,14 +460,14 @@ let g:mapleader = ","
   " nmap <Leader>.  <Esc>f i<CR><Esc>l
   nmap <Leader>.  <Esc>/\%<c-r>=line('.')<cr>l\( \\|>\\|<\)<CR>i<CR><Esc>l
 
-  if has("gui_running")
-    nmap <leader>p :CtrlPMRU<cr>
-    nmap <leader>o :CtrlPBuffer<cr>
-  else
+  " if has("gui_running")
+  "   nmap <leader>p :CtrlPMRU<cr>
+  "   nmap <leader>o :CtrlPBuffer<cr>
+  " else
     nmap <leader>p :Buffers<CR>
     nmap <leader>o :Ag<cr>
     nmap <leader>l :Lines<cr>
-  endif
+  " endif
 
 " Let me delete non-empty folders through netrw
 let g:netrw_localrmdir='rm -r'

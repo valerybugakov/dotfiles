@@ -8,7 +8,7 @@ TERMINFO_PATH=$HOME/xterm-256color-italic.terminfo
 # fi
 # mkdir -p $DOTFILES_PATH
 
-# git clone $DOTFILES_REPO $DOTFILES_PATH
+git clone $DOTFILES_REPO $DOTFILES_PATH
 find "$DOTFILES_PATH/dots" -name '.*' | xargs -I % ln -sfv % ~
 
 cat $DOTFILES_PATH/ohmyzsh.sh | sh

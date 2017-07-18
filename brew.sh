@@ -45,20 +45,21 @@ echo -e "setenv PATH $HOME/dotfiles/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/
 
 # OS X crutches
 crutches=(
-  vim --override-system-vi
-  neovim/neovim/neovim
+  vim --with-override-system-vi
+  neovim
 
   the_silver_searcher
   ack
   fzf
+  ripgrep
 
   gzip
   unzip
 
   bash
   shellcheck
-  ntfs-3g
 
+  cmake
   ctags
 
   htop-osx
@@ -85,21 +86,17 @@ brew install ${everythingelse[@]}
 languages=(
   nodejs
 
-  python
-  ansible
-
   scala
   sbt
 
   erlang
-
   go
-
+  rust
   racket
 
   postgresql
   redis
-  mongodb --with-openssl
+  mongodb
 
   rbenv
 )
@@ -107,7 +104,7 @@ languages=(
 brew install ${languages[@]}
 
 # MongoDB
-mkdir -p /data/db
+sudo mkdir -p /data/db
 
 # Terminal multiplexer
 brew install tmux
@@ -124,8 +121,6 @@ export NVM_DIR="$HOME/.nvm"
 source $(brew --prefix nvm)/nvm.sh
 nvm install latest
 nvm use latest
-
-brew link --force openssl
 
 # Remove outdated versions from the cellar
 brew cleanup

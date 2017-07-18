@@ -6,6 +6,8 @@ brew tap caskroom/versions
 brew tap caskroom/fonts
 
 apps=(
+  macvim
+
   1password
 
   slack
@@ -14,7 +16,6 @@ apps=(
   screenhero
 
   java
-  the-unarchiver
 
   haskell-platform
 
@@ -52,6 +53,7 @@ apps=(
   karabiner-elements
 
   docker
+  osxfuse
 
   sublime-text
   intellij-idea-ce
