@@ -1,6 +1,5 @@
 DOTFILES_PATH=$HOME/dotfiles
 DOTFILES_REPO=https://github.com/valerybugakov/dotfiles.git
-FORMATTERS_PATH="${VUNDLE_PATH}/autoload/airline/extensions/tabline/formatters/"
 TERMINFO_PATH=$HOME/xterm-256color-italic.terminfo
 
 # if [ -d $DOTFILES_PATH ]; then
