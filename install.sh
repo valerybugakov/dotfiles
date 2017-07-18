@@ -8,6 +8,7 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 ./sketch.sh
 ./apm.sh
 ./dots.sh
+./osx.sh
 
 # Install Scm Breeze
 git clone git://github.com/ndbroadbent/scm_breeze.git ~/.scm_breeze

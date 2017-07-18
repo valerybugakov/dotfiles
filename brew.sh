@@ -19,6 +19,19 @@ brew tap homebrew/dupes
 brew install homebrew/dupes/grep
 brew install homebrew/dupes/screen
 
+utils=(
+  gnutls
+  gawk
+  binutils
+  coreutils
+  moreutils
+  findutils
+  m-cli
+)
+
+brew install ${utils[@]}
+sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
+
 # Subversions
 subversions=(
   git

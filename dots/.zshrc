@@ -387,3 +387,4 @@ fi
 # eval "$(rbenv init -)"
 export DEIS_PROFILE=ebaymag
 export PATH="$HOME/go/bin:$PATH"
+[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
