@@ -49,6 +49,7 @@ crutches=(
   ctags
 
   htop-osx
+  wget
   curl --with-openssl
   unrar
   ssh-copy-id

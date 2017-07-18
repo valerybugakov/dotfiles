@@ -51,7 +51,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer'  }
 Plug 'troydm/easybuffer.vim'
   let g:easybuffer_sort_mode = 's'
 Plug 'vim-scripts/camelcasemotion'
-Plug 'chrisbra/NrrwRgn'                             " :NR on visual-selected region to open it in narrowed window
+" Plug 'chrisbra/NrrwRgn'                             " :NR on visual-selected region to open it in narrowed window
 Plug 'nelstrom/vim-visual-star-search'              " Star(*) search for the whole selection in visual mode
 Plug 'tomtom/tcomment_vim'                          " gcc
 Plug 'tpope/vim-surround'                           " ds, cs}), yss<p>
@@ -264,7 +264,7 @@ Plug 'mattn/emmet-vim'
 
 Plug 'dag/vim2hs'
 Plug 'tpope/vim-endwise'
-" Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rails'
 " Plug 'tpope/vim-haml'
 
 " =========================================================
