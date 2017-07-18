@@ -10,13 +10,13 @@ apps=(
 
   1password
 
+  zoomus
   slack
   telegram
   skype
   screenhero
 
   java
-
   haskell-platform
 
   sequel-pro
@@ -35,11 +35,10 @@ apps=(
 
   iterm2
   hyper
-  rescuetime
+
   anybar
   postman
-  choosy
-  quitter
+  rescuetime
 
   flux
 
@@ -48,14 +47,13 @@ apps=(
   sopcast
   spotify
 
-  zoom
   ngrok
   karabiner-elements
 
   docker
   osxfuse
 
-  sublime-text
+  sublime-text-3
   intellij-idea-ce
   visual-studio-code
   atom
