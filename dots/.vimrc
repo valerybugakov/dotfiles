@@ -44,7 +44,7 @@ Plug 'scrooloose/nerdtree'
 "   let g:NERDTreeFileExtensionHighlightFullName = 1
 
 Plug 'tpope/vim-repeat'
-Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer'  }
   let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
   let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
   let g:ycm_min_num_of_chars_for_completion = 1
@@ -122,6 +122,7 @@ Plug '1995eaton/vim-better-javascript-completion'
 Plug 'moll/vim-node'
 " Plug 'ahayman/vim-nodejs-complete'
 
+Plug 'Galooshi/vim-import-js'
 Plug 'elzr/vim-json'
 Plug 'isRuslan/vim-es6'
 Plug 'einars/js-beautify'
@@ -276,7 +277,7 @@ endif
 
 if has("gui_running")
   Plug 'ctrlpvim/ctrlp.vim'
-  Plug 'FelikZ/ctrlp-py-matcher'
+  Plug 'FelikZ/ctrlp-py-matcher', { 'do': './install.sh'  }
     let g:ctrlp_by_filename = 0                         " Search by filename
     let g:ctrlp_match_window_bottom = 1                 " show at bottom of window
     let g:ctrlp_working_path_mode = 'ra'                " our working path is our vcs project or the current directory

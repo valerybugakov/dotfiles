@@ -1,30 +1,14 @@
-DOTFILES_PATH=$HOME/dotfiles
-DOTFILES_REPO=https://github.com/valerybugakov/dotfiles.git
-VUNDLE_PATH=$HOME/.vim/bundle/vundle
-VUNDLE_REPO=git://github.com/gmarik/Vundle.vim
-JSFORMATTER=./.vim/.vim/jsformatter.vim
-FORMATTERS_PATH="${VUNDLE_PATH}/autoload/airline/extensions/tabline/formatters/"
+# Install Homebrew
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-if [ -d $DOTFILES_PATH ]; then
-  sudo rm -r $DOTFILES_PATH
-fi
-mkdir -p $DOTFILES_PATH
-git clone $DOTFILES_REPO $DOTFILES_PATH
-find ~/dotfiles/dots -name '.*' | xargs -I % ln -sfv % ~
+# Install all software
+./brew.sh
+./cask.sh
+./npm.sh
+./sketch.sh
+./apm.sh
+./dots.sh
 
-cat $DOTFILES_PATH/ohmyzsh.sh | sh
-# sudo echo `which bash` >> /etc/shells
-# chsh -s /bin/zsh
-
-# mkdir -p $HOME/bin
-# curl -o $HOME/vim.tar.bz2 ftp://ftp.vim.org/pub/vim/unix/vim-7.4.tar.bz2
-# bzcat $HOME/vim.tar.bz2 > $HOME/vim.tar
-# tar xvf $HOME/vim.tar
-# cd $HOME/vim74 && make
-# ln -sf $HOME/vim74/src/vim $HOME/bin/
-
-git clone $VUNDLE_REPO $VUNDLE_PATH
-mkdir -p $FORMATTERS_PATH
-cp $JSFORMATTER $FORMATTERS_PATH
-
-vim +PluginInstall +qall
+# Install Scm Breeze
+git clone git://github.com/ndbroadbent/scm_breeze.git ~/.scm_breeze
+~/.scm_breeze/install.sh

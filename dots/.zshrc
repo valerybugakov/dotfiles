@@ -2,6 +2,20 @@ ZSH=$HOME/.oh-my-zsh
 # Themes folder ~/.oh-my-zsh/themes/
 # ZSH_THEME="bira"
 
+source /usr/local/share/antigen/antigen.zsh
+
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
+
+antigen bundle git
+antigen bundle command-not-found
+
+# Syntax highlighting bundle.
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# Tell Antigen that you're done.
+antigen apply
+
 # Plugins folder ~/.oh-my-zsh/plugins/*
 plugins=(git rails ruby bundler zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
@@ -369,8 +383,7 @@ if [ -f /Users/val/Downloads/google-cloud-sdk/completion.zsh.inc ]; then
   source '/Users/val/Downloads/google-cloud-sdk/completion.zsh.inc'
 fi
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-export JAVA_HOME="$(/usr/libexec/java_home)"
-eval "$(rbenv init -)"
+# export JAVA_HOME="$(/usr/libexec/java_home)"
+# eval "$(rbenv init -)"
 export DEIS_PROFILE=ebaymag
 export PATH="$HOME/go/bin:$PATH"
