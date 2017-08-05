@@ -199,12 +199,12 @@ Plug 'kien/rainbow_parentheses.vim'
 Plug 'wting/rust.vim'
 Plug 'chrisbra/color_highlight'
 Plug 'jonathanfilip/vim-lucius'
-Plug 'benjaminwhite/Benokai'
-Plug 'w0ng/vim-hybrid'
-  let g:hybrid_custom_term_colors = 1
-  let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
+" Plug 'benjaminwhite/Benokai'
+" Plug 'w0ng/vim-hybrid'
+  " let g:hybrid_custom_term_colors = 1
+  " let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
 Plug 'mhartington/oceanic-next'
-Plug 'altercation/vim-colors-solarized'
+" Plug 'altercation/vim-colors-solarized'
 Plug 'mkitt/tabline.vim'
 
 Plug 'bling/vim-airline'       " UI statusbar niceties
@@ -706,3 +706,11 @@ function! s:Mkdir()
   endif
 endfunction
 autocmd BufWritePre * call s:Mkdir()
+
+" Call macros on multiple lines in visual mode
+xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
+
+function! ExecuteMacroOverVisualRange()
+  echo "@".getcmdline()
+  execute ":'<,'>normal @".nr2char(getchar())
+endfunction

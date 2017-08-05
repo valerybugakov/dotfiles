@@ -238,6 +238,8 @@ prompt_pure_setup "$@"
 
 #----------------------------------- Aliases -----------------------------------#
 
+[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
+
 gitCommitTicket() {
   ticket=$1;
   message=$2;
@@ -383,8 +385,9 @@ if [ -f /Users/val/Downloads/google-cloud-sdk/completion.zsh.inc ]; then
   source '/Users/val/Downloads/google-cloud-sdk/completion.zsh.inc'
 fi
 
-# export JAVA_HOME="$(/usr/libexec/java_home)"
-# eval "$(rbenv init -)"
 export DEIS_PROFILE=ebaymag
+
+# export JAVA_HOME="$(/usr/libexec/java_home)"
+eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
-[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
