@@ -388,6 +388,12 @@ fi
 export DEIS_PROFILE=ebaymag
 
 # export JAVA_HOME="$(/usr/libexec/java_home)"
+export JAVA_HOME="/Library/Java/Home"
+export PATH="${JAVA_HOME}/bin:$PATH"
+
 eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
+
+export ANDROID_HOME="/Users/val/Library/Android/sdk"
+export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools

@@ -9,11 +9,9 @@ call plug#begin('~/.vim_bundle')
 " ==========================================================
 "
 """"""" General plugins
-Plug 'kana/vim-textobj-user'
-" Plug 'justinj/vim-textobj-reactprop'
-Plug 'tpope/vim-fugitive'
-Plug 'idanarye/vim-merginal'
-Plug 'majutsushi/tagbar'
+" Plug 'tpope/vim-fugitive'
+" Plug 'idanarye/vim-merginal'
+" Plug 'majutsushi/tagbar'
 Plug 'gorkunov/smartpairs.vim'
 Plug 'gorkunov/smartgf.vim'
 Plug 'honza/vim-snippets'
@@ -44,10 +42,33 @@ Plug 'scrooloose/nerdtree'
 "   let g:NERDTreeFileExtensionHighlightFullName = 1
 
 Plug 'tpope/vim-repeat'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer'  }
-  let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-  let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-  let g:ycm_min_num_of_chars_for_completion = 1
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer'  }
+"   let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+"   let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+"   let g:ycm_min_num_of_chars_for_completion = 1
+
+let g:python3_host_prog = '/usr/local/bin/python3'
+
+if !has('nvim')
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
+" let $NVIM_PYTHON_LOG_FILE="~/lol.txt"
+" let $NVIM_NCM_LOG_LEVEL="DEBUG"
+" let $NVIM_NCM_MULTI_THREAD=0
+" let $NVIM_PYTHON_LOG_LEVEL="DEBUG"
+
+Plug 'roxma/nvim-completion-manager'
+  set shortmess+=c
+  let g:cm_refresh_default_min_word_len=2
+  " inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+
+Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
+Plug 'roxma/ncm-flow',  {'do': 'npm install'}
+Plug 'calebeby/ncm-css'
+Plug 'mhartington/nvim-typescript'
+Plug 'othree/csscomplete.vim'
+
 Plug 'troydm/easybuffer.vim'
   let g:easybuffer_sort_mode = 's'
 Plug 'vim-scripts/camelcasemotion'
@@ -56,10 +77,10 @@ Plug 'nelstrom/vim-visual-star-search'              " Star(*) search for the who
 Plug 'tomtom/tcomment_vim'                          " gcc
 Plug 'tpope/vim-surround'                           " ds, cs}), yss<p>
 Plug 'briandoll/change-inside-surroundings.vim'     " cit to change inside tag, ci[ to change inside []
-Plug 'godlygeek/tabular'                            " :Tab [pattern]
+" Plug 'godlygeek/tabular'                            " :Tab [pattern]
 Plug 'tpope/vim-unimpaired'                         " [space, ]space etc
 Plug 'jiangmiao/auto-pairs'                         " Automatic closing of quotes, parenthesis, brackets, etc.
-Plug 'AndrewRadev/splitjoin.vim'                    " gS to split single-line statement, gJ for the opposite
+" Plug 'AndrewRadev/splitjoin.vim'                    " gS to split single-line statement, gJ for the opposite
 Plug 'vim-scripts/YankRing.vim'                     " Go through paste-stack with OPTION-[pP]
   let g:yankring_replace_n_pkey='π'
   let g:yankring_replace_n_nkey='∏'
@@ -77,23 +98,23 @@ Plug 'Lokaltog/vim-easymotion'
 
 Plug 'paradigm/TextObjectify'
 
-Plug 'mileszs/ack.vim'
-  cabbrev Ack Ack!
-  cabbrev Ag Ag!
-  let g:ackprg = 'ag --vimgrep'
-  let g:ackhighlight = 1
-Plug 'skwp/greplace.vim'
-Plug 'dkprice/vim-easygrep'
-  let g:EasyGrepCommand=1
-  let g:EasyGrepRecursive=1
-  let g:EasyGrepHidden=0
-  let g:EasyGrepFilesToExclude='*.swp'
+" Plug 'mileszs/ack.vim'
+"   cabbrev Ack Ack!
+"   cabbrev Ag Ag!
+"   let g:ackprg = 'ag --vimgrep'
+"   let g:ackhighlight = 1
+" Plug 'skwp/greplace.vim'
+" Plug 'dkprice/vim-easygrep'
+"   let g:EasyGrepCommand=1
+"   let g:EasyGrepRecursive=1
+"   let g:EasyGrepHidden=0
+"   let g:EasyGrepFilesToExclude='*.swp'
 
-  if executable('ag')
-     " Note we extract the column as well as the file and line number
-     set grepprg=ag\ --vimgrep
-     set grepformat=%f:%l:%c%m
-  endif
+  " if executable('ag')
+  "    " Note we extract the column as well as the file and line number
+  "    set grepprg=ag\ --vimgrep
+  "    set grepformat=%f:%l:%c%m
+  " endif
 
 """""" JavaScript
 Plug 'jelera/vim-javascript-syntax'
@@ -111,10 +132,10 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'jparise/vim-graphql'
 Plug 'leafgarland/typescript-vim'
 
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
-  let g:tern_request_timeout = 5
-  let g:tern_show_argument_hints='on_hold'
-  let g:tern_show_signature_in_pum = 1
+" Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
+"   let g:tern_request_timeout = 5
+"   let g:tern_show_argument_hints='on_hold'
+"   let g:tern_show_signature_in_pum = 1
 Plug 'crusoexia/vim-javascript-lib'
 " Plug 'mxw/vim-jsx'
 "   let g:jsx_ext_required = 0
@@ -122,11 +143,10 @@ Plug '1995eaton/vim-better-javascript-completion'
 Plug 'moll/vim-node'
 " Plug 'ahayman/vim-nodejs-complete'
 
-Plug 'Galooshi/vim-import-js'
+" Plug 'Galooshi/vim-import-js'
 Plug 'elzr/vim-json'
+  let g:vim_json_syntax_conceal = 0
 Plug 'isRuslan/vim-es6'
-Plug 'einars/js-beautify'
-Plug 'maksimr/vim-jsbeautify'
 " Plug 'kchmck/vim-coffee-script'
 " Plug 'ruanyl/vim-fixmyjs'
 "   let g:fixmyjs_executable = '/usr/local/bin/eslint_d'
@@ -134,10 +154,10 @@ Plug 'maksimr/vim-jsbeautify'
 """""" Plugin ''CSS
 Plug 'JulesWang/css.vim'
 " Plug 'aaronjensen/vim-sass-status'
-Plug 'cakebaker/scss-syntax.vim'
+" Plug 'cakebaker/scss-syntax.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'lukaszb/vim-web-indent'
-Plug 'groenewege/vim-less'
+" Plug 'groenewege/vim-less'
 " Plug 'fleischie/vim-styled-components'
 
 """""" UI
@@ -194,30 +214,30 @@ Plug 'w0rp/ale'
 "
 "   autocmd VimEnter,BufWritePost * Neomake
 
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 Plug 'kien/rainbow_parentheses.vim'
-Plug 'wting/rust.vim'
+" Plug 'wting/rust.vim'
 Plug 'chrisbra/color_highlight'
-Plug 'jonathanfilip/vim-lucius'
+" Plug 'jonathanfilip/vim-lucius'
 " Plug 'benjaminwhite/Benokai'
 " Plug 'w0ng/vim-hybrid'
   " let g:hybrid_custom_term_colors = 1
   " let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
 Plug 'mhartington/oceanic-next'
+Plug 'NLKNguyen/papercolor-theme'
 " Plug 'altercation/vim-colors-solarized'
 Plug 'mkitt/tabline.vim'
 
-Plug 'bling/vim-airline'       " UI statusbar niceties
+Plug 'vim-airline/vim-airline'       " UI statusbar niceties
   set laststatus=2               " enable airline even if no splits
   let g:airline#enable#branch=1
-  let g:airline_powerline_fonts = 1
+  let g:airline_powerline_onts = 1
   " let g:airline_theme='light'
   " let g:airline_theme='hybrid'
   let g:airline_theme='oceanicnext'
+  " let g:airline_theme='papercolor'
   let g:airline#left#sep = ''
   let g:airline#right#sep = ''
-  let g:airline#linecolumn#prefix = '␊ '
-  let g:airline#linecolumn#prefix = '␤ '
   let g:airline#linecolumn#prefix = '¶ '
   let g:airline#branch#prefix = '⎇ '
   let g:airline#paste#symbol = 'ρ'
@@ -227,7 +247,7 @@ Plug 'bling/vim-airline'       " UI statusbar niceties
   let g:airline#extensions#ale#error_symbol = 'E:'
   let g:airline#extensions#ale#warning_symbol = 'W:'
   " let g:airline_extensions_add = ['neomake']
-  let g:airline#extensions#nrrwrgn#enabled = 1
+  " let g:airline#extensions#nrrwrgn#enabled = 1
   let g:airline#extensions#hunks#enabled = 0
 
   " Tabline settings
@@ -244,12 +264,14 @@ Plug 'bling/vim-airline'       " UI statusbar niceties
   let g:airline#extensions#tabline#tab_min_count = 1
   let g:airline#extensions#tabline#show_close_button = 0
 
+Plug 'vim-airline/vim-airline-themes'
+
 Plug 'jaxbot/semantic-highlight.vim'
   let g:semanticEnableFileTypes = ['javascript', 'javascript.jsx', 'coffee', 'py', 'rb']
 
 " """"""" Templates
 Plug 'othree/html5.vim'
-Plug 'digitaltoad/vim-jade'
+" Plug 'digitaltoad/vim-jade'
 Plug 'mattn/emmet-vim'
   " Let me expand emmet abbr with <TAB>
   let g:user_emmet_expandabbr_key = ',<Tab>'
@@ -262,9 +284,9 @@ Plug 'mattn/emmet-vim'
   \  },
   \}
 
-Plug 'dag/vim2hs'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-rails'
+" Plug 'dag/vim2hs'
+" Plug 'tpope/vim-endwise'
+" Plug 'tpope/vim-rails'
 " Plug 'tpope/vim-haml'
 
 " =========================================================
@@ -316,6 +338,7 @@ else
   let g:WebDevIconsNerdTreeAfterGlyphPadding    = ' '
   let g:WebDevIconsUnicodeGlyphDoubleWidth      = 1
   let g:WebDevIconsNerdTreeGitPlugForceVAlign   = 0
+  let g:webdevicons_enable_airline_statusline_fileformat_symbols = 0
 
   " Fix half display issue
   let s:blank = ''
@@ -341,13 +364,14 @@ call plug#end()
 
 set t_Co=256
 set background=dark
+" set background=light
 set termguicolors
 " colorscheme hybrid
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-colorscheme OceanicNext
-  let g:oceanic_next_terminal_bold = 1
-  let g:oceanic_next_terminal_italic = 1
+colorscheme PaperColor
 " colorscheme OceanicNext
+  " let g:oceanic_next_terminal_bold = 1
+  " let g:oceanic_next_terminal_italic = 1
 " override default theme search highlighter
 autocmd ColorScheme * hi Search guibg=NONE ctermbg=NONE gui=underline cterm=underline term=underline guifg=#80cbc4 ctermfg=darkcyan
 " colorscheme Benokai
@@ -457,8 +481,8 @@ let g:mapleader = ","
 let g:netrw_localrmdir='rm -r'
 
 " Ctags: open tag in vertical|horizontal split OPTION-[]
-map ‘ :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-map “ :sp <CR>:exec("tag ".expand("<cword>"))<CR>
+" map ‘ :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+" map “ :sp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " Jump 10 lines OPTION-[jk]
 map ∆ 10j
@@ -610,6 +634,9 @@ set incsearch               " Incrementally search while typing a /regex
 
 au FocusLost * silent! wa
 
+" Trigger autoread when changing buffers or coming back to vim.
+au FocusGained,BufEnter * :silent! !
+
 " ===========================================================
 " FileType specific changes
 " ============================================================
@@ -617,18 +644,18 @@ au FocusLost * silent! wa
 autocmd BufNewFile,BufRead *.pcss set filetype=css
 " autocmd FileType javascript noremap <buffer> <c-f> :call JsBeautify()<cr>
 " autocmd FileType javascript :SemanticHighlight()<CR>
-autocmd FileType javascript setlocal omnifunc=tern#Complete
+" autocmd FileType javascript setlocal omnifunc=tern#Complete
 " autocmd FileType javascript set formatprg=prettier\ --single-quote\ --trailing-comma\ --stdin
 " autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
 " autocmd BufWritePre *.js :Fixmyjs
 autocmd FileType css,js setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
-autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+" autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+" autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 
 " autocmd BufRead,BufNewFile *.hamlc setf haml
 " autocmd BufRead,BufNewFile *.scss setf scss.css
-autocmd BufRead,BufNewFile, *rc setf javascript
+autocmd BufRead, BufNewFile, *rc setf javascript
 
 " au BufRead *.js set makeprg=eslint\ %
 " Use tab to scroll through autocomplete menus
@@ -714,3 +741,5 @@ function! ExecuteMacroOverVisualRange()
   echo "@".getcmdline()
   execute ":'<,'>normal @".nr2char(getchar())
 endfunction
+
+" au BufEnter * :AutoRead
