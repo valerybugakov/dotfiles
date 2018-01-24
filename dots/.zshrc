@@ -267,6 +267,11 @@ alias sshconf='vim ~/.ssh/config'
 alias dlast='docker ps -l -q'
 alias dclean='docker rm $(docker ps -a -q)'
 
+# React-Native
+alias rni='react-native run-ios --simulator="iPhone 7"'
+alias rna='react-native run-android'
+alias rns='node node_modules/react-native/local-cli/cli.js start'
+
 # Folders
 alias l='ls -lah'
 alias ll='ls -lAh'

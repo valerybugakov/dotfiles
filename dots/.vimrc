@@ -98,11 +98,11 @@ Plug 'Lokaltog/vim-easymotion'
 
 Plug 'paradigm/TextObjectify'
 
-" Plug 'mileszs/ack.vim'
-"   cabbrev Ack Ack!
-"   cabbrev Ag Ag!
-"   let g:ackprg = 'ag --vimgrep'
-"   let g:ackhighlight = 1
+Plug 'mileszs/ack.vim'
+  cabbrev Ack Ack!
+  cabbrev Ag Ag!
+  let g:ackprg = 'ag --vimgrep'
+  let g:ackhighlight = 1
 " Plug 'skwp/greplace.vim'
 " Plug 'dkprice/vim-easygrep'
 "   let g:EasyGrepCommand=1
