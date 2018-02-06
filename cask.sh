@@ -58,6 +58,11 @@ apps=(
   intellij-idea-ce
   visual-studio-code
   atom
+
+  qlcolorcode
+  qlstephen
+  qlmarkdown
+  quicklook-json
 )
 
 fonts=(
