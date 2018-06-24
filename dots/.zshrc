@@ -282,6 +282,7 @@ alias lsa='ls -lah'
 # Random
 alias vi='vim'
 alias n='nvim'
+alias nn='npm run'
 alias grs='git reset --soft HEAD~1'
 alias ctags="`brew --prefix`/bin/ctags"
 alias supy='sudo python'

@@ -9,7 +9,7 @@ call plug#begin('~/.vim_bundle')
 " ==========================================================
 "
 """"""" General plugins
-" Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 " Plug 'idanarye/vim-merginal'
 " Plug 'majutsushi/tagbar'
 Plug 'gorkunov/smartpairs.vim'
@@ -42,31 +42,34 @@ Plug 'scrooloose/nerdtree'
 "   let g:NERDTreeFileExtensionHighlightFullName = 1
 
 Plug 'tpope/vim-repeat'
-" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer'  }
-"   let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-"   let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-"   let g:ycm_min_num_of_chars_for_completion = 1
 
-let g:python3_host_prog = '/usr/local/bin/python3'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer'  }
+  let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+  let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+  let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+  let g:ycm_min_num_of_chars_for_completion = 1
+  let g:ycm_server_keep_logfiles = 1
 
-if !has('nvim')
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+" let g:python3_host_prog = '/usr/local/bin/python3'
+"
+" if !has('nvim')
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
 
-" let $NVIM_PYTHON_LOG_FILE="~/lol.txt"
+" let $NVIM_PYTHON_LOG_FILE="/tmp/lol.txt"
 " let $NVIM_NCM_LOG_LEVEL="DEBUG"
 " let $NVIM_NCM_MULTI_THREAD=0
 " let $NVIM_PYTHON_LOG_LEVEL="DEBUG"
 
-Plug 'roxma/nvim-completion-manager'
-  set shortmess+=c
-  let g:cm_refresh_default_min_word_len=2
-  " inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+" Plug 'roxma/nvim-completion-manager'
+"   set shortmess+=c
+"   let g:cm_refresh_default_min_word_len=2
+"   " inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 
 Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
 Plug 'roxma/ncm-flow',  {'do': 'npm install'}
 Plug 'calebeby/ncm-css'
-Plug 'mhartington/nvim-typescript'
+" Plug 'mhartington/nvim-typescript'
 Plug 'othree/csscomplete.vim'
 
 Plug 'troydm/easybuffer.vim'
@@ -117,6 +120,18 @@ Plug 'mileszs/ack.vim'
   " endif
 
 """""" JavaScript
+Plug 'reasonml-editor/vim-reason-plus'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ }
+
 Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'chemzqm/vim-jsx-improve'
@@ -168,7 +183,7 @@ Plug 'w0rp/ale'
   " let g:ale_sign_error = '😱' " ' '
   let g:ale_sign_warning = ' '
   let g:ale_javascript_eslint_executable = 'eslint_d'
-  let g:ale_linters = {'javascript': ['eslint', 'flow'], 'html': []}
+  let g:ale_linters = {'javascript': ['eslint', 'tslint', 'flow'], 'html': []}
 
   " if I become annoyed about ALE showing errors for half-typed text, perhaps
   " I'll want to uncomment these:
@@ -225,7 +240,7 @@ Plug 'chrisbra/color_highlight'
   " let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
 Plug 'mhartington/oceanic-next'
 Plug 'NLKNguyen/papercolor-theme'
-" Plug 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 Plug 'mkitt/tabline.vim'
 
 Plug 'vim-airline/vim-airline'       " UI statusbar niceties
@@ -236,6 +251,7 @@ Plug 'vim-airline/vim-airline'       " UI statusbar niceties
   " let g:airline_theme='hybrid'
   let g:airline_theme='oceanicnext'
   " let g:airline_theme='papercolor'
+  " let g:airline_theme='solarized'
   let g:airline#left#sep = ''
   let g:airline#right#sep = ''
   let g:airline#linecolumn#prefix = '¶ '
@@ -363,9 +379,8 @@ call plug#end()
 " ==========================================================
 
 set t_Co=256
-set background=dark
-" set background=light
-set termguicolors
+" set background=dark
+" set termguicolors
 " colorscheme hybrid
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 colorscheme PaperColor
@@ -373,12 +388,14 @@ colorscheme PaperColor
   " let g:oceanic_next_terminal_bold = 1
   " let g:oceanic_next_terminal_italic = 1
 " override default theme search highlighter
-autocmd ColorScheme * hi Search guibg=NONE ctermbg=NONE gui=underline cterm=underline term=underline guifg=#80cbc4 ctermfg=darkcyan
+" autocmd ColorScheme * hi Search guibg=NONE ctermbg=NONE gui=underline cterm=underline term=underline guifg=#80cbc4 ctermfg=darkcyan
 " colorscheme Benokai
 " colorscheme molokai
+
+" To enable light theme uncomment the following lines
+set background=light
 " colorscheme solarized
-" let g:solarized_termcolors=256
-" let g:solarized_termtrans=1
+  " let g:solarized_termcolors=256
 
 let g:rbpt_colorpairs = [
     \ ['brown',       'RoyalBlue3'],
