@@ -370,7 +370,7 @@ export PATH="/opt/local/share:/opt/local/bin:/opt/local/sbin:$PATH"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-export NVM_DIR="/Users/val/Nvm"
+export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 . ~/.nvm/nvm.sh
 
@@ -381,24 +381,19 @@ export NVIM_TUI_ENABLE_TRUE_COLOR=1
 ##Neovim cursor shape support
 export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f /Users/val/Downloads/google-cloud-sdk/path.zsh.inc ]; then
-  source '/Users/val/Downloads/google-cloud-sdk/path.zsh.inc'
-fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f /Users/val/Downloads/google-cloud-sdk/completion.zsh.inc ]; then
-  source '/Users/val/Downloads/google-cloud-sdk/completion.zsh.inc'
-fi
-
-export DEIS_PROFILE=ebaymag
+# # The next line updates PATH for the Google Cloud SDK.
+# if [ -f /Users/val/Downloads/google-cloud-sdk/path.zsh.inc ]; then
+#   source '/Users/val/Downloads/google-cloud-sdk/path.zsh.inc'
+# fi
+#
+# # The next line enables shell command completion for gcloud.
+# if [ -f /Users/val/Downloads/google-cloud-sdk/completion.zsh.inc ]; then
+#   source '/Users/val/Downloads/google-cloud-sdk/completion.zsh.inc'
+# fi
 
 # export JAVA_HOME="$(/usr/libexec/java_home)"
-export JAVA_HOME="/Library/Java/Home"
-export PATH="${JAVA_HOME}/bin:$PATH"
-
-eval "$(rbenv init -)"
-export PATH="$HOME/.rbenv/bin:$PATH"
+# eval "$(rbenv init -)"
+# export DEIS_PROFILE=ebaymag
 export PATH="$HOME/go/bin:$PATH"
 
 export ANDROID_HOME="/Users/val/Library/Android/sdk"
