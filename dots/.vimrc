@@ -147,6 +147,18 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'jparise/vim-graphql'
 Plug 'leafgarland/typescript-vim'
 
+" Plug 'Shougo/vimproc.vim', {
+" \ 'do' : {
+" \     'windows' : 'tools\\update-dll-mingw',
+" \     'cygwin' : 'make -f make_cygwin.mak',
+" \     'mac' : 'make -f make_mac.mak',
+" \     'linux' : 'make',
+" \     'unix' : 'gmake',
+" \    },
+" \ }
+
+" Plug 'Quramy/tsuquyomi'
+
 " Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 "   let g:tern_request_timeout = 5
 "   let g:tern_show_argument_hints='on_hold'
@@ -179,7 +191,7 @@ Plug 'lukaszb/vim-web-indent'
 Plug 'w0rp/ale'
   let g:ale_echo_msg_error_str = 'E'
   let g:ale_echo_msg_warning_str = 'W'
-  let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+  let g:ale_echo_msg_format = '[%linter%] %s [%severity%] %code%'
   " let g:ale_sign_error = '😱' " ' '
   let g:ale_sign_warning = ' '
   let g:ale_javascript_eslint_executable = 'eslint_d'
@@ -282,8 +294,8 @@ Plug 'vim-airline/vim-airline'       " UI statusbar niceties
 
 Plug 'vim-airline/vim-airline-themes'
 
-Plug 'jaxbot/semantic-highlight.vim'
-  let g:semanticEnableFileTypes = ['javascript', 'javascript.jsx', 'coffee', 'py', 'rb']
+" Plug 'jaxbot/semantic-highlight.vim'
+  " let g:semanticEnableFileTypes = ['javascript', 'javascript.jsx', 'coffee', 'py', 'rb']
 
 " """"""" Templates
 Plug 'othree/html5.vim'
@@ -384,6 +396,7 @@ set t_Co=256
 " colorscheme hybrid
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 colorscheme PaperColor
+" colorscheme solarized
 " colorscheme OceanicNext
   " let g:oceanic_next_terminal_bold = 1
   " let g:oceanic_next_terminal_italic = 1

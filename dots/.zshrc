@@ -2,22 +2,38 @@ ZSH=$HOME/.oh-my-zsh
 # Themes folder ~/.oh-my-zsh/themes/
 # ZSH_THEME="bira"
 
-source /usr/local/share/antigen/antigen.zsh
+source <(antibody init)
+ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
+
+antibody bundle "
+  zsh-users/zsh-syntax-highlighting
+  zsh-users/zsh-history-substring-search
+"
+
+antibody bundle robbyrussell/oh-my-zsh
+antibody bundle robbyrussell/oh-my-zsh folder:plugins/common-aliases
+antibody bundle "
+  robbyrussell/oh-my-zsh path:plugins/git
+  robbyrussell/oh-my-zsh path:plugins/command-not-found
+"
+
+# source /usr/local/share/antigen/antigen.zsh
 
 # Load the oh-my-zsh's library.
-antigen use oh-my-zsh
+# antigen use oh-my-zsh
 
-antigen bundle git
-antigen bundle command-not-found
+# antigen bundle git
+# antigen bundle command-not-found
 
 # Syntax highlighting bundle.
-antigen bundle zsh-users/zsh-syntax-highlighting
+# antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Tell Antigen that you're done.
-antigen apply
+# antigen apply
 
 # Plugins folder ~/.oh-my-zsh/plugins/*
-plugins=(git rails ruby bundler zsh-autosuggestions)
+plugins=(git zsh-autosuggestions)
+# plugins=(git rails ruby bundler zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
 setopt \
@@ -236,74 +252,6 @@ prompt_pure_setup "$@"
 # ZSH_THEME_GIT_PROMPT_PREFIX=" $FG[075]"
 # ZSH_THEME_GIT_PROMPT_SUFFIX="$FG[129]"
 
-#----------------------------------- Aliases -----------------------------------#
-
-[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
-
-gitCommitTicket() {
-  ticket=$1;
-  message=$2;
-  git commit -m "[${ticket}] ${message}";
-}
-alias ggc='gitCommitTicket'
-
-# Rails
-alias rc='rails console'
-alias zc='zeus c'
-alias zs='zeus s'
-alias zr='zeus rake'
-alias rdm='rake db:migrate'
-alias rdr='rake db:rollback'
-alias zrdm='zeus rake db:migrate'
-
-# Configs
-alias zshconf='vim ~/.zshrc'
-alias ohmyzsh='vim ~/.oh-my-zsh'
-alias vimconf='vim ~/.vimrc'
-alias hostsconf='sudo vim /etc/hosts'
-alias sshconf='vim ~/.ssh/config'
-
-# Docker
-alias dlast='docker ps -l -q'
-alias dclean='docker rm $(docker ps -a -q)'
-
-# React-Native
-alias rni='react-native run-ios --simulator="iPhone 7"'
-alias rna='react-native run-android'
-alias rns='node node_modules/react-native/local-cli/cli.js start'
-
-# Folders
-alias l='ls -lah'
-alias ll='ls -lAh'
-alias la='ls -lh'
-alias ls='ls -G'
-alias lsa='ls -lah'
-
-# Random
-alias vi='vim'
-alias n='nvim'
-alias nn='npm run'
-alias grs='git reset --soft HEAD~1'
-alias ctags="`brew --prefix`/bin/ctags"
-alias supy='sudo python'
-alias py='python'
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
 #----------------------------------- Bindings -----------------------------------#
 
 # Keypad num-lock FIX
@@ -399,3 +347,75 @@ export PATH="$HOME/go/bin:$PATH"
 export ANDROID_HOME="/Users/val/Library/Android/sdk"
 export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+#----------------------------------- Aliases -----------------------------------#
+
+[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
+
+gitCommitTicket() {
+  ticket=$1;
+  message=$2;
+  git commit -m "[${ticket}] ${message}";
+}
+alias ggc='gitCommitTicket'
+
+# Rails
+alias rc='rails console'
+alias zc='zeus c'
+alias zs='zeus s'
+alias zr='zeus rake'
+alias rdm='rake db:migrate'
+alias rdr='rake db:rollback'
+alias zrdm='zeus rake db:migrate'
+
+# Configs
+alias zshconf='vim ~/.zshrc'
+alias ohmyzsh='vim ~/.oh-my-zsh'
+alias vimconf='vim ~/.vimrc'
+alias hostsconf='sudo vim /etc/hosts'
+alias sshconf='vim ~/.ssh/config'
+
+# Docker
+alias dlast='docker ps -l -q'
+alias dclean='docker rm $(docker ps -a -q)'
+
+# React-Native
+alias rni='react-native run-ios --simulator="iPhone 7"'
+alias rna='react-native run-android'
+alias rns='node node_modules/react-native/local-cli/cli.js start'
+
+# Folders
+alias l='ls -lah'
+alias ll='ls -lAh'
+alias la='ls -lh'
+alias ls='ls -G'
+alias lsa='ls -lah'
+
+# Random
+alias vi='vim'
+alias n='nvim'
+alias nn='npm run'
+alias grs='git reset --soft HEAD~1'
+alias ctags="`brew --prefix`/bin/ctags"
+alias supy='sudo python'
+alias py='python'
+
+# Frontend
+alias ys='yarn start'
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/dsa_id"
+
