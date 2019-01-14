@@ -1,0 +1,21 @@
+# this block is in alphabetic order
+caarlos0/ports kind:path
+caarlos0/zsh-git-fetch-merge kind:path
+caarlos0/zsh-git-sync kind:path
+caarlos0/zsh-mkc
+caarlos0/zsh-open-pr kind:path
+mafredri/zsh-async
+rupa/z
+zsh-users/zsh-completions
+zsh-users/zsh-autosuggestions
+
+robbyrussell/oh-my-zsh
+robbyrussell/oh-my-zsh folder:plugins/common-aliases
+robbyrussell/oh-my-zsh path:plugins/git
+robbyrussell/oh-my-zsh path:plugins/command-not-found
+
+# these should be at last!
+sindresorhus/pure
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-history-substring-search
+

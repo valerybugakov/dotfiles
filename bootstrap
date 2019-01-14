@@ -1,0 +1,5 @@
+# Install oldschool
+./oldschool/install.sh
+
+# Install cool dots
+./script/bootstrap

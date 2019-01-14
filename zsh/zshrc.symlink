@@ -1,0 +1,98 @@
+#!/bin/zsh
+# shortcut to this dotfiles path is $DOTFILES
+export DOTFILES="$HOME/.dotfiles"
+
+# your project folder that we can `c [tab]` to
+export PROJECTS="$HOME/Code"
+
+# your default editor
+export EDITOR='vim'
+export VEDITOR='code'
+
+# all of our zsh files
+typeset -U config_files
+config_files=($DOTFILES/*/*.zsh)
+
+# load the path files
+for file in ${(M)config_files:#*/path.zsh}; do
+  source "$file"
+done
+
+# load antibody plugins
+# source ~/.zsh_plugins.sh
+source <(antibody init)
+ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
+
+antibody bundle "
+  caarlos0/ports kind:path
+  caarlos0/zsh-git-fetch-merge kind:path
+  caarlos0/zsh-git-sync kind:path
+  caarlos0/zsh-mkc
+  caarlos0/zsh-open-pr kind:path
+  mafredri/zsh-async
+  rupa/z
+  zsh-users/zsh-completions
+  zsh-users/zsh-autosuggestions
+"
+
+antibody bundle robbyrussell/oh-my-zsh
+antibody bundle robbyrussell/oh-my-zsh folder:plugins/common-aliases
+antibody bundle "
+  robbyrussell/oh-my-zsh path:plugins/git
+  robbyrussell/oh-my-zsh path:plugins/command-not-found
+"
+
+antibody bundle "
+  sindresorhus/pure
+  zsh-users/zsh-syntax-highlighting
+  zsh-users/zsh-history-substring-search
+"
+
+# load everything but the path and completion files
+for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}; do
+  source "$file"
+done
+
+autoload -Uz compinit
+typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)
+if [ $(date +'%j') != $updated_at ]; then
+  compinit -i
+else
+  compinit -C -i
+fi
+
+# load every completion after autocomplete loads
+for file in ${(M)config_files:#*/completion.zsh}; do
+  source "$file"
+done
+
+unset config_files updated_at
+
+# use .localrc for SUPER SECRET CRAP that you don't
+# want in your public, versioned repo.
+# shellcheck disable=SC1090
+[ -f ~/.localrc ] && . ~/.localrc
+
+export PATH="/Users/val/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh:$PATH"
+
+source /Users/val/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh/plugins/git/git.plugin.zsh
+
+source /Users/val/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh/plugins/command-not-found/command-not-found.plugin.zsh
+
+fpath+=( /Users/val/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh )
+
+# Load scm_breeze
+[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+. ~/.nvm/nvm.sh
+
+#Neovim true color support
+export NVIM_TUI_ENABLE_TRUE_COLOR=1
+##Neovim cursor shape support
+export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+source $DOTFILES/zsh/aliases.zsh
