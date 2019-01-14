@@ -1,0 +1,16 @@
+{
+  "ecmaVersion": 7,
+  "libs": [
+    "browser",
+    "underscore",
+    "moment",
+    "ecma5",
+    "ecma6",
+    "ecma7"
+  ],
+  "plugins": {
+    "node": {},
+    "es_modules": {},
+    "complete_strings": {}
+  }
+}
