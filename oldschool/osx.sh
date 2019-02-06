@@ -31,6 +31,9 @@ sudo pmset -a standbydelay 86400
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
 
+# Disabled software-update badge on System Preferences dock icon
+defaults write com.apple.systempreferences AttentionPrefBundleIDs 0
+
 # Disable transparency in the menu bar and elsewhere on Yosemite
 defaults write com.apple.universalaccess reduceTransparency -bool true
 
