@@ -7,6 +7,7 @@ gitCommitTicket() {
   git commit -m "[${ticket}] ${message}";
 }
 alias ggc='gitCommitTicket'
+alias gcm='ga . && gcmsg'
 
 # Rails
 alias rc='rails console'
@@ -52,6 +53,7 @@ alias py='python'
 # Frontend
 alias ys='yarn start'
 alias yst='yarn start:with-typings'
+alias yu='curl --compressed -o- -L https://yarnpkg.com/install.sh | bash'
 
 #----------------------------------- Bindings -----------------------------------#
 
@@ -80,3 +82,5 @@ bindkey -s "^[Oo" "/"
 
 bindkey -e; bindkey '\e\e[C' forward-word; bindkey '\e\e[D' backward-word
 
+export LOCAL_IP=`ipconfig getifaddr en0`
+alias serve="browser-sync start -s -f . --no-notify --host $LOCAL_IP --port 9000"

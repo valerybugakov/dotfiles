@@ -18,35 +18,41 @@ for file in ${(M)config_files:#*/path.zsh}; do
   source "$file"
 done
 
-# load antibody plugins
-# source ~/.zsh_plugins.sh
-source <(antibody init)
-ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
+# load zplug plugin-manager
+if [[ ! -d ~/.zplug ]];then
+  git clone https://github.com/zplug/zplug ~/.zplug
+fi
+source ~/.zplug/init.zsh
 
-antibody bundle "
-  caarlos0/ports kind:path
-  caarlos0/zsh-git-fetch-merge kind:path
-  caarlos0/zsh-git-sync kind:path
-  caarlos0/zsh-mkc
-  caarlos0/zsh-open-pr kind:path
-  mafredri/zsh-async
-  rupa/z
-  zsh-users/zsh-completions
-  zsh-users/zsh-autosuggestions
-"
+zplug "robbyrussell/oh-my-zsh"
+zplug "plugins/common-aliases",   from:oh-my-zsh
+zplug "plugins/command-not-found",   from:oh-my-zsh
+zplug "plugins/git",   from:oh-my-zsh
+zplug "plugins/sudo", from:oh-my-zsh
+zplug "plugins/asdf", from:oh-my-zsh
 
-antibody bundle robbyrussell/oh-my-zsh
-antibody bundle robbyrussell/oh-my-zsh folder:plugins/common-aliases
-antibody bundle "
-  robbyrussell/oh-my-zsh path:plugins/git
-  robbyrussell/oh-my-zsh path:plugins/command-not-found
-"
+zplug "caarlos0-graveyard/ports"
+zplug "caarlos0/zsh-git-fetch-merge"
+zplug "caarlos0/zsh-git-sync"
+zplug "caarlos0/zsh-mkc"
+zplug "caarlos0/zsh-open-pr"
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-history-substring-search"
 
-antibody bundle "
-  sindresorhus/pure
-  zsh-users/zsh-syntax-highlighting
-  zsh-users/zsh-history-substring-search
-"
+zplug "mafredri/zsh-async"
+zplug "rupa/z"
+zplug "mafredri/zsh-async", from:github
+zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+zplug load
 
 # load everything but the path and completion files
 for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}; do
@@ -73,14 +79,6 @@ unset config_files updated_at
 # shellcheck disable=SC1090
 [ -f ~/.localrc ] && . ~/.localrc
 
-export PATH="/Users/val/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh:$PATH"
-
-source /Users/val/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh/plugins/git/git.plugin.zsh
-
-source /Users/val/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh/plugins/command-not-found/command-not-found.plugin.zsh
-
-fpath+=( /Users/val/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh )
-
 # Load scm_breeze
 [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
 
@@ -96,3 +94,16 @@ export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 source $DOTFILES/zsh/aliases.zsh
+PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
+PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+
+export GUILE_LOAD_PATH="/usr/local/share/guile/site/3.0"
+export GUILE_LOAD_COMPILED_PATH="/usr/local/lib/guile/3.0/site-ccache"
+export GUILE_SYSTEM_EXTENSIONS_PATH="/usr/local/lib/guile/3.0/extensions"
+export PATH="/usr/local/opt/postgresql/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/val/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/val/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/val/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/val/Downloads/google-cloud-sdk/completion.zsh.inc'; fi

@@ -43,12 +43,12 @@ Plug 'scrooloose/nerdtree'
 
 Plug 'tpope/vim-repeat'
 
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer'  }
-  let g:ycm_path_to_python_interpreter = '/usr/bin/python'
-  let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-  let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-  let g:ycm_min_num_of_chars_for_completion = 1
-  let g:ycm_server_keep_logfiles = 1
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer'  }
+"   let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+"   let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+"   let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+"   let g:ycm_min_num_of_chars_for_completion = 1
+"   let g:ycm_server_keep_logfiles = 1
 
 " let g:python3_host_prog = '/usr/local/bin/python3'
 "
@@ -189,13 +189,82 @@ Plug 'lukaszb/vim-web-indent'
 
 """""" UI
 Plug 'w0rp/ale'
+  " MY SETTINGS
+  " let g:ale_echo_msg_error_str = 'E'
+  " let g:ale_echo_msg_warning_str = 'W'
+  " let g:ale_echo_msg_format = '[%linter%] %s [%severity%] %code%'
+  " " let g:ale_sign_error = '😱' " ' '
+  " " let g:ale_sign_warning = ' '
+  " let g:ale_javascript_eslint_executable = 'eslint_d'
+  " let g:ale_linters = {'javascript': ['eslint', 'tslint', 'flow'], 'html': []}
+  "
+  " " prettier
+  " let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
+  " let g:ale_fix_on_save = 1
+  " let g:ale_completion_enabled = 1
+
+  " SETTINGS FROM SOME RANDOM ISSUE, LOL -----------------------
+
+  let g:ale_typescript_tslint_config_path = ''
+  let g:ale_typescript_tslint_executable = 'tslint'
+  let g:ale_typescript_tslint_ignore_empty_files = 0
+  let g:ale_typescript_tslint_rules_dir = ''
+  let g:ale_typescript_tslint_use_global = 0
+
+  let g:ale_cache_executable_check_failures = v:null
+  let g:ale_change_sign_column_color = 0
+  let g:ale_command_wrapper = ''
+  let g:ale_completion_delay = v:null
+  let g:ale_completion_enabled = 0
+  let g:ale_completion_max_suggestions = v:null
+  let g:ale_echo_cursor = 1
   let g:ale_echo_msg_error_str = 'E'
+  let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+  let g:ale_echo_msg_info_str = 'Info'
+  let g:ale_echo_msg_error_str = 'E'
+  let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+  let g:ale_echo_msg_info_str = 'Info'
   let g:ale_echo_msg_warning_str = 'W'
-  let g:ale_echo_msg_format = '[%linter%] %s [%severity%] %code%'
-  " let g:ale_sign_error = '😱' " ' '
-  let g:ale_sign_warning = ' '
-  let g:ale_javascript_eslint_executable = 'eslint_d'
-  let g:ale_linters = {'javascript': ['eslint', 'tslint', 'flow'], 'html': []}
+  let g:ale_enabled = 1
+  let g:ale_fix_on_save = 1
+  let g:ale_fixers = {'typescript': ['prettier'], 'javascript.jsx': ['prettier'], 'markdown': ['prettier'], 'scss': ['prettier'], 'json': ['prettier'], 'html': ['prettier'], 'javascript': ['prettier'], 'css': ['prettier']}
+  let g:ale_history_enabled = 1
+  let g:ale_history_log_output = 1
+  let g:ale_keep_list_window_open = 0
+  let g:ale_lint_delay = 1000
+  let g:ale_lint_on_enter = 1
+  let g:ale_lint_on_filetype_changed = 1
+  let g:ale_lint_on_insert_leave = 0
+  let g:ale_lint_on_save = 1
+  let g:ale_lint_on_text_changed = 'always'
+  let g:ale_linter_aliases = {}
+  let g:ale_linters = {'javascript.jsx': ['eslint'], 'typescript': ['eslint', 'tslint'], 'scss': [], 'html': [], 'javascript': ['eslint'], 'typescript.tsx': ['eslint', 'tslint']}
+  let g:ale_linters_explicit = 0
+  let g:ale_list_vertical = 0
+  let g:ale_list_window_size = 10
+  let g:ale_loclist_msg_format = '[%linter%] %s [%severity%]'
+  let g:ale_lsp_root = {}
+  let g:ale_max_buffer_history_size = 20
+  let g:ale_pattern_options = v:null
+  let g:ale_pattern_options_enabled = v:null
+  let g:ale_set_balloons = 0
+  let g:ale_set_highlights = 1
+  let g:ale_set_loclist = 1
+  let g:ale_set_quickfix = 0
+  let g:ale_set_signs = 1
+  let g:ale_sign_column_always = 1
+  let g:ale_sign_error = '✖'
+  let g:ale_sign_info = '⚠'
+  let g:ale_sign_offset = 1000000
+  let g:ale_sign_style_error = '✖'
+  let g:ale_sign_style_warning = '⚠'
+  let g:ale_sign_warning = '⚠'
+  let g:ale_statusline_format = v:null
+  let g:ale_type_map = {}
+  let g:ale_use_global_executables = v:null
+  let g:ale_virtualtext_cursor = 0
+  let g:ale_warn_about_trailing_blank_lines = 1
+  let g:ale_warn_about_trailing_whitespace = 1
 
   " if I become annoyed about ALE showing errors for half-typed text, perhaps
   " I'll want to uncomment these:
