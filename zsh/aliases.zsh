@@ -83,4 +83,4 @@ bindkey -s "^[Oo" "/"
 bindkey -e; bindkey '\e\e[C' forward-word; bindkey '\e\e[D' backward-word
 
 export LOCAL_IP=`ipconfig getifaddr en0`
-alias serve="browser-sync start -s -f . --no-notify --host $LOCAL_IP --port 9000"
+# alias serve="browser-sync start -s -f . --no-notify --host $LOCAL_IP --port 9000"
