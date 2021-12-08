@@ -1,4 +1,5 @@
 #!/bin/zsh
+export PATH="/opt/homebrew/bin:$PATH"
 # shortcut to this dotfiles path is $DOTFILES
 export DOTFILES="$HOME/.dotfiles"
 
@@ -79,12 +80,11 @@ unset config_files updated_at
 # shellcheck disable=SC1090
 [ -f ~/.localrc ] && . ~/.localrc
 
-# Load scm_breeze
-[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
-
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# . ~/.nvm/nvm.sh
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-. ~/.nvm/nvm.sh
+source $(brew --prefix nvm)/nvm.sh
 
 #Neovim true color support
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -109,3 +109,7 @@ export PATH="/usr/local/opt/postgresql/bin:$PATH"
 # if [ -f '/Users/val/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/val/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+

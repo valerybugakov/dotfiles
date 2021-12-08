@@ -26,6 +26,6 @@ if command -v svu >/dev/null 2>&1; then
 	alias gtminor='echo `svu m`; git tag `svu m`'
 fi
 
-gi() {
-	curl -s "https://www.gitignore.io/api/$*"
-}
+# gi() {
+# 	curl -s "https://www.gitignore.io/api/$*"
+# }

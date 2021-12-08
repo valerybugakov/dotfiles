@@ -2,9 +2,9 @@
 alias reload!='exec "$SHELL" -l'
 
 gitCommitTicket() {
-  ticket=$1;
-  message=$2;
-  git commit -m "[${ticket}] ${message}";
+	ticket=$1
+	message=$2
+	git commit -m "[${ticket}] ${message}"
 }
 alias ggc='gitCommitTicket'
 alias gcm='ga . && gcmsg'
@@ -46,8 +46,7 @@ alias vi='vim'
 alias n='nvim'
 alias nn='npm run'
 alias grss='git reset --soft HEAD~1'
-alias ctags="`brew --prefix`/bin/ctags"
-alias supy='sudo python'
+# alias supy='sudo python'
 alias py='python'
 
 # Frontend
@@ -80,7 +79,24 @@ bindkey -s "^[Om" "-"
 bindkey -s "^[Oj" "*"
 bindkey -s "^[Oo" "/"
 
-bindkey -e; bindkey '\e\e[C' forward-word; bindkey '\e\e[D' backward-word
+bindkey -e
+bindkey '\e\e[C' forward-word
+bindkey '\e\e[D' backward-word
 
-export LOCAL_IP=`ipconfig getifaddr en0`
+export LOCAL_IP=$(ipconfig getifaddr en0)
 # alias serve="browser-sync start -s -f . --no-notify --host $LOCAL_IP --port 9000"
+
+# Forgit aliases to overwrite plugin/git stuff
+alias ga='forgit::add'
+alias grh='forgit::reset::head'
+alias glo='forgit::log'
+alias gd='forgit::diff'
+alias gi='forgit::ignore'
+alias gcf='forgit::checkout::file'
+alias gcb='forgit::checkout::branch'
+alias gco='forgit::checkout::commit'
+alias gclean='forgit::clean'
+alias gss='forgit::stash::show'
+alias gcp='forgit::cherry::pick'
+alias grb='forgit::rebase'
+alias gfu='forgit::fixup'

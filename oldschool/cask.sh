@@ -1,22 +1,35 @@
 # Brew cask
 
-brew install caskroom/cask/brew-cask
+brew tap homebrew/cask
 
-brew tap caskroom/versions
-brew tap caskroom/fonts
+brew tap homebrew/cask-versions
+brew tap homebrew/cask-fonts
 
 apps=(
   macvim
 
   1password
+  figma
 
-  zoomus
+  omnidisksweeper
+  webtorrent
+  pdf-expert
+  the-unarchiver
+  colorsnapper
+  ivpn
+  qbittorrent
+  itsycal
+  notion
+  alacritty
+  ilya-birman-typography-layout
+
+  zoom
   slack
   telegram
   skype
 
-  java
-  haskell-platform
+  openjdk
+  haskell-stack
 
   sequel-pro
   dropbox
@@ -25,7 +38,7 @@ apps=(
   google-chrome-canary
   firefox
   opera-developer
-  torbrowser-ru
+  brave-browser
 
   qlcolorcode
   qlstephen
@@ -41,24 +54,18 @@ apps=(
   iterm2
   hyper
 
-  postman
-  rescuetime
-
   vlc
-  utorrent
-  sopcast
   spotify
 
   ngrok
   karabiner-elements
 
   docker
-  osxfuse
+  # osxfuse
 
-  sublime-text-3
-  intellij-idea-ce
+  svn
+  sublime-text
   visual-studio-code
-  atom
 )
 
 fonts=(
@@ -66,11 +73,11 @@ fonts=(
   font-ubuntu
   font-roboto
 
-  font-firacode-nerd-font
-  font-ubuntumono-nerd-font
+  font-fira-code-nerd-font
+  font-ubuntu-mono-nerd-font
 )
 
-brew cask install ${apps[@]}
-brew cask install ${fonts[@]}
+brew install cask ${apps[@]}
+brew install cask ${fonts[@]}
 
-brew cask cleanup
+brew cleanup

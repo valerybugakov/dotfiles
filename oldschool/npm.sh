@@ -2,22 +2,22 @@
 sudo -v
 
 npmscripts=(
-  node-gyp
+	node-gyp
 
-  which
-  caniuse-cmd
-  tldr
-  jscodeshift
+	which
+	caniuse-cmd
+	tldr
+	jscodeshift
 
-  babel-cli
-  webpack
-  eslint
-  eslint_d
-  plop
+	babel-cli
+	webpack
+	eslint
+	eslint_d
+	plop
 
-  ts-node
-  tslint
-  typescript
+	ts-node
+	ts-morph
+	typescript
 )
 
 npm install -g ${npmscripts[@]}
